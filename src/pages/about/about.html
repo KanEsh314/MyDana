@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      About
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+	<ion-grid>
+    <ion-row>
+      <ion-col>
+        <div>
+        	<img src="assets/img/mr1.png">
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row >
+      <ion-col *ngFor="let im of moreImg">
+        <div>
+        	<img src="{{im.image}}">
+        </div>
+      </ion-col>
+    </ion-row>
+
+   <ion-row>
+    <p>
+  		Kesihatan
+  	</p>
+  	</ion-row>
+  	<ion-row>
+	<p>
+		Kempen My Heart
+	</p>
+	</ion-row>
+	<ion-row class="separator">
+	<p>
+		Setiap jenis sel darah, platelet dan plasma boleh diasingkan untuk membentuk komponen darah yang spesifik untuk memenuhi keperluan rawatan penyakit tertentu. Berbagai kajian telah dijalankan dan terbukti bahawa penggunaan komponen darah dalam rawatan berupaya memulihkan pesakit dengan lebih cepat dan berkesan.
+	</p>
+	</ion-row>
+  </ion-grid>
+
+  <button ion-button>Derma</button>
+
+   <ion-toolbar no-border-top padding>
+    <ion-segment [(ngModel)]="pet">
+      <ion-segment-button value="Overview">
+        Puppies
+      </ion-segment-button>
+      <ion-segment-button value="Komen">
+        Kittens
+      </ion-segment-button>
+      <ion-segment-button value="Terkini">
+        Ducklings
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-content>

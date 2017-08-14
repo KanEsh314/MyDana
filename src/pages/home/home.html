@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-slides class="slideSize" autoplay="5000" loop="true" speed="3000">
+
+  <ion-slide *ngFor="let slide of slideData">
+
+    <img class="imgSize" src="{{slide.image}}"/>
+    </ion-slide>
+
+  </ion-slides>
+
+<ion-card *ngFor="let card of cardData">
+  <img src="{{card.image}}"/>
+  <ion-card-content>
+    <ion-card-title>
+      {{card.title}}
+    </ion-card-title>
+    <p>
+      {{card.desc}}
+    </p>
+  </ion-card-content>
+   <ion-row no-padding>
+      <ion-col>
+        <button ion-button clear small color="danger" icon-start>
+        <ion-icon name='chatbubbles'></ion-icon>
+          Comment
+        </button>
+      </ion-col>
+      <ion-col text-center>
+        <button ion-button clear small color="danger" icon-start>
+        <ion-icon name='eye'></ion-icon>
+        </button>
+      </ion-col>
+      <ion-col text-right>
+        <button ion-button clear small color="danger" icon-start>
+        <ion-icon name='share-alt'></ion-icon>
+          Share
+        </button>
+      </ion-col>
+    </ion-row>
+</ion-card>
+
+</ion-content>
