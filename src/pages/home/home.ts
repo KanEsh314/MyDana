@@ -15,7 +15,8 @@ export class HomePage {
 				{"image": "assets/campaign/camp3.png", "title" : "TitleInfo3", "desc" : "DescInfo3"}];
 
   constructor(public navCtrl: NavController) {
-  	if(this.slideData.length>0)
+
+    if(this.slideData.length>0)
   	{
   		this.slideLength = true;
   	}

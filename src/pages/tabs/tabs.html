@@ -1,6 +1,14 @@
 <ion-header>
 	<ion-navbar primay color="secondary">
+		<button ion-button menuToggle icon-only>
+			<ion-icon name="menu"></ion-icon>
+		</button>
 		<ion-title> My Dana </ion-title>
+		<ion-buttons end>
+      		<button ion-button icon-only (click)="Authentication()">
+        		<ion-icon name="contact"></ion-icon>
+      		</button>
+    	</ion-buttons>
 	</ion-navbar>
 </ion-header>
 <ion-tabs tabbarPlacement="top" primary>
