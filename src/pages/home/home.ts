@@ -10,9 +10,9 @@ export class HomePage {
 	slideData = [{image: "assets/slides/my1.png"} , {image: "assets/slides/my2.png"} , {image: "assets/slides/my3.png"}]
 	slideLength : boolean = false;
 
-	cardData = [{"image": "assets/campaign/camp1.png", "title" : "TitleInfo1", "desc" : "DescInfo1"},
-				{"image": "assets/campaign/camp2.png", "title" : "TitleInfo2", "desc" : "DescInfo2"},
-				{"image": "assets/campaign/camp3.png", "title" : "TitleInfo3", "desc" : "DescInfo3"}];
+	cardData = [{"image": "assets/campaign/camp1.png", "title" : "Amal", "stitle" : "Korban Prihatin AidilAdha 2017", "desc" : "Far far away,behind the word mountains,far from the countries Vokalia", "price" : "RM 4,890 terkumpul setakat ini", "perce" : "80% tepati sasaran", "day" : "5 hari lagi"},
+				      {"image": "assets/campaign/camp2.png", "title" : "Amal", "stitle" : "Korban Prihatin AidilAdha 2017", "desc" : "Far far away,behind the word mountains,far from the countries Vokalia", "price" : "RM 4,890 terkumpul setakat ini", "perce" : "80% tepati sasaran", "day" : "5 hari lagi"},
+				      {"image": "assets/campaign/camp3.png", "title" : "Amal", "stitle" : "Korban Prihatin AidilAdha 2017", "desc" : "Far far away,behind the word mountains,far from the countries Vokalia", "price" : "RM 4,890 terkumpul setakat ini", "perce" : "80% tepati sasaran", "day" : "5 hari lagi"}];
 
   constructor(public navCtrl: NavController) {
 

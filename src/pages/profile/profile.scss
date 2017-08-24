@@ -1,0 +1,31 @@
+.bg{
+	background-image: url('../assets/user.jpg');
+	height: 300px;
+	background-size: cover;
+	filter: blur(5px);
+	background-position: center center;
+}
+
+.main-cnt{
+	width: 100%;
+	height: 70px;
+	background-color: #efefef;
+}
+
+.dp{
+	border-radius: 50%;
+	height: 100px;
+	width: 100px;
+	z-index: 10;
+	margin-top: -30px;
+	position: relative;
+	margin-left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%,-50%);
+	box-shadow: -6px 15px 81px 3px rgba(0,0,0,0.75);
+}
+
+ion-col{
+	text-align: center;
+	color: 2598ff;
+}

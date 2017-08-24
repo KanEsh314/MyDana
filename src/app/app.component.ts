@@ -3,8 +3,8 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { ProfilePage } from '../pages/profile/profile';
 import { TabsPage } from '../pages/tabs/tabs';
-import { ListPage } from '../pages/list/list';
 
 @Component({
   templateUrl: 'app.html'
@@ -20,8 +20,7 @@ export class MyApp {
     this.initializeApp();
 
     this.pages = [
-    { title: 'Home', component: TabsPage},
-    { title: 'List', component: ListPage}
+    {title: 'Profile', component: ProfilePage}
     ];
   }
 

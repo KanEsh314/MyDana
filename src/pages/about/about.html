@@ -29,30 +29,57 @@
   	</p>
   	</ion-row>
   	<ion-row>
-	<p>
+	<h3><p>
 		Kempen My Heart
-	</p>
+	</p></h3>
 	</ion-row>
-	<ion-row class="separator">
+	<ion-row padding-bottom class="separator">
 	<p>
 		Setiap jenis sel darah, platelet dan plasma boleh diasingkan untuk membentuk komponen darah yang spesifik untuk memenuhi keperluan rawatan penyakit tertentu. Berbagai kajian telah dijalankan dan terbukti bahawa penggunaan komponen darah dalam rawatan berupaya memulihkan pesakit dengan lebih cepat dan berkesan.
 	</p>
 	</ion-row>
+    <p>RM4,890 terkumpul setakat ini</p>
+    <p>80% tepati sasaran</p>
+    <p>5 hari lagi</p>
   </ion-grid>
 
   <button ion-button>Derma</button>
 
-   <ion-toolbar no-border-top padding>
-    <ion-segment [(ngModel)]="pet">
-      <ion-segment-button value="Overview">
-        Puppies
+   <ion-toolbar  no-border-top padding>
+    <ion-segment [(ngModel)]="news">
+      <ion-segment-button value="overview">
+        Overview
       </ion-segment-button>
-      <ion-segment-button value="Komen">
-        Kittens
+      <ion-segment-button value="komen">
+        Komen
       </ion-segment-button>
-      <ion-segment-button value="Terkini">
-        Ducklings
+      <ion-segment-button value="terkini">
+        Terkini
       </ion-segment-button>
     </ion-segment>
   </ion-toolbar>
+
+  <div [ngSwitch]="news">
+    <ion-list *ngSwitchCase="'overview'">
+      
+        <h6>Kerjasama antara Yayasan MyPrihatin dengan IJN Foundation bermula dengan kes adik beradik kembar Alimi Aliff dan Aziz pada pertengahan Disember 2015 apabila mereka memerlukan RM100,000 untuk menjalani pembedahan di salah sebuah hospital swasta di utara tanah air</h6>
+      
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'komen'">
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/user.png">
+        </ion-thumbnail>
+        <h5>Kerjasama antara Yayasan MyPrihatin dengan IJN Foundation bermula dengan kes adik beradik kembar Alimi Aliff dan Aziz pada pertengahan Disember 2015 apabila mereka memerlukan RM100,000 untuk menjalani pembedahan di salah sebuah hospital swasta di utara tanah air</h5>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'terkini'">
+      <ion-item>
+        <h5>Terkini</h5>
+      </ion-item>
+    </ion-list>
+  </div>
+
 </ion-content>

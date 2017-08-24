@@ -14,17 +14,25 @@
 
   </ion-slides>
 
+  <ion-item-divider >
+    <h1>Kempen Terkini</h1>
+  </ion-item-divider>
+
 <ion-card *ngFor="let card of cardData">
   <img src="{{card.image}}"/>
   <ion-card-content>
-    <ion-card-title>
-      {{card.title}}
-    </ion-card-title>
-    <p>
-      {{card.desc}}
-    </p>
+        <p>{{card.title}}</p>
+      <ion-card-title>
+        <p>{{card.stitle}}</p>
+      </ion-card-title>
+        <p class="statusBorder">{{card.desc}}</p>
+      <ion-item>
+        <p>{{card.price}}</p>
+        <p>{{card.perce}}</p>
+        <p>{{card.day}}</p>
+      </ion-item>
   </ion-card-content>
-   <ion-row no-padding>
+   <ion-row no-padding class="botBorder">
       <ion-col>
         <button ion-button clear small color="danger" icon-start>
         <ion-icon name='chatbubbles'></ion-icon>
