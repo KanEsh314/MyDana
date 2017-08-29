@@ -20,6 +20,7 @@ export class MyApp {
     this.initializeApp();
 
     this.pages = [
+    {title: 'Home', component: TabsPage},
     {title: 'Profile', component: ProfilePage}
     ];
   }

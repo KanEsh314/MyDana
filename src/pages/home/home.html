@@ -14,22 +14,28 @@
 
   </ion-slides>
 
-  <ion-item-divider >
-    <h1>Kempen Terkini</h1>
+  <ion-item-divider>
+    Kempen Terkini
   </ion-item-divider>
 
 <ion-card *ngFor="let card of cardData">
   <img src="{{card.image}}"/>
   <ion-card-content>
-        <p>{{card.title}}</p>
+    <div class="cardTitle">
+      <h1>{{card.title}}</h1>
+    </div>
       <ion-card-title>
-        <p>{{card.stitle}}</p>
+      <div>
+        <h3>{{card.stitle}}</h3>
+      </div>
       </ion-card-title>
         <p class="statusBorder">{{card.desc}}</p>
       <ion-item>
+      <div class="detailUpdate">
         <p>{{card.price}}</p>
         <p>{{card.perce}}</p>
         <p>{{card.day}}</p>
+      </div>
       </ion-item>
   </ion-card-content>
    <ion-row no-padding class="botBorder">
