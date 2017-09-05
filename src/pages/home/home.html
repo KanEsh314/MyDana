@@ -18,7 +18,7 @@
     Kempen Terkini
   </ion-item-divider>
 
-<ion-card *ngFor="let card of cardData">
+<ion-card *ngFor="let card of cardData" (click)="moreDetail()">
   <img src="{{card.image}}"/>
   <ion-card-content>
     <div class="cardTitle">

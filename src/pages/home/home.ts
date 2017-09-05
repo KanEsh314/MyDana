@@ -23,4 +23,8 @@ export class HomePage {
   	}
 
   }
+
+  moreDetail(){
+    this.navCtrl.push(AboutPage);
+  }
 }

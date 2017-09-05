@@ -1,0 +1,118 @@
+<!--
+  Generated template for the PaymentPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="secondary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Pay With Us</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+	<ion-grid>
+		<ion-row>
+			<ion-col>
+				<div>
+					<h1>Your Pledge</h1>
+				</div>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>
+				<div text-left>
+					Your $9.00 pledge to Angee.The First Truly Autonomous Home Security System has been 
+					decline by your card provider.
+				</div>
+				<div text-left>
+					This error is usually caused by a recently expired, canceled, or maxed-out credit or debit card.
+				</div>
+				<div text-left>
+					To correct this error and complete your pledge, click the button below and update your pledge
+					with a different card.
+				</div>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>
+				<button ion-button>Retry Your Payment</button>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+
+	<ion-grid>
+		<ion-row>
+			<ion-col>
+				<div>
+					<h1>Select Payment Method</h1>
+				</div>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>
+				<div>
+					<ion-item>
+        				<ion-radio value="golang" checked="true">
+        				</ion-radio><ion-label>Cash</ion-label>
+      				</ion-item>
+      				<ion-item>
+        				<ion-radio value="rust"></ion-radio>
+        				<ion-label>Card</ion-label>
+      				</ion-item>
+				</div>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>
+				<div>
+      				<ion-input type="text" placeholder="Name"></ion-input>
+        		</div>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>
+				<div>
+					<ion-input type="text" placeholder="Card Number"></ion-input>
+				</div>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>
+				<div>
+					<ion-input type="text" placeholder="Card Number"></ion-input>
+				</div>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>
+			<div>
+				<ion-item>
+      				<ion-label>Expiration</ion-label>
+      				<ion-datetime displayFormat="MMM YYYY" [(ngModel)]="event.month"></ion-datetime>
+    			</ion-item>
+    		</div>	
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>
+				<div>
+					<ion-input type="number" placeholder="CCV"></ion-input>
+				</div>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>
+				<div>
+					By pledging you agree to kickstarter's Terms of Use and Privacy Policy
+					<button ion-button>Pledge</button>
+				</div>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+</ion-content>
