@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { CommentPage } from '../comment/comment';
 import { UpdatePage } from '../update/update';
+import { DetailsPage } from '../details/details';
+import { PaymentPage } from '../payment/payment';
 
 @Component({
   selector: 'page-about',
@@ -16,7 +18,6 @@ items = [];
   constructor(public navCtrl: NavController) {
 
   	this.items = [
-  		'Campaign',
   		'Comment',
   		'Update'
   	];
@@ -30,6 +31,14 @@ items = [];
     }else if(item == 'Update'){
     	this.navCtrl.push(UpdatePage);
     }
+  }
+
+  details(){
+    this.navCtrl.push(DetailsPage);
+  }
+
+  payHere(){
+    this.navCtrl.push(PaymentPage);
   }
 
 }

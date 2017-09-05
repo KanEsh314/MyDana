@@ -36,7 +36,7 @@
 	<ion-row padding-bottom class="separator">
 	<div text-nowrap padding>
 		Setiap jenis sel darah...
-    <button>Read more</button>
+    <button (click)="details()">Read more</button>
 	</div>
 	</ion-row>
     <p>RM4,890 terkumpul setakat ini</p>
@@ -54,5 +54,5 @@
   </ion-row>
   </ion-grid>
 
-  <button ion-button full>Derma</button>
+  <button ion-button full (click)="payHere()">Derma</button>
 </ion-content>
