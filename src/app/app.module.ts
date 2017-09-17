@@ -13,9 +13,11 @@ import { PaymentPage } from '../pages/payment/payment';
 import { CommentPage } from '../pages/comment/comment';
 import { UpdatePage } from '../pages/update/update';
 import { DetailsPage } from '../pages/details/details';
+import { CommentModalPage } from '../pages/comment-modal/comment-modal';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Facebook } from '@ionic-native/facebook';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     PaymentPage,
     CommentPage,
     UpdatePage,
-    DetailsPage
+    DetailsPage,
+    CommentModalPage,
   ],
   imports: [
     BrowserModule,
@@ -47,12 +50,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     PaymentPage,
     CommentPage,
     UpdatePage,
-    DetailsPage
+    DetailsPage,
+    CommentModalPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    Facebook
   ]
 })
 export class AppModule {}

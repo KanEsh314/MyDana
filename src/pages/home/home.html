@@ -14,12 +14,14 @@
 
   </ion-slides>
 
+<hr>
+
   <ion-item-divider>
     Kempen Terkini
   </ion-item-divider>
 
-<ion-card *ngFor="let card of cardData" (click)="moreDetail()">
-  <img src="{{card.image}}"/>
+<ion-card *ngFor="let card of cardData">
+  <img src="{{card.image}}" (click)="moreDetail()"/>
   <ion-card-content>
     <div class="cardTitle">
       <h1>{{card.title}}</h1>
@@ -40,7 +42,7 @@
   </ion-card-content>
    <ion-row no-padding class="botBorder">
       <ion-col>
-        <button ion-button clear small color="danger" icon-start>
+        <button ion-button clear small color="danger" icon-start (click)=commentPress()>
         <ion-icon name='chatbubbles'></ion-icon>
           Comment
         </button>
