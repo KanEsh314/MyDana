@@ -8,7 +8,7 @@ import { AboutPage } from '../about/about';
 })
 export class HomePage {
 
-	slideData = [{image: "assets/slides/my1.png"} , {image: "assets/slides/my2.png"} , {image: "assets/slides/my3.png"}]
+	slideData = [{image: "assets/yMD/md1.jpg"} , {image: "assets/yMD/md2.jpg"} , {image: "assets/yMD/md3.jpg"}]
 	slideLength : boolean = false;
 
 	cardData = [{"image": "assets/campaign/camp1.png", "title" : "Amal", "stitle" : "Korban Prihatin AidilAdha 2017", "desc" : "Far far away,behind the word mountains,far from the countries Vokalia", "price" : "RM 4,890 terkumpul setakat ini", "perce" : "80% tepati sasaran", "day" : "5 hari lagi"},
