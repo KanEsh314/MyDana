@@ -14,6 +14,7 @@ import { CommentPage } from '../pages/comment/comment';
 import { UpdatePage } from '../pages/update/update';
 import { DetailsPage } from '../pages/details/details';
 import { CommentModalPage } from '../pages/comment-modal/comment-modal';
+import { RegisterPage } from '../pages/register/register';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -33,6 +34,7 @@ import { Facebook } from '@ionic-native/facebook';
     UpdatePage,
     DetailsPage,
     CommentModalPage,
+    RegisterPage
   ],
   imports: [
     BrowserModule,
@@ -51,7 +53,8 @@ import { Facebook } from '@ionic-native/facebook';
     CommentPage,
     UpdatePage,
     DetailsPage,
-    CommentModalPage
+    CommentModalPage,
+    RegisterPage
   ],
   providers: [
     StatusBar,

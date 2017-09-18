@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Facebook, FacebookLoginResponse} from '@ionic-native/facebook';
+import { RegisterPage } from '../register/register';
 
 /**
  * Generated class for the SignPage page.
@@ -29,6 +30,10 @@ export class SignPage {
   .catch(e => console.log('Error logging into Facebook', e));
 
   this.fb.logEvent(this.fb.EVENTS.EVENT_NAME_ADDED_TO_CART);
+  }
+
+  register(){
+    this.navCtrl.push(RegisterPage);
   }
 
 }

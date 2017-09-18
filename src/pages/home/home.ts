@@ -29,7 +29,8 @@ export class HomePage {
   }
 
   moreDetail(){
-    this.navCtrl.push(AboutPage);
+    let myModal = this.modalCtrl.create(AboutPage);
+    myModal.present();
   }
 
   commentPress(){

@@ -41,4 +41,8 @@ items = [];
     this.navCtrl.push(PaymentPage);
   }
 
+  back(){
+    this.navCtrl.pop();
+  }
+
 }
