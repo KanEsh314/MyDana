@@ -11,7 +11,7 @@ import { PaymentPage } from '../payment/payment';
 })
 export class AboutPage {
 
-moreImg = [{image: "assets/img/mr2.png"} , {image: "assets/img/mr3.png"} , {image: "assets/img/mr4.png"}];
+moreImg = [{image: "assets/img/health.jpg"} , {image: "assets/img/qurban.jpg"} , {image: "assets/img/bantu.jpg"}];
 
 items = [];
 
