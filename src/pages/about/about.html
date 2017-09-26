@@ -1,19 +1,19 @@
 <ion-header>
-  <ion-toolbar color="secondary" height="100px">
-    <button color="secondary" ion-button (click)=back()>
-      <ion-icon ios="ios-arrow-back" md="md-arrow-back"> </ion-icon>
+  <ion-navbar color="secondary">
+    <button ion-button clear (click)=back()>
+      <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
     </button>
-  </ion-toolbar>
+  </ion-navbar>
 </ion-header>
 
 <ion-content>
-	<ion-grid>
+	
     <ion-row>
-      <ion-col>
+      
         <div>
         	<img src="assets/img/bantu.jpg">
         </div>
-      </ion-col>
+      
     </ion-row>
     <ion-row >
       <ion-col *ngFor="let im of moreImg">
@@ -39,11 +39,12 @@
     <button (click)="details()">Read more</button>
 	</div>
 	</ion-row>
+
     <p>RM4,890 terkumpul setakat ini</p>
     <p>80% tepati sasaran</p>
     <p>5 hari lagi</p>
 
-  <ion-row>
+  <!--<ion-row>
     <ion-col>
     <ion-list>
       <button ion-item *ngFor="let item of items" (click)="itemSelected(item)">
@@ -51,8 +52,17 @@
       </button>
     </ion-list>
     </ion-col>
-  </ion-row>
-  </ion-grid>
+  </ion-row>-->
+
+  
+ 
+
+<ion-list>
+  <button ion-item *ngFor="let item of items" (click)="itemSelected(item)">
+    {{ item }}<ion-badge item-end>1</ion-badge>
+  </button>
+
+</ion-list>
 
   <button ion-button full (click)="payHere()">Derma</button>
 </ion-content>

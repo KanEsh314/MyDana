@@ -18,8 +18,7 @@ items = [];
   constructor(public navCtrl: NavController) {
 
   	this.items = [
-  		'Comment',
-  		'Update'
+  		'Comment'
   	];
   }
 
@@ -28,10 +27,9 @@ items = [];
     	console.log("Selected Page",item)
     }else if (item == 'Comment') { 
     	this.navCtrl.push(CommentPage);
-    }else if(item == 'Update'){
-    	this.navCtrl.push(UpdatePage);
     }
   }
+
 
   details(){
     this.navCtrl.push(DetailsPage);
