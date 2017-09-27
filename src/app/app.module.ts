@@ -19,6 +19,7 @@ import { RegisterPage } from '../pages/register/register';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Facebook } from '@ionic-native/facebook';
+import { PayPal } from '@ionic-native/paypal'
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { Facebook } from '@ionic-native/facebook';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    Facebook
+    Facebook,
+    PayPal
   ]
 })
 export class AppModule {}
