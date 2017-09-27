@@ -1,12 +1,12 @@
 <ion-header>
-  <ion-toolbar color="secondary" height="100px">
-    <button color="secondary" ion-button (click)=back()>
-      <ion-icon ios="ios-arrow-back" md="md-arrow-back"> </ion-icon>
-    </button>
-  </ion-toolbar>
+  <ion-navbar>
+    <ion-buttons right>
+    	<button ion-button icon-only (click)="getback()"><ion-icon name="ios-close-circle-outline"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="about">
 	<ion-grid>
     <ion-row>
       <ion-col>
@@ -22,12 +22,6 @@
         </div>
       </ion-col>
     </ion-row>
-
-   <ion-row>
-    <p>
-  		Kesihatan
-  	</p>
-  	</ion-row>
   	<ion-row>
 	<h3><p>
 		Kempen My Heart
@@ -35,24 +29,26 @@
 	</ion-row>
 	<ion-row padding-bottom class="separator">
 	<div text-nowrap padding>
-		Setiap jenis sel darah...
+		Kerjasama Yayasan MyPrihatin...
     <button (click)="details()">Read more</button>
 	</div>
 	</ion-row>
+  <ion-item-divider text-left>
     <p>RM4,890 terkumpul setakat ini</p>
     <p>80% tepati sasaran</p>
     <p>5 hari lagi</p>
-
+  </ion-item-divider>
   <ion-row>
     <ion-col>
     <ion-list>
-      <button ion-item *ngFor="let item of items" (click)="itemSelected(item)">
-        {{ item }}
-      </button>
+      <ion-item ion-item *ngFor="let item of items" (click)="itemSelected(item)">
+        {{ item }} 
+        <ion-badge color="yayasan" item-end>260k</ion-badge>
+      </ion-item>
     </ion-list>
     </ion-col>
   </ion-row>
   </ion-grid>
 
-  <button ion-button full (click)="payHere()">Derma</button>
+  <button ion-button outline full color="yayasan" (click)="payhere()">Derma</button>
 </ion-content>

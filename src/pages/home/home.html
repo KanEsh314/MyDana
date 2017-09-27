@@ -4,31 +4,28 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <ion-slides class="slideSize" autoplay="5000" loop="true" speed="3000">
+<ion-content class="home">
+  <ion-slides pager autoplay="5000" loop="true" speed="3000">
+    <ion-slide *ngFor="let slide of slideData">
 
-  <ion-slide *ngFor="let slide of slideData">
-
-    <img class="imgSize" src="{{slide.image}}"/>
+      <img src="{{slide.image}}">
+  
     </ion-slide>
-
   </ion-slides>
 
-<hr>
-
-  <ion-item-divider>
+  <ion-item-divider><div><h1>
     Kempen Terkini
-  </ion-item-divider>
+  </h1></div></ion-item-divider>
 
 <ion-card *ngFor="let card of cardData">
   <img src="{{card.image}}" (click)="moreDetail()"/>
   <ion-card-content>
     <div class="cardTitle">
-      <h1>{{card.title}}</h1>
+      <h2>{{card.title}}</h2>
     </div>
       <ion-card-title>
       <div>
-        <h3>{{card.stitle}}</h3>
+        <h4>{{card.stitle}}</h4>
       </div>
       </ion-card-title>
         <p class="statusBorder">{{card.desc}}</p>

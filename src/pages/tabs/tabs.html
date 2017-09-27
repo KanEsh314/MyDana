@@ -1,9 +1,6 @@
 <ion-header>
-	<ion-navbar primay color="secondary">
-		<button ion-button menuToggle icon-only>
-			<ion-icon name="menu"></ion-icon>
-		</button>
-		<ion-title> My Dana </ion-title>
+	<ion-navbar primay color="yayasan">
+		<ion-title> MyDana </ion-title>
 		<ion-buttons end>
       		<button ion-button icon-only (click)="Authentication()">
         		<ion-icon name="contact"></ion-icon>
@@ -12,6 +9,8 @@
 	</ion-navbar>
 </ion-header>
 <ion-tabs tabbarPlacement="top" primary color="secondary">
-  <ion-tab [root]="tab1Root" tabTitle="Campaign" tabIcon="home"></ion-tab>
-  <ion-tab [root]="tab2Root" tabTitle="Contact" tabIcon="contacts"></ion-tab>
+  <ion-tab [root]="tab1Root" tabIcon="home"></ion-tab>
+  <ion-tab [root]="tab2Root" tabIcon="contacts"></ion-tab>
+  <ion-tab [root]="tab3Root" tabIcon="card"></ion-tab>
+  <ion-tab [root]="tab4Root" tabIcon="person"></ion-tab>
 </ion-tabs>
