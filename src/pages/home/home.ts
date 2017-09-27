@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { AboutPage } from '../about/about';
 import { ModalController } from 'ionic-angular';
 import { CommentModalPage } from '../comment-modal/comment-modal';
+import { CommentPage } from '../comment/comment';
 
 @Component({
   selector: 'page-home',
@@ -10,9 +11,9 @@ import { CommentModalPage } from '../comment-modal/comment-modal';
 })
 export class HomePage {
 
-	slideData = [{image: "assets/yMD/md1.jpg"},
-               {image: "assets/yMD/md2.jpg"},
-               {image: "assets/yMD/md3.jpg"}]
+	slideData = [{image: "assets/img/bantu.jpg"},
+               {image: "assets/img/health.jpg"},
+               {image: "assets/img/qurban.jpg"}]
 	slideLength : boolean = false;
 
 	cardData = [{"image": "assets/img/bantu.jpg", "title" : "Kasih", "stitle" : "Sinar Prihatin & Ramadhan Prihatin", "desc" : "Far far away,behind the word mountains,far from the countries Vokalia", "price" : "RM 4,890 terkumpul setakat ini", "perce" : "80% tepati sasaran", "day" : "5 hari lagi"},
@@ -34,7 +35,8 @@ export class HomePage {
   }
 
   commentPress(){
-    let myModal = this.modalCtrl.create(CommentModalPage);
+    let myModal = this.modalCtrl.create(CommentPage);
     myModal.present();
+  
   }
 }

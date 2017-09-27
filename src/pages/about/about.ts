@@ -25,9 +25,13 @@ items = [];
   constructor(public navCtrl: NavController , public viewCtrl: ViewController) {
 
   	this.items = [
+<<<<<<< HEAD
       'Campaign',
   		'Comment',
   		'Update'
+=======
+  		'Comment'
+>>>>>>> 6430402cee5da1d19e37c9effeec279ba62b6aa6
   	];
   }
 
@@ -36,10 +40,9 @@ items = [];
     	this.navCtrl.push(DetailsPage);
     }else if (item == 'Comment') { 
     	this.navCtrl.push(CommentPage);
-    }else if(item == 'Update'){
-    	this.navCtrl.push(UpdatePage);
     }
   }
+
 
   details(){
     this.navCtrl.push(DetailsPage);

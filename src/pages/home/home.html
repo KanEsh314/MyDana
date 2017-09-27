@@ -29,6 +29,11 @@
       </div>
       </ion-card-title>
         <p class="statusBorder">{{card.desc}}</p>
+
+      <ion-item>
+        <ion-range [(ngModel)]="brightness">
+        </ion-range>
+      </ion-item>
       <ion-item>
       <div class="detailUpdate">
         <p>{{card.price}}</p>
