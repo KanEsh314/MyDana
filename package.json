@@ -29,6 +29,7 @@
         "card.io.cordova.mobilesdk": "^2.1.0",
         "com.paypal.cordova.mobilesdk": "^3.5.0",
         "cordova-android": "^6.2.3",
+        "cordova-plugin-braintree": "^0.5.1",
         "cordova-plugin-console": "^1.0.5",
         "cordova-plugin-device": "^1.1.4",
         "cordova-plugin-facebook4": "^1.9.1",
@@ -62,7 +63,8 @@
                 "APP_ID": "1850420635269383",
                 "APP_NAME": "My Dana"
             },
-            "com.paypal.cordova.mobilesdk": {}
+            "com.paypal.cordova.mobilesdk": {},
+            "cordova-plugin-braintree": {}
         },
         "platforms": [
             "android"
