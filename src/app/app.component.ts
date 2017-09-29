@@ -19,12 +19,6 @@ export class MyApp {
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
-
-    this.pages = [
-    {title: 'Home', component: TabsPage},
-    {title: 'Profile', component: ProfilePage},
-    {title: 'Pay With Us', component: PaymentPage}
-    ];
   }
 
   initializeApp(){

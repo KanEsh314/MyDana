@@ -1,6 +1,6 @@
 .bg{
 	background-image: url('../assets/user.jpg');
-	height: 150px;
+	height: 180px;
 	background-size: cover;
 	filter: blur(5px);
 	background-position: center center;
@@ -8,24 +8,27 @@
 
 .main-cnt{
 	width: 100%;
-	height: 70px;
-	background-color: #efefef;
+	//height: 70px;
+	//background-color: #efefef;
 }
 
 .dp{
 	border-radius: 50%;
-	height: 100px;
-	width: 100px;
-	z-index: 10;
+	height: 50px;
+	width: 50px;
 	margin-top: -30px;
-	position: relative;
-	margin-left: 50%;
-	margin-right: -50%;
+	margin-left: 15%;
+	margin-right: -85%;
 	transform: translate(-50%,-50%);
 	box-shadow: -6px 15px 81px 3px rgba(0,0,0,0.75);
 }
 
-ion-col{
-	text-align: center;
-	color: 2598ff;
+.procss ion-title {
+	text-align: left;
+	margin-top: -65px;
+	margin-left: -30px;
+}
+
+.procss ion-list{
+	margin-top: 50px;
 }
