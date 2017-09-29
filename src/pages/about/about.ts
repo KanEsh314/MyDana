@@ -25,13 +25,11 @@ items = [];
   constructor(public navCtrl: NavController , public viewCtrl: ViewController) {
 
   	this.items = [
-<<<<<<< HEAD
+
       'Campaign',
   		'Comment',
   		'Update'
-=======
-  		'Comment'
->>>>>>> 6430402cee5da1d19e37c9effeec279ba62b6aa6
+
   	];
   }
 
