@@ -3,7 +3,8 @@ import { NavController, NavParams } from 'ionic-angular';
 import { AboutPage } from '../about/about';
 import { ModalController } from 'ionic-angular';
 import { CommentPage } from '../comment/comment';
-import { HttpProvider } from '../../providers/http/http'
+import { HttpProvider } from '../../providers/http/http';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 @Component({
   selector: 'page-home',
@@ -20,7 +21,7 @@ export class HomePage {
                {image: "assets/img/qurban.jpg"}]
 	slideLength : boolean = false;
 
-  constructor(public navCtrl: NavController, public modalCtrl:ModalController, public httpprovider:HttpProvider, public navParams:NavParams) {
+  constructor(public navCtrl: NavController, public modalCtrl:ModalController, public httpprovider:HttpProvider, public navParams:NavParams, public socialSharing:SocialSharing) {
 
     if(this.slideData.length>0)
   	{
@@ -68,5 +69,14 @@ export class HomePage {
     let myModal = this.modalCtrl.create(CommentPage);
     myModal.present();
   
+  }
+
+  shareButton(){
+
+    this.socialSharing.shareViaFacebook('Share', this.latestcampaign).then(() => {
+      // Success!
+    }).catch(() => {
+    
+    });
   }
 }

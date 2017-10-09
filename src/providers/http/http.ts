@@ -20,6 +20,11 @@ export class HttpProvider {
     .map(res => res.json())  
   }
 
+   getCampaign(campaign_id){
+    return this.http.get("https://mydana.herokuapp.com/api/campaign/"+campaign_id)
+    .map(res => res.json())  
+  }
+
   getSliderImage(){
     return this.http.get("https://mydana.herokuapp.com/api/banners")
     .map(res => res.json())  

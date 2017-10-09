@@ -4,6 +4,7 @@ import { CommentPage } from '../comment/comment';
 import { UpdatePage } from '../update/update';
 import { DetailsPage } from '../details/details';
 import { PaymentPage } from '../payment/payment';
+import { HttpProvider } from '../../providers/http/http';
 
 /**
  * Generated class for the AboutPage page.
@@ -20,12 +21,13 @@ import { PaymentPage } from '../payment/payment';
 export class AboutPage {
 
   campaign:any;
+  kempen = {};
 
 	moreImg = [{image: "assets/img/health.jpg"} , {image: "assets/img/qurban.jpg"} , {image: "assets/img/bantu.jpg"}];
 
 items = [];
 
-  constructor(public navParams:NavParams, public navCtrl: NavController , public viewCtrl: ViewController) {
+  constructor(public navParams:NavParams, public navCtrl: NavController , public viewCtrl: ViewController, public httpprovider:HttpProvider) {
 
     this.campaign = navParams.get('campaign');
     console.log(this.campaign);
@@ -39,18 +41,32 @@ items = [];
   	];
   }
 
- 
-  itemSelected(item: string) {
-    if (item == 'Campaign') {
-    	this.navCtrl.push(DetailsPage);
-    }else if (item == 'Comment') { 
-    	this.navCtrl.push(CommentPage);
-    }else if(item == 'Update'){
-      this.navCtrl.push(UpdatePage);
+  ionViewDidLoad(){
+  this.httpprovider.getCampaign(this.campaign.campaign_id).subscribe(
+      response => {
+        console.log(response)
+        this.kempen = response.data;
+        console.log(this.kempen)
+      },
+      err => {
+        console.log(err);
+      },
+      ()=>{
+      console.log('Latest is ok!')
     }
-  }
+    );
+}
 
+ 
 
+   commentsTapped(kempen){
+     this.navCtrl.push(CommentPage, kempen);
+   }
+
+   newsTapped(kempen){
+     this.navCtrl.push(UpdatePage, kempen);
+   }
+  
   details(){
     this.navCtrl.push(DetailsPage);
   }

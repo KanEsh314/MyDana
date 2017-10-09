@@ -37,7 +37,7 @@
       </ion-item>
       <ion-item>
       <div class="detailUpdate">
-        <p>{{campaign.fund_amount}}</p>
+        <p>RM {{campaign.fund_amount}} terkumpul</p>
         <!-- <p>{{card.perce}}</p>
         <p>{{card.day}}</p> -->
       </div>
@@ -56,7 +56,7 @@
         </button>
       </ion-col>
       <ion-col text-right>
-        <button ion-button clear small color="danger" icon-start>
+        <button ion-button clear small color="danger" icon-start (click)="shareButton()">
         <ion-icon name='share-alt'></ion-icon>
           Share
         </button>
