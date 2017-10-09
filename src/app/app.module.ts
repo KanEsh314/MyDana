@@ -22,6 +22,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Facebook } from '@ionic-native/facebook';
 import { PayPal } from '@ionic-native/paypal'
 import { HttpProvider } from '../providers/http/http';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { HttpProvider } from '../providers/http/http';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Facebook,
     PayPal,
-    HttpProvider
+    HttpProvider,
+    SocialSharing
   ]
 })
 export class AppModule {}

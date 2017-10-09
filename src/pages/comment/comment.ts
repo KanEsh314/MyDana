@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { HttpProvider } from '../../providers/http/http'
 
 /**
@@ -18,24 +18,15 @@ export class CommentPage {
 
 	comments : any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public httpprovider:HttpProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public httpprovider:HttpProvider, public viewCtrl:ViewController) {
+  
+    this.comments = navParams.get('comments');
+    console.log(this.comments);
+
   }
 
-  ionViewDidLoad() {
-  this.httpprovider.getComments().subscribe(
-      data => {
-        console.log(data)
-        this.comments = data;
-        console.log(this.comments)
-      },
-      err => {
-        console.log(err);
-      },
-      ()=>{
-      console.log('Comments is ok!')
-    }
-    );
-
+  closeModal(){
+    this.viewCtrl.dismiss();
   }
 
 }

@@ -19,22 +19,11 @@ export class UpdatePage {
 	news : any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public httpprovider:HttpProvider) {
+
+    this.news = navParams.get('news');
+    console.log(this.news);
   }
 
-  ionViewDidLoad() {
-    this.httpprovider.getCampaignNews().subscribe(
-      data => {
-        console.log(data)
-        this.news = data;
-        console.log(this.news)
-      },
-      err => {
-        console.log(err);
-      },
-      ()=>{
-      console.log('Latest is ok!')
-    }
-    );
-  }
+  
 
 }

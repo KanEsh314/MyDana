@@ -23,33 +23,41 @@
     </ion-row>
   	<ion-row>
 	<h3><p>
-		{{campaign.campaign_name}}
+		{{kempen.campaign_name}}
 	</p></h3>
 	</ion-row>
 	<ion-row padding-bottom class="separator">
 	<div text-wrap padding>
-		{{campaign.description}}
+		{{kempen.description}}
     <button (click)="details()">Read more</button>
 	</div>
 	</ion-row>
 
   <ion-item-divider text-left>
-    <p>RM{{campaign.fund_amount}} terkumpul setakat ini</p>
+    <p>RM{{kempen.fund_amount}} terkumpul setakat ini</p>
     <p>80% tepati sasaran</p>
     <p>5 hari lagi</p>
   </ion-item-divider>
   <ion-row>
     <ion-col>
     <ion-list>
-      <ion-item ion-item *ngFor="let item of items" (click)="itemSelected(item)">
-        {{ item }} 
-        <ion-badge color="yayasan" item-end>2</ion-badge>
+      <ion-item >
+        Campaign 
+        <ion-badge color="yayasan" item-end></ion-badge>
+      </ion-item>
+      <ion-item (click)="commentsTapped(kempen)">
+        Comments 
+        <ion-badge color="yayasan" item-end></ion-badge>
+      </ion-item>
+      <ion-item (click)="newsTapped(kempen)">
+        News 
+        <ion-badge color="yayasan" item-end></ion-badge>
       </ion-item>
     </ion-list>
     </ion-col>
   </ion-row>
 
 
-  <button ion-button outline full color="yayasan" (click)="payhere()">Derma</button>
+  <button ion-button outline block color="yayasan" (click)="payhere()">Derma</button>
   </ion-grid>
 </ion-content>
