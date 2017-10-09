@@ -1,17 +1,17 @@
 {
-  "name": "MyDana",
-  "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
-  "private": true,
-  "scripts": {
-    "clean": "ionic-app-scripts clean",
-    "build": "ionic-app-scripts build",
-    "lint": "ionic-app-scripts lint",
-    "ionic:build": "ionic-app-scripts build",
-    "ionic:serve": "ionic-app-scripts serve"
-  },
-"dependencies": {
+    "name": "MyDana",
+    "version": "0.0.1",
+    "author": "Ionic Framework",
+    "homepage": "http://ionicframework.com/",
+    "private": true,
+    "scripts": {
+        "clean": "ionic-app-scripts clean",
+        "build": "ionic-app-scripts build",
+        "lint": "ionic-app-scripts lint",
+        "ionic:build": "ionic-app-scripts build",
+        "ionic:serve": "ionic-app-scripts serve"
+    },
+    "dependencies": {
         "@angular/common": "4.1.3",
         "@angular/compiler": "4.1.3",
         "@angular/compiler-cli": "4.1.3",
@@ -28,7 +28,7 @@
         "@ionic/storage": "2.0.1",
         "card.io.cordova.mobilesdk": "^2.1.0",
         "com.paypal.cordova.mobilesdk": "^3.5.0",
-        "cordova-android": "^6.2.3",
+        "cordova-android": "^6.3.0",
         "cordova-ios": "^4.4.0",
         "cordova-plugin-console": "^1.0.7",
         "cordova-plugin-device": "^1.1.6",
