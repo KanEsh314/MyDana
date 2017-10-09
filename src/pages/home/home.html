@@ -6,7 +6,7 @@
 
 <ion-content class="home">
   <!--  <ion-slides pager autoplay="5000" loop="true" speed="3000" *ngIf="sliderImage && sliderImage.length"> -->
-  <ion-slides pager autoplay="5000" loop="true" speed="3000" *ngIf="sliderImage && sliderImage.length">
+  <ion-slides pager autoplay="5000" loop="true" speed="3000">
     <ion-slide *ngFor="let slide of slideData">
 
       <img src="{{slide.image}}">
@@ -19,7 +19,7 @@
   </h1></div></ion-item-divider>
 
 <ion-card *ngFor="let campaign of latestcampaign" (click)="moreDetail(campaign)">
-  <img src="{{campaign.campaign_image}}"/>
+  <img src="assets/img/health.jpg"/>
   <ion-card-content>
     <div class="cardTitle">
       <h2>{{campaign.campaign_name}}</h2>
