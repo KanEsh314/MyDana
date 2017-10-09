@@ -18,12 +18,12 @@
 
 <ion-content padding>
 <ion-list>
-  <ion-item>
+  <ion-item *ngFor="let comment of comments">
     <ion-avatar item-start>
-      <img src="assets/user.png">
+      <img src="{{comment.image}}">
     </ion-avatar>
-    <h2>Faizal</h2>
-    <p>Good Campaign!!</p>
+    <h2>{{comment.title}}</h2>
+    <p>{{comment.desc}}</p>
   </ion-item>
 </ion-list>
 

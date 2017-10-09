@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { HttpProvider } from '../../providers/http/http';
 
 /**
  * Generated class for the UpdatePage page.
@@ -15,11 +16,25 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class UpdatePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+	news : any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public httpprovider:HttpProvider) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad UpdatePage');
+    this.httpprovider.getCampaignNews().subscribe(
+      data => {
+        console.log(data)
+        this.news = data;
+        console.log(this.news)
+      },
+      err => {
+        console.log(err);
+      },
+      ()=>{
+      console.log('Latest is ok!')
+    }
+    );
   }
 
 }

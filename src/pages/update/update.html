@@ -17,13 +17,17 @@
 
 
 <ion-content padding>
-	<ion-grid>
-		<ion-row>
-			<ion-col>
-				<div>
-					Penubuhan Yayasan ini tercetus apabila aktiviti sindiket derma haram semakin berleluasa di Malaysia. Justeru, sistem pungutan derma menggunakan aplikasi ICT yang mudah, pantas dan telus telah diilhamkan bagi memastikan bantuan dari rakyat Malaysia yang prihatin dapat disalurkan kepada pihak yang berhak
-				</div>
-			</ion-col>
-		</ion-row>
-	</ion-grid>
+	
+<ion-card *ngFor="let news of news">
+  <img src="{{news.image}}"/>
+  <ion-card-content>
+    <ion-card-title>
+      {{news.title}}
+      </ion-card-title>
+    <p>
+     {{news.desc}}
+    </p>
+  </ion-card-content>
+</ion-card>
+
 </ion-content>

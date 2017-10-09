@@ -4,6 +4,7 @@ import { CommentPage } from '../comment/comment';
 import { UpdatePage } from '../update/update';
 import { DetailsPage } from '../details/details';
 import { PaymentPage } from '../payment/payment';
+
 /**
  * Generated class for the AboutPage page.
  *
@@ -18,11 +19,16 @@ import { PaymentPage } from '../payment/payment';
 })
 export class AboutPage {
 
+  campaign:any;
+
 	moreImg = [{image: "assets/img/health.jpg"} , {image: "assets/img/qurban.jpg"} , {image: "assets/img/bantu.jpg"}];
 
 items = [];
 
-  constructor(public navCtrl: NavController , public viewCtrl: ViewController) {
+  constructor(public navParams:NavParams, public navCtrl: NavController , public viewCtrl: ViewController) {
+
+    this.campaign = navParams.get('campaign');
+    console.log(this.campaign);
 
   	this.items = [
 
@@ -33,11 +39,14 @@ items = [];
   	];
   }
 
+ 
   itemSelected(item: string) {
     if (item == 'Campaign') {
     	this.navCtrl.push(DetailsPage);
     }else if (item == 'Comment') { 
     	this.navCtrl.push(CommentPage);
+    }else if(item == 'Update'){
+      this.navCtrl.push(UpdatePage);
     }
   }
 

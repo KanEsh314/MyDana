@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { AboutPage } from '../about/about';
 import { ModalController } from 'ionic-angular';
 import { CommentModalPage } from '../comment-modal/comment-modal';
 import { CommentPage } from '../comment/comment';
+import { HttpProvider } from '../../providers/http/http'
 
 @Component({
   selector: 'page-home',
@@ -11,16 +12,16 @@ import { CommentPage } from '../comment/comment';
 })
 export class HomePage {
 
+  latestcampaign : any;
+
+  sliderImage : any;
+
 	slideData = [{image: "assets/img/bantu.jpg"},
                {image: "assets/img/health.jpg"},
                {image: "assets/img/qurban.jpg"}]
 	slideLength : boolean = false;
 
-	cardData = [{"image": "assets/img/bantu.jpg", "title" : "Kasih", "stitle" : "Sinar Prihatin & Ramadhan Prihatin", "desc" : "Far far away,behind the word mountains,far from the countries Vokalia", "price" : "RM 4,890 terkumpul setakat ini", "perce" : "80% tepati sasaran", "day" : "5 hari lagi"},
-				      {"image": "assets/img/health.jpg", "title" : "Kesihatan", "stitle" : "MYHEART - Kerjasama IJN Foundation", "desc" : "Far far away,behind the word mountains,far from the countries Vokalia", "price" : "RM 4,890 terkumpul setakat ini", "perce" : "80% tepati sasaran", "day" : "5 hari lagi"},
-				      {"image": "assets/img/qurban.jpg", "title" : "Amal", "stitle" : "Korban Prihatin AidilAdha 2017", "desc" : "Far far away,behind the word mountains,far from the countries Vokalia", "price" : "RM 4,890 terkumpul setakat ini", "perce" : "80% tepati sasaran", "day" : "5 hari lagi"}];
-
-  constructor(public navCtrl: NavController, public modalCtrl:ModalController) {
+  constructor(public navCtrl: NavController, public modalCtrl:ModalController, public httpprovider:HttpProvider, public navParams:NavParams) {
 
     if(this.slideData.length>0)
   	{
@@ -29,8 +30,38 @@ export class HomePage {
 
   }
 
-  moreDetail(){
-    let myModal = this.modalCtrl.create(AboutPage);
+  ionViewDidLoad(){
+  this.httpprovider.getLatest().subscribe(
+      data => {
+        console.log(data)
+        this.latestcampaign = data;
+        console.log(this.latestcampaign)
+      },
+      err => {
+        console.log(err);
+      },
+      ()=>{
+      console.log('Latest is ok!')
+    }
+    );
+
+  this.httpprovider.getSliderImage().subscribe(
+      data => {
+        console.log(data)
+        this.sliderImage = data;
+        console.log(this.sliderImage)
+      },
+      err => {
+        console.log(err);
+      },
+      ()=>{
+      console.log('Slider is ok!')
+    }
+    );
+}
+
+  moreDetail(campaign){
+    let myModal = this.modalCtrl.create(AboutPage, {campaign:campaign});
     myModal.present();
   }
 

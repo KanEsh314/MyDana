@@ -5,10 +5,10 @@
 </ion-header>
 
 <ion-content class="home">
-  <ion-slides pager autoplay="5000" loop="true" speed="3000">
-    <ion-slide *ngFor="let slide of slideData">
+  <ion-slides pager autoplay="5000" loop="true" speed="3000" *ngIf="sliderImage && sliderImage.length">
+    <ion-slide *ngFor="let slide of sliderImage">
 
-      <img src="{{slide.image}}">
+      <img src="{{slide.banner_image}}">
   
     </ion-slide>
   </ion-slides>
@@ -17,18 +17,18 @@
     Kempen Terkini
   </h1></div></ion-item-divider>
 
-<ion-card *ngFor="let card of cardData">
-  <img src="{{card.image}}" (click)="moreDetail()"/>
+<ion-card *ngFor="let campaign of latestcampaign" (click)="moreDetail(campaign)">
+  <img src="{{campaign.campaign_image}}"/>
   <ion-card-content>
     <div class="cardTitle">
-      <h2>{{card.title}}</h2>
+      <h2>{{campaign.campaign_name}}</h2>
     </div>
       <ion-card-title>
       <div>
-        <h4>{{card.stitle}}</h4>
+        <h4>{{campaign.organiser}}</h4>
       </div>
       </ion-card-title>
-        <p class="statusBorder">{{card.desc}}</p>
+        <p class="statusBorder">{{campaign.description}}</p>
 
       <ion-item>
         <ion-range [(ngModel)]="brightness">
@@ -36,9 +36,9 @@
       </ion-item>
       <ion-item>
       <div class="detailUpdate">
-        <p>{{card.price}}</p>
-        <p>{{card.perce}}</p>
-        <p>{{card.day}}</p>
+        <p>{{campaign.fund_amount}}</p>
+        <!-- <p>{{card.perce}}</p>
+        <p>{{card.day}}</p> -->
       </div>
       </ion-item>
   </ion-card-content>
