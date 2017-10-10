@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content class="about">
-	<ion-grid>
+	<ion-grid >
     <ion-row>  
         <div>
         	<img src="assets/img/qurban.jpg">
@@ -17,7 +17,7 @@
     <ion-row >
       <ion-col *ngFor="let im of moreImg">
         <div>
-        	<img src="{{im.image}}">
+        	<img src="{{im.image}}" >
         </div>
       </ion-col>
     </ion-row>
@@ -38,8 +38,7 @@
     <p>80% tepati sasaran</p>
     <p>5 hari lagi</p>
   </ion-item-divider>
-  <ion-row>
-    <ion-col>
+  
     <ion-list>
       <ion-item >
         Campaign 
@@ -54,10 +53,7 @@
         <ion-badge color="yayasan" item-end></ion-badge>
       </ion-item>
     </ion-list>
-    </ion-col>
-  </ion-row>
-
-
-  <button ion-button outline block color="yayasan" (click)="payhere()">Derma</button>
+    
+  <button ion-button round full (click)="payhere()">Derma</button>
   </ion-grid>
 </ion-content>

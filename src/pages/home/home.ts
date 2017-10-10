@@ -78,5 +78,11 @@ export class HomePage {
     }).catch(() => {
     
     });
+
+    this.socialSharing.shareViaTwitter('Share', this.latestcampaign).then(() => {
+      // Success!
+    }).catch(() => {
+    
+    });
   }
 }

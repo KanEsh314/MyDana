@@ -6,21 +6,17 @@
 -->
 <ion-header>
   <ion-navbar color="yayasan">
-  <ion-title>Authentication</ion-title>
+  <ion-title>Login</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-	<ion-grid>
-    <ion-row>
-        <div>
-        	<h1>Daftar Masuk</h1>
-        </div>
-    </ion-row>
-    
+
+<ion-list>
+
   <ion-item>
     <ion-label floating>Username</ion-label>
-    <ion-input type="text"></ion-input>
+    <ion-input type="text" value=""></ion-input>
   </ion-item>
 
   <ion-item>
@@ -28,22 +24,11 @@
     <ion-input type="password"></ion-input>
   </ion-item>
 
-   
-  <button ion-button block>Log In</button>
-  <button ion-button block (click)=facebookConnect() >Connect with Facebook</button>
-  <button ion-button clear (click)=register()>Register Me</button>
-      
-  </ion-grid>
+</ion-list>
 
-  	
+   
+  <button ion-button round full>Log In</button>
+  <button ion-button round full (click)="facebookConnect()">Connect with Facebook</button>
+  <button ion-button small full clear (click)="register()">Register Me</button>
+
 </ion-content>
-  <!--<ion-footer>
-    <ion-toolbar>
-      <div class="fotterColor fontColor">
-        <h6>
-          Far far away,behinfd the word mountain,far from the countries Vokalia and Consonantia,
-          there live the blind texts.Separated they live in Bookmark grove right
-        </h6>
-      </div>
-    </ion-toolbar>
-</ion-footer>-->
