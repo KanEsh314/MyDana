@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
 import { PayPal, PayPalConfiguration, PayPalPayment} from '@ionic-native/paypal'
 
 /**
@@ -22,11 +22,15 @@ export class PaymentPage {
     timeEnds: '1990-02-20'
   }
   
-  constructor(public navCtrl: NavController, public navParams: NavParams, private payPal: PayPal) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private payPal: PayPal, public viewCtrl : ViewController) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PaymentPage');
+  }
+
+  close(){
+    this.viewCtrl.dismiss();
   }
 
   payPalClick(){

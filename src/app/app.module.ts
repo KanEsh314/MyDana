@@ -16,6 +16,7 @@ import { UpdatePage } from '../pages/update/update';
 import { DetailsPage } from '../pages/details/details';
 import { RegisterPage } from '../pages/register/register';
 import { EditProfilePage} from '../pages/edit-profile/edit-profile';
+import { AboutUsPage } from '../pages/about-us/about-us';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -38,7 +39,8 @@ import { SocialSharing } from '@ionic-native/social-sharing';
     UpdatePage,
     DetailsPage,
     RegisterPage,
-    EditProfilePage
+    EditProfilePage,
+    AboutUsPage
   ],
   imports: [
     BrowserModule,
@@ -59,7 +61,8 @@ import { SocialSharing } from '@ionic-native/social-sharing';
     UpdatePage,
     DetailsPage,
     RegisterPage,
-    EditProfilePage
+    EditProfilePage,
+    AboutUsPage
   ],
   providers: [
     StatusBar,

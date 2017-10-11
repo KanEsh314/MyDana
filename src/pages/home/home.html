@@ -18,8 +18,8 @@
     Kempen Terkini
   </h1></div></ion-item-divider>
 
-<ion-card *ngFor="let campaign of latestcampaign" (click)="moreDetail(campaign)">
-  <img src="assets/img/health.jpg"/>
+<ion-card *ngFor="let campaign of latestcampaign">
+  <img src="assets/img/health.jpg" (click)="moreDetail(campaign)"/>
   <ion-card-content>
     <div class="cardTitle">
       <h2>{{campaign.campaign_name}}</h2>
@@ -45,7 +45,7 @@
   </ion-card-content>
    <ion-row no-padding class="botBorder">
       <ion-col>
-        <button ion-button clear small color="danger" icon-start (click)=commentPress()>
+        <button ion-button clear small color="danger" icon-start (click)=commentPress(campaign)>
         <ion-icon name='chatbubbles'></ion-icon>
           Comment
         </button>

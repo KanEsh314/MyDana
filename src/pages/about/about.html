@@ -46,14 +46,12 @@
       </ion-item>
       <ion-item (click)="commentsTapped(kempen)">
         Comments 
-        <ion-badge color="yayasan" item-end></ion-badge>
+        <ion-badge color="yayasan" item-end>{{commentBadge}}</ion-badge>
       </ion-item>
       <ion-item (click)="newsTapped(kempen)">
         News 
-        <ion-badge color="yayasan" item-end></ion-badge>
+        <ion-badge color="yayasan" item-end>{{newsBadge}}</ion-badge>
       </ion-item>
     </ion-list>
-    
-  <button ion-button round full (click)="payhere()">Derma</button>
   </ion-grid>
 </ion-content>

@@ -65,8 +65,8 @@ export class HomePage {
     myModal.present();
   }
 
-  commentPress(){
-    let myModal = this.modalCtrl.create(CommentPage);
+  commentPress(campaign){
+    let myModal = this.modalCtrl.create(CommentPage, campaign);
     myModal.present();
   
   }

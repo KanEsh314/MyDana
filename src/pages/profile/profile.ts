@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { EditProfilePage } from '../edit-profile/edit-profile';
+import { AboutUsPage } from '../about-us/about-us';
 
 /**
  * Generated class for the ProfilePage page.
@@ -25,6 +26,11 @@ export class ProfilePage {
 
   editProfile(){
   	let myModal = this.modalCtrl.create(EditProfilePage);
+    myModal.present();
+  }
+
+  aboutUs(){
+    let myModal = this.modalCtrl.create(AboutUsPage);
     myModal.present();
   }
 
