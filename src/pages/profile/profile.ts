@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { EditProfilePage } from '../edit-profile/edit-profile';
+import { AboutUsPage } from '../about-us/about-us';
 
 /**
  * Generated class for the ProfilePage page.
@@ -15,11 +17,21 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ProfilePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl:ModalController) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProfilePage');
+  }
+
+  editProfile(){
+  	let myModal = this.modalCtrl.create(EditProfilePage);
+    myModal.present();
+  }
+
+  aboutUs(){
+    let myModal = this.modalCtrl.create(AboutUsPage);
+    myModal.present();
   }
 
 }

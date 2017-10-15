@@ -14,8 +14,9 @@ import { PaymentPage } from '../pages/payment/payment';
 import { CommentPage } from '../pages/comment/comment';
 import { UpdatePage } from '../pages/update/update';
 import { DetailsPage } from '../pages/details/details';
-import { CommentModalPage } from '../pages/comment-modal/comment-modal';
 import { RegisterPage } from '../pages/register/register';
+import { EditProfilePage} from '../pages/edit-profile/edit-profile';
+import { AboutUsPage } from '../pages/about-us/about-us';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -37,8 +38,9 @@ import { SocialSharing } from '@ionic-native/social-sharing';
     CommentPage,
     UpdatePage,
     DetailsPage,
-    CommentModalPage,
-    RegisterPage
+    RegisterPage,
+    EditProfilePage,
+    AboutUsPage
   ],
   imports: [
     BrowserModule,
@@ -58,8 +60,9 @@ import { SocialSharing } from '@ionic-native/social-sharing';
     CommentPage,
     UpdatePage,
     DetailsPage,
-    CommentModalPage,
-    RegisterPage
+    RegisterPage,
+    EditProfilePage,
+    AboutUsPage
   ],
   providers: [
     StatusBar,

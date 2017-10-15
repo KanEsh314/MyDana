@@ -13,8 +13,7 @@ export class TabsPage {
 
   tab1Root = HomePage;
   tab2Root = ContactPage;
-  tab3Root = PaymentPage
-  tab4Root = ProfilePage;
+  tab3Root = ProfilePage;
 
   constructor(public navCtrl: NavController) {}
 

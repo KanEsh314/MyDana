@@ -8,7 +8,12 @@
   	border-bottom: 2px solid;
   }
 
-  .about .button:hover {
-    background-color: #F04868; /* Green */
-    color: white;
-}
+    ion-item:hover {
+    background-color: pink;
+    
+    }
+
+    img:hover {
+    background-color: pink;
+    box-shadow: pink;
+    }

@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams , ViewController} from 'ionic-angul
 import { CommentPage } from '../comment/comment';
 import { UpdatePage } from '../update/update';
 import { DetailsPage } from '../details/details';
-import { PaymentPage } from '../payment/payment';
 import { HttpProvider } from '../../providers/http/http';
 
 /**
@@ -22,6 +21,9 @@ export class AboutPage {
 
   campaign:any;
   kempen = {};
+
+  commentBadge : any;
+  newsBadge : any;
 
 	moreImg = [{image: "assets/img/health.jpg"} , {image: "assets/img/qurban.jpg"} , {image: "assets/img/bantu.jpg"}];
 
@@ -47,6 +49,9 @@ items = [];
         console.log(response)
         this.kempen = response.data;
         console.log(this.kempen)
+        this.commentBadge = response.data.comments.length;
+        this.newsBadge = response.data.news.length;
+        console.log(this.newsBadge);
       },
       err => {
         console.log(err);
@@ -69,10 +74,6 @@ items = [];
   
   details(){
     this.navCtrl.push(DetailsPage);
-  }
-
-  payhere(){
-    this.navCtrl.push(PaymentPage);
   }
 
   getback(){
