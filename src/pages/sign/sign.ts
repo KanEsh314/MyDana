@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Facebook, FacebookLoginResponse} from '@ionic-native/facebook';
 import { RegisterPage } from '../register/register';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms'
 
 /**
  * Generated class for the SignPage page.
@@ -17,7 +18,13 @@ import { RegisterPage } from '../register/register';
 })
 export class SignPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private fb:Facebook) {
+  loginForm : FormGroup;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private fb:Facebook, public formBuilder:FormBuilder) {
+    this.loginForm = formBuilder.group({
+      username : ['', Validators.compose([Validators.maxLength(30), Validators.required])],
+      password : ['', Validators.compose([Validators.minLength(8), Validators.required])]
+    });
   }
 
   ionViewDidLoad() {
@@ -34,6 +41,15 @@ export class SignPage {
 
   register(){
     this.navCtrl.push(RegisterPage);
+  }
+
+  login(){
+
+    if(!this.loginForm.valid){
+      console.log("error");
+    }else{
+      console.log("success");
+    }
   }
 
 }

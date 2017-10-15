@@ -17,28 +17,34 @@
 
 <ion-list>
 
+<form [formGroup]="registerForm" (submit)="register()" novalidate>
+
   <ion-item>
     <ion-label floating>Username</ion-label>
-    <ion-input type="text"></ion-input>
+    <ion-input formControlName="username" type="text" [class.invalid]="!registerForm.controls.username.valid && blur"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label floating>Email</ion-label>
-    <ion-input type="password"></ion-input>
+    <ion-input formControlName="email" type="text" [class.invalid]="!registerForm.controls.email.valid && blur"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label floating>Password</ion-label>
-    <ion-input type="text"></ion-input>
+    <ion-input formControlName="password" type="password" [class.invalid]="!registerForm.controls.password.valid && blur"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label floating>Confirm Password</ion-label>
-    <ion-input type="password"></ion-input>
+    <ion-input formControlName="confirmPassword" type="password" [class.invalid]="!registerForm.controls.confirmPassword.valid && blur"></ion-input>
   </ion-item>
+
+  <button ion-button block type="submit" [disabled]="!registerForm.valid">Submit</button>
+
+</form>
 
 </ion-list>
 
-<button ion-button block>Submit</button>
+
 
 </ion-content>

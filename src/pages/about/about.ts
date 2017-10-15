@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams , ViewController} from 'ionic-angul
 import { CommentPage } from '../comment/comment';
 import { UpdatePage } from '../update/update';
 import { DetailsPage } from '../details/details';
+import { PaymentPage } from '../payment/payment';
 import { HttpProvider } from '../../providers/http/http';
 
 /**
@@ -78,5 +79,9 @@ items = [];
 
   getback(){
     this.viewCtrl.dismiss();
+  }
+
+  donate(){
+    this.navCtrl.push(PaymentPage)
   }
 }

@@ -18,9 +18,10 @@
     Kempen Terkini
   </h1></div></ion-item-divider>
 
-<ion-card *ngFor="let campaign of latestcampaign">
-  <img src="assets/img/health.jpg" (click)="moreDetail(campaign)"/>
-  <ion-card-content>
+<ion-card *ngFor="let campaign of latestcampaign" >
+  
+  <ion-card-content (click)="moreDetail(campaign)">
+    <img src="assets/img/health.jpg" />
     <div class="cardTitle">
       <h2>{{campaign.campaign_name}}</h2>
     </div>
