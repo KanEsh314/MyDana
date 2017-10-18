@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "388883456955",
+    "firebase_url": "https://mydana-1de45.firebaseio.com",
+    "project_id": "mydana-1de45",
+    "storage_bucket": "mydana-1de45.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:388883456955:android:f13dbb7696119b7a",
+        "android_client_info": {
+          "package_name": "my.com.mdrtech.mydana"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "388883456955-hcqerj4q7vsj6fp9clkv27c3etc0l9ba.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5Y0qcmBrIaPj28JtkN_JT270IRqtOCUg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
