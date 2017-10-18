@@ -26,6 +26,7 @@ import { PayPal } from '@ionic-native/paypal'
 import { HttpProvider } from '../providers/http/http';
 import { SocialSharing } from '@ionic-native/social-sharing';
 
+
 @NgModule({
   declarations: [
     MyApp,
