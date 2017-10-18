@@ -8,6 +8,8 @@ import { PaymentPage} from '../payment/payment';
 })
 export class ContactPage {
 
+	value: number = 0;
+
   constructor(public navCtrl: NavController, public modalCtrl:ModalController) {
 
   }
