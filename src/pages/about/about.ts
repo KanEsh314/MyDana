@@ -73,11 +73,11 @@ items = [];
      this.navCtrl.push(UpdatePage, kempen);
    }
   
-  details(){
-    this.navCtrl.push(DetailsPage);
+  details(kempen){
+    this.navCtrl.push(DetailsPage, kempen);
   }
 
-  getback(){
+  closeModal(){
     this.viewCtrl.dismiss();
   }
 

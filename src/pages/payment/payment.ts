@@ -21,6 +21,8 @@ export class PaymentPage {
     timeStarts: '07:43',
     timeEnds: '1990-02-20'
   }
+
+  value : number = 0;
   
   constructor(public navCtrl: NavController, public navParams: NavParams, private payPal: PayPal, public viewCtrl : ViewController) {
   }
@@ -29,7 +31,7 @@ export class PaymentPage {
     console.log('ionViewDidLoad PaymentPage');
   }
 
-  close(){
+  closeModal(){
     this.viewCtrl.dismiss();
   }
 

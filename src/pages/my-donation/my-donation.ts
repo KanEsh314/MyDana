@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
-import { HttpProvider } from '../../providers/http/http';
 
 /**
- * Generated class for the UpdatePage page.
+ * Generated class for the MyDonationPage page.
  *
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
@@ -11,22 +10,20 @@ import { HttpProvider } from '../../providers/http/http';
 
 @IonicPage()
 @Component({
-  selector: 'page-update',
-  templateUrl: 'update.html',
+  selector: 'page-my-donation',
+  templateUrl: 'my-donation.html',
 })
-export class UpdatePage {
-
-	news : any;
+export class MyDonationPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl:ViewController) {
-
-    this.news = navParams.get('news');
-    console.log(this.news);
   }
 
-closeModal(){
-	this.viewCtrl.dismiss();
-}
-  
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad MyDonationPage');
+  }
+
+  closeModal(){
+  	this.viewCtrl.dismiss();
+  }
 
 }
