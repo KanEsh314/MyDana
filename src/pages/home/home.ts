@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { AboutPage } from '../about/about';
 import { ModalController } from 'ionic-angular';
 import { CommentPage } from '../comment/comment';
 import { HttpProvider } from '../../providers/http/http';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { ActionSheetController } from 'ionic-angular';
-import { FCM } from '@ionic-native/fcm';
+// import { FCM } from '@ionic-native/fcm';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -22,7 +22,7 @@ export class HomePage {
                {image: "assets/img/qurban.jpg"}]
 	slideLength : boolean = false;
 
-  constructor(private fcm: FCM, public actionSheetCtrl: ActionSheetController, public navCtrl: NavController, public modalCtrl:ModalController, public httpprovider:HttpProvider, public navParams:NavParams, public socialSharing:SocialSharing) {
+  constructor(public loading:LoadingController, public actionSheetCtrl: ActionSheetController, public navCtrl: NavController, public modalCtrl:ModalController, public httpprovider:HttpProvider, public navParams:NavParams, public socialSharing:SocialSharing) {
 
     if(this.slideData.length>0)
   	{
@@ -32,33 +32,40 @@ export class HomePage {
   }
 
   ionViewDidLoad(){
-  this.httpprovider.getLatest().subscribe(
-      data => {
-        console.log(data)
-        this.latestcampaign = data;
-        console.log(this.latestcampaign)
-      },
-      err => {
-        console.log(err);
-      },
-      ()=>{
-      console.log('Latest is ok!')
-    }
-    );
+    let load = this.loading.create({
+      content: 'Please wait...'
+      });
 
-  this.httpprovider.getSliderImage().subscribe(
-      data => {
-        console.log(data)
-        this.sliderImage = data;
-        console.log(this.sliderImage)
-      },
-      err => {
-        console.log(err);
-      },
-      ()=>{
-      console.log('Slider is ok!')
-    }
-    );
+        load.present();
+
+        this.httpprovider.getLatest().subscribe(
+        data => {
+          console.log(data)
+          this.latestcampaign = data;
+          console.log(this.latestcampaign)
+        },
+        err => {
+          console.log(err);
+        },
+        ()=>{
+        console.log('Latest is ok!')
+      }
+      );
+
+    this.httpprovider.getSliderImage().subscribe(
+        data => {
+          console.log(data)
+          this.sliderImage = data;
+          console.log(this.sliderImage)
+        },
+        err => {
+          console.log(err);
+        },
+        ()=>{
+          load.dismiss()
+        console.log('Slider is ok!')
+      }
+      );
 }
 
   moreDetail(campaign){
@@ -71,21 +78,6 @@ export class HomePage {
     myModal.present();
   
   }
-
-  // shareButton(){
-
-  //   this.socialSharing.shareViaFacebook('Share', this.latestcampaign).then(() => {
-  //     // Success!
-  //   }).catch(() => {
-    
-  //   });
-
-  //   this.socialSharing.shareViaTwitter('Share', this.latestcampaign).then(() => {
-  //     // Success!
-  //   }).catch(() => {
-    
-  //   });
-  // }
 
   shareButton() {
     let actionSheet = this.actionSheetCtrl.create({

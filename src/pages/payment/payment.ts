@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
-import { PayPal, PayPalConfiguration, PayPalPayment} from '@ionic-native/paypal'
+import { IonicPage, NavController, NavParams, ViewController, ToastController} from 'ionic-angular';
+import { PayPal, PayPalConfiguration, PayPalPayment} from '@ionic-native/paypal';
+import { HttpProvider } from '../../providers/http/http'
 
 /**
  * Generated class for the PaymentPage page.
@@ -24,7 +25,7 @@ export class PaymentPage {
 
   value : number = 0;
   
-  constructor(public navCtrl: NavController, public navParams: NavParams, private payPal: PayPal, public viewCtrl : ViewController) {
+  constructor(public toast:ToastController, public httpProvider:HttpProvider, public navCtrl: NavController, public navParams: NavParams, private payPal: PayPal, public viewCtrl : ViewController) {
   }
 
   ionViewDidLoad() {
@@ -33,6 +34,31 @@ export class PaymentPage {
 
   closeModal(){
     this.viewCtrl.dismiss();
+  }
+
+  donateButton(){
+
+    let details = {
+          campaign_id : 1,
+          user_id : 1,
+          amount : this.value
+    }
+
+    this.httpProvider.postFund(details).then((result) => {
+        const toast = this.toast.create({
+          message: 'Donate added successfully',
+          duration: 3000,
+          position: 'middle'
+        });
+
+        toast.onDidDismiss(() => {
+          console.log('Dismissed toast');
+        });
+
+        toast.present();
+    }, (err) => {
+      console.log(err);
+    });
   }
 
   payPalClick(){

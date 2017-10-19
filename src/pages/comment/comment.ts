@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { HttpProvider } from '../../providers/http/http'
+import { AboutPage } from '../about/about';
 
 /**
  * Generated class for the CommentPage page.
@@ -17,9 +18,14 @@ import { HttpProvider } from '../../providers/http/http'
 export class CommentPage {
 
 	comments : any;
+  userComment = '';
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public httpprovider:HttpProvider, public viewCtrl:ViewController) {
   
+  let body = {
+
+
+  }
     this.comments = navParams.get('comments');
     console.log(this.comments);
 
@@ -29,4 +35,20 @@ export class CommentPage {
     this.viewCtrl.dismiss();
   }
 
+   sendComment(){
+
+    let details = {
+          campaign_id : 1,
+          user_id : 1,
+          title : 'this is my comment',
+          desc : this.userComment
+    }
+
+    this.httpprovider.postComment(details).then((result) => {
+      console.log('sini');
+      this.viewCtrl.dismiss();
+    }, (err) => {
+      console.log(err);
+    });
+  }
 }
