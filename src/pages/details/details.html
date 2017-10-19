@@ -7,7 +7,10 @@
 <ion-header>
 
   <ion-navbar color="yayasan">
-    <ion-title>Overview</ion-title>
+  <ion-title>Campaign Description</ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only (click)="closeModal()"><ion-icon name="ios-close-circle-outline"></ion-icon></button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -16,10 +19,7 @@
 <ion-content padding>
 	
 	<div>
-		Kerjasama antara Yayasan MyPrihatin dengan IJN Foundation 
-		bermula dengan kes adik beradik kembar Alimi Aliff 
-		pada pertengahan Disember 2015 apabila mereka memerlukan 
-		RM 100,000 untuk menjalani pembedahan
+		{{campaignDetails}}
 	</div>
 			
 </ion-content>

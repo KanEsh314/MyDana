@@ -1,9 +1,11 @@
 <ion-header>
   <ion-navbar color="yayasan">
+  <ion-title>Campaign Details</ion-title>
     <ion-buttons right>
-    	<button ion-button icon-only (click)="getback()"><ion-icon name="ios-close-circle-outline"></ion-icon></button>
+      <button ion-button icon-only (click)="closeModal()"><ion-icon name="ios-close-circle-outline"></ion-icon></button>
     </ion-buttons>
   </ion-navbar>
+
 </ion-header>
 
 <ion-content class="about">
@@ -21,17 +23,16 @@
         </div>
       </ion-col>
     </ion-row>
-  	<ion-row>
-	<h3><p>
-		{{kempen.campaign_name}}
-	</p></h3>
-	</ion-row>
-	<ion-row padding-bottom class="separator">
+  <div>
+	<h3 >{{kempen.campaign_name}}</h3>
+  <h4 >{{kempen.location}}</h4>
+</div>
+
 	<div text-wrap padding>
-		{{kempen.description}}
-    <button (click)="details()">Read more</button>
+    <p>{{kempen.description}}</p>
+		
+    <button (click)="details(kempen)">Read more</button>
 	</div>
-	</ion-row>
 
   <ion-item-divider text-left>
     <p>RM{{kempen.fund_amount}} terkumpul setakat ini</p>
@@ -40,10 +41,6 @@
   </ion-item-divider>
   
     <ion-list>
-      <ion-item >
-        Campaign 
-        <ion-badge color="yayasan" item-end></ion-badge>
-      </ion-item>
       <ion-item (click)="commentsTapped(kempen)">
         Comments 
         <ion-badge color="yayasan" item-end>{{commentBadge}}</ion-badge>

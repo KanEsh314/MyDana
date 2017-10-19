@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 /*
@@ -30,13 +30,68 @@ export class HttpProvider {
     .map(res => res.json())  
   }
 
-  getComments(){
-    return this.http.get("https://mydana.herokuapp.com/api/campaign/1/campaigncomment")
-    .map(res => res.json())  
+  postComment(details){
+   
+    return new Promise((resolve, reject) => {
+
+      let headers = new Headers();
+      headers.append('Content-Type','application/json');
+       console.log(details);
+      this.http.post('https://mydana.herokuapp.com/api/campaign/1/campaigncomment', JSON.stringify(details), {headers:headers})
+      .subscribe(res => {
+       
+        let data = res.json();
+        console.log(data);
+        resolve(data);
+      
+      }, (err) => {
+        reject(err);
+      });
+    });
   }
 
-  getCampaignNews(){
-    return this.http.get("https://mydana.herokuapp.com/api/campaign/1/campaignnew")
-    .map(res => res.json())  
+  postFund(details){
+
+    return new Promise((resolve, reject) => {
+
+      let headers = new Headers();
+      headers.append('Content-Type','application/json');
+       console.log(details);
+      this.http.post('https://mydana.herokuapp.com/api/fund', JSON.stringify(details), {headers:headers})
+      .subscribe(res => {
+       
+        let data = res.json();
+        console.log(data);
+        resolve(data);
+      
+      }, (err) => {
+        reject(err);
+      });
+    });
   }
+
+// login(credentials){
+ 
+//     return new Promise((resolve, reject) => {
+ 
+//         let headers = new Headers();
+//         headers.append('Content-Type', 'application/json');
+ 
+//         this.http.post('https://mysterious-beach-83937.herokuapp.com/login', JSON.stringify(credentials), {headers: headers})
+//           .subscribe(res => {
+ 
+//             let data = res.json();
+//             this.token = data.token;
+//             this.storage.set('token', data.token);
+//             resolve(data);
+ 
+//             resolve(res.json());
+//           }, (err) => {
+//             reject(err);
+//           });
+ 
+//     });
+ 
+//   }
+
 }

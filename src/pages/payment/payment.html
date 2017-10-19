@@ -7,11 +7,12 @@
 <ion-header>
 
   <ion-navbar color="yayasan">
-    <ion-title>Pay With Us</ion-title>
+ 	<ion-title>Pay With Us</ion-title>
     <ion-buttons right>
-    	<button ion-button icon-only (click)="close()"><ion-icon name="ios-close-circle-outline"></ion-icon></button>
+    	<button ion-button icon-only (click)="closeModal()"><ion-icon name="ios-close-circle-outline"></ion-icon></button>
     </ion-buttons>
   </ion-navbar>
+
 
 </ion-header>
 
@@ -39,11 +40,21 @@
 				</div>
 			</ion-col>
 		</ion-row>
+		
 		<ion-row>
 			<ion-col>
-				<button ion-button>Retry Your Payment</button>
+				 <ion-range min="0" max="2000" [(ngModel)]="value" snaps="true"></ion-range>
 			</ion-col>
 		</ion-row>
+		<ion-row text-center>
+			<ion-col>
+				<h5>Tetapkan Nilai</h5>
+			</ion-col>
+			<ion-col>
+				<h5>RM {{value}}</h5>
+			</ion-col>
+		</ion-row>
+		<button ion-button full round (click)="donateButton()">Donate Button</button>
 	</ion-grid>
 
 	<ion-grid>
@@ -62,7 +73,7 @@
         				</ion-radio><ion-label>Cash</ion-label>
       				</ion-item>
       				<ion-item>
-        				<ion-radio value="rust"></ion-radio>
+        				<ion-radio value="golang"></ion-radio>
         				<ion-label>Card</ion-label>
       				</ion-item>
 				</div>

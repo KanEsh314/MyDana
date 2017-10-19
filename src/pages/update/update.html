@@ -5,12 +5,11 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar color="yayasan">
-     <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>New Feeds</ion-title>
+  <ion-title>News</ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only (click)="closeModal()"><ion-icon name="ios-close-circle-outline"></ion-icon></button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>

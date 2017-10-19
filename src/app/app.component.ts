@@ -6,7 +6,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { TabsPage } from '../pages/tabs/tabs';
 
 
+<<<<<<< HEAD
 //declare var FCMPlugin;
+=======
+// declare var FCMPlugin;
+>>>>>>> c39f3fcae4140ce6640456c6c03d8dda11dd9e4b
 
 @Component({
   templateUrl: 'app.html'
@@ -28,6 +32,7 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+<<<<<<< HEAD
   /*    FCMPlugin.getToken(
     function (token) {
         alert('Token: ' + token);
@@ -67,6 +72,47 @@ export class MyApp {
         console.log('Error registering onNotification callback: ' + err);
     }
 );*/
+=======
+//       FCMPlugin.getToken(
+//     function (token) {
+//         alert('Token: ' + token);
+//         console.log('Token: ' + token);
+//     },
+//     function (err) {
+//         alert('error retrieving token: ' + this.token);
+//         console.log('error retrieving token: ' + err);
+//     }
+// );
+
+// FCMPlugin.onNotification(
+//   (data) => {
+//     console.log(data);
+//   },
+//   (e) => {
+//     console.log(e);
+//   }
+// );
+    });
+//     FCMPlugin.onNotification(
+//     function(data){
+//         if(data.wasTapped){
+// //Notification was received on device tray and tapped by the user.
+//             alert("Tapped: " +  JSON.stringify(data) );
+//         }else{
+// //Notification was received in foreground. Maybe the user needs to be notified.
+//             alert("Not tapped: " + JSON.stringify(data) );
+//         }
+//     },
+//     function(msg){
+//         alert('onNotification callback successfully registered: ' + msg);
+//         console.log('onNotification callback successfully registered: ' + msg);
+//     },
+//     function(err){
+//         alert('Error registering onNotification callback: ' + err);
+//         console.log('Error registering onNotification callback: ' + err);
+//     }
+// );
+>>>>>>> c39f3fcae4140ce6640456c6c03d8dda11dd9e4b
 }
 
   openPage(page){

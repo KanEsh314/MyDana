@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams , ViewController} from 'ionic-angular';
+import { IonicPage, NavController, NavParams , ViewController, ModalController} from 'ionic-angular';
 import { CommentPage } from '../comment/comment';
 import { UpdatePage } from '../update/update';
 import { DetailsPage } from '../details/details';
@@ -30,7 +30,7 @@ export class AboutPage {
 
 items = [];
 
-  constructor(public navParams:NavParams, public navCtrl: NavController , public viewCtrl: ViewController, public httpprovider:HttpProvider) {
+  constructor(public modalCtrl:ModalController, public navParams:NavParams, public navCtrl: NavController , public viewCtrl: ViewController, public httpprovider:HttpProvider) {
 
     this.campaign = navParams.get('campaign');
     console.log(this.campaign);
@@ -65,23 +65,42 @@ items = [];
 
  
 
-   commentsTapped(kempen){
-     this.navCtrl.push(CommentPage, kempen);
-   }
+   // commentsTapped(kempen){
+   //   this.navCtrl.push(CommentPage, kempen);
+   // }
 
-   newsTapped(kempen){
-     this.navCtrl.push(UpdatePage, kempen);
-   }
-  
-  details(){
-    this.navCtrl.push(DetailsPage);
+   commentsTapped(kempen){
+    let myModal = this.modalCtrl.create(CommentPage);
+    myModal.present();
   }
 
-  getback(){
+   // newsTapped(kempen){
+   //   this.navCtrl.push(UpdatePage, kempen);
+   // }
+
+   newsTapped(kempen){
+    let myModal = this.modalCtrl.create(UpdatePage, kempen);
+    myModal.present();
+  }
+  
+  // details(kempen){
+  //   this.navCtrl.push(DetailsPage, kempen);
+  // }
+
+  details(kempen){
+    let myModal = this.modalCtrl.create(DetailsPage, kempen);
+    myModal.present();
+  }
+
+  closeModal(){
     this.viewCtrl.dismiss();
   }
 
+  // donate(){
+  //   this.navCtrl.push(PaymentPage)
+  // }
   donate(){
-    this.navCtrl.push(PaymentPage)
+    let myModal = this.modalCtrl.create(PaymentPage);
+    myModal.present();
   }
 }

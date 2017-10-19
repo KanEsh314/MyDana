@@ -28,17 +28,19 @@
       <ion-card-title>
       <div>
         <h4>{{campaign.organiser}}</h4>
+        <h4>{{campaign.location}}</h4>
       </div>
       </ion-card-title>
         <p class="statusBorder">{{campaign.description}}</p>
 
       <ion-item>
         <div class="process">
-<div class="raised">
-<span style="width:255.297px;"></span>
-</div>
+          <div class="raised">
+            <span style="width:255.297px;"></span>
+          </div>
         </div>
       </ion-item>
+      
       <ion-item>
       <div class="detailUpdate">
         <p>RM {{campaign.fund_amount}} terkumpul</p>
@@ -48,15 +50,15 @@
       </ion-item>
   </ion-card-content>
    <ion-row no-padding class="botBorder">
-      <ion-col>
+      <ion-col text-left>
         <button ion-button clear small color="danger" icon-start (click)=commentPress(campaign)>
         <ion-icon name='chatbubbles'></ion-icon>
           Comment
         </button>
       </ion-col>
-      <ion-col text-center>
+      <ion-col>
         <button ion-button clear small color="danger" icon-start>
-        <ion-icon name='eye'></ion-icon>
+        <ion-icon name="thumbs-up"></ion-icon>
         </button>
       </ion-col>
       <ion-col text-right>
