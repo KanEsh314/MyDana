@@ -6,7 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { TabsPage } from '../pages/tabs/tabs';
 
 
-declare var FCMPlugin;
+//declare var FCMPlugin;
 
 @Component({
   templateUrl: 'app.html'
@@ -28,7 +28,7 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      FCMPlugin.getToken(
+  /*    FCMPlugin.getToken(
     function (token) {
         alert('Token: ' + token);
         console.log('Token: ' + token);
@@ -36,19 +36,19 @@ export class MyApp {
     function (err) {
         alert('error retrieving token: ' + token);
         console.log('error retrieving token: ' + err);
-    }
+    
 );
-
-FCMPlugin.onNotification(
+*/
+/*FCMPlugin.onNotification(
   (data) => {
     console.log(data);
   },
   (e) => {
     console.log(e);
   }
-);
+);*/
     });
-    FCMPlugin.onNotification(
+  /*  FCMPlugin.onNotification(
     function(data){
         if(data.wasTapped){
 //Notification was received on device tray and tapped by the user.
@@ -66,7 +66,7 @@ FCMPlugin.onNotification(
         alert('Error registering onNotification callback: ' + err);
         console.log('Error registering onNotification callback: ' + err);
     }
-);
+);*/
 }
 
   openPage(page){
