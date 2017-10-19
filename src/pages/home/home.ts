@@ -6,11 +6,7 @@ import { CommentPage } from '../comment/comment';
 import { HttpProvider } from '../../providers/http/http';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { ActionSheetController } from 'ionic-angular';
-<<<<<<< HEAD
 
-=======
-// import { FCM } from '@ionic-native/fcm';
->>>>>>> c39f3fcae4140ce6640456c6c03d8dda11dd9e4b
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -26,11 +22,8 @@ export class HomePage {
                {image: "assets/img/qurban.jpg"}]
 	slideLength : boolean = false;
 
-<<<<<<< HEAD
-  constructor( public actionSheetCtrl: ActionSheetController, public navCtrl: NavController, public modalCtrl:ModalController, public httpprovider:HttpProvider, public navParams:NavParams, public socialSharing:SocialSharing) {
-=======
+
   constructor(public loading:LoadingController, public actionSheetCtrl: ActionSheetController, public navCtrl: NavController, public modalCtrl:ModalController, public httpprovider:HttpProvider, public navParams:NavParams, public socialSharing:SocialSharing) {
->>>>>>> c39f3fcae4140ce6640456c6c03d8dda11dd9e4b
 
     if(this.slideData.length>0)
   	{
