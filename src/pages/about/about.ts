@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams , ViewController, ModalController} from 'ionic-angular';
+import { IonicPage, NavController, NavParams , ViewController, ModalController, LoadingController} from 'ionic-angular';
 import { CommentPage } from '../comment/comment';
 import { UpdatePage } from '../update/update';
 import { DetailsPage } from '../details/details';
@@ -30,7 +30,7 @@ export class AboutPage {
 
 items = [];
 
-  constructor(public modalCtrl:ModalController, public navParams:NavParams, public navCtrl: NavController , public viewCtrl: ViewController, public httpprovider:HttpProvider) {
+  constructor(public loading:LoadingController, public modalCtrl:ModalController, public navParams:NavParams, public navCtrl: NavController , public viewCtrl: ViewController, public httpprovider:HttpProvider) {
 
     this.campaign = navParams.get('campaign');
     console.log(this.campaign);
@@ -45,21 +45,28 @@ items = [];
   }
 
   ionViewDidLoad(){
-  this.httpprovider.getCampaign(this.campaign.campaign_id).subscribe(
-      response => {
-        console.log(response)
-        this.kempen = response.data;
-        console.log(this.kempen)
-        this.commentBadge = response.data.comments.length;
-        this.newsBadge = response.data.news.length;
-        console.log(this.newsBadge);
-      },
-      err => {
-        console.log(err);
-      },
-      ()=>{
-      console.log('Latest is ok!')
-    }
+
+     let load = this.loading.create({
+      content: 'Please wait...'
+      });
+
+        load.present();
+        this.httpprovider.getCampaign(this.campaign.campaign_id).subscribe(
+            response => {
+              // console.log(response)
+              this.kempen = response.data;
+              console.log(this.kempen)
+              this.commentBadge = response.data.comments.length;
+              this.newsBadge = response.data.news.length;
+              // console.log(this.newsBadge);
+            },
+            err => {
+              console.log(err);
+            },
+            ()=>{
+              load.dismiss();
+            console.log('Latest is ok!')
+          }
     );
 }
 
@@ -70,22 +77,14 @@ items = [];
    // }
 
    commentsTapped(kempen){
-    let myModal = this.modalCtrl.create(CommentPage);
+    let myModal = this.modalCtrl.create(CommentPage, kempen);
     myModal.present();
   }
-
-   // newsTapped(kempen){
-   //   this.navCtrl.push(UpdatePage, kempen);
-   // }
 
    newsTapped(kempen){
     let myModal = this.modalCtrl.create(UpdatePage, kempen);
     myModal.present();
   }
-  
-  // details(kempen){
-  //   this.navCtrl.push(DetailsPage, kempen);
-  // }
 
   details(kempen){
     let myModal = this.modalCtrl.create(DetailsPage, kempen);
@@ -96,9 +95,6 @@ items = [];
     this.viewCtrl.dismiss();
   }
 
-  // donate(){
-  //   this.navCtrl.push(PaymentPage)
-  // }
   donate(){
     let myModal = this.modalCtrl.create(PaymentPage);
     myModal.present();

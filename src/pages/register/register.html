@@ -20,8 +20,28 @@
 <form [formGroup]="registerForm" (submit)="register()" novalidate>
 
   <ion-item>
-    <ion-label floating>Username</ion-label>
-    <ion-input formControlName="username" type="text" [class.invalid]="!registerForm.controls.username.valid && blur"></ion-input>
+    <ion-label floating>Name</ion-label>
+    <ion-input formControlName="name" type="text" [class.invalid]="!registerForm.controls.name.valid && blur"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>First Name</ion-label>
+    <ion-input formControlName="first_name" type="text" [class.invalid]="!registerForm.controls.first_name.valid && blur"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Last Name</ion-label>
+    <ion-input formControlName="last_name" type="text" [class.invalid]="!registerForm.controls.last_name.valid && blur"></ion-input>
+  </ion-item>
+
+ <!--  <ion-item>
+    <ion-label floating>Address</ion-label>
+    <ion-input formControlName="address" type="text" [class.invalid]="!registerForm.controls.address.valid && blur"></ion-input>
+  </ion-item> -->
+
+  <ion-item>
+    <ion-label floating>Nationality</ion-label>
+    <ion-input formControlName="locale" type="text" [class.invalid]="!registerForm.controls.locale.valid && blur"></ion-input>
   </ion-item>
 
   <ion-item>
@@ -29,15 +49,30 @@
     <ion-input formControlName="email" type="text" [class.invalid]="!registerForm.controls.email.valid && blur"></ion-input>
   </ion-item>
 
+  <!-- <ion-item>
+    <ion-label floating>Birthdate</ion-label>
+    <ion-input formControlName="birthdate" type="text" [class.invalid]="!registerForm.controls.birthdate.valid && blur"></ion-input>
+  </ion-item> -->
+
+  <!-- <ion-item>
+    <ion-label floating>Phone Number</ion-label>
+    <ion-input formControlName="phone_number" type="text" [class.invalid]="!registerForm.controls.phone_number.valid && blur"></ion-input>
+  </ion-item> -->
+
   <ion-item>
     <ion-label floating>Password</ion-label>
     <ion-input formControlName="password" type="password" [class.invalid]="!registerForm.controls.password.valid && blur"></ion-input>
   </ion-item>
 
-  <ion-item>
-    <ion-label floating>Confirm Password</ion-label>
-    <ion-input formControlName="confirmPassword" type="password" [class.invalid]="!registerForm.controls.confirmPassword.valid && blur"></ion-input>
+<!--   <ion-item>
+    <ion-label floating>Race</ion-label>
+    <ion-input formControlName="race" type="text" [class.invalid]="!registerForm.controls.race.valid && blur"></ion-input>
   </ion-item>
+
+  <ion-item>
+    <ion-label floating>Gender</ion-label>
+    <ion-input formControlName="gender" type="text" [class.invalid]="!registerForm.controls.gender.valid && blur"></ion-input>
+  </ion-item> -->
 
   <button ion-button block type="submit" [disabled]="!registerForm.valid">Submit</button>
 

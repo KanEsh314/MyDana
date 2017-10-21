@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, LoadingController } from 'ionic-angular';
 import { HttpProvider } from '../../providers/http/http'
 import { AboutPage } from '../about/about';
 
@@ -20,14 +20,15 @@ export class CommentPage {
 	comments : any;
   userComment = '';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public httpprovider:HttpProvider, public viewCtrl:ViewController) {
+  constructor(public loading:LoadingController, public navCtrl: NavController, public navParams: NavParams, public httpprovider:HttpProvider, public viewCtrl:ViewController) {
   
-  let body = {
+    let load = this.loading.create({
+      content: 'Please wait...'
+      });
 
-
-  }
-    this.comments = navParams.get('comments');
-    console.log(this.comments);
+        load.present();
+        this.comments = navParams.get('comments');
+        load.dismiss();
 
   }
 

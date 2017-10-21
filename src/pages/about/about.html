@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar color="yayasan">
-  <ion-title>Campaign Details</ion-title>
+  <ion-title>{{kempen.campaign_name}}</ion-title>
     <ion-buttons right>
       <button ion-button icon-only (click)="closeModal()"><ion-icon name="ios-close-circle-outline"></ion-icon></button>
     </ion-buttons>
@@ -8,8 +8,8 @@
 
 </ion-header>
 
-<ion-content class="about">
-	<ion-grid >
+<ion-content padding>
+	
     <ion-row>  
         <div>
         	<img src="assets/img/qurban.jpg">
@@ -17,40 +17,44 @@
       
     </ion-row>
     <ion-row >
-      <ion-col *ngFor="let im of moreImg">
-        <div>
-        	<img src="{{im.image}}" >
-        </div>
+      <ion-col *ngFor="let im of moreImg" item-wrap>
+        
+        	<img src="{{im.image}}">
+      
       </ion-col>
     </ion-row>
-  <div>
-	<h3 >{{kempen.campaign_name}}</h3>
-  <h4 >{{kempen.location}}</h4>
-</div>
+  <div >
+    <h3 >{{kempen.campaign_name}}</h3>
+    <h5 >{{kempen.location}}</h5>
+  </div>
+  	
 
-	<div text-wrap padding>
-    <p>{{kempen.description}}</p>
-		
+	<div text-wrap>
+    <p>{{kempen.description}}</p>	
     <button (click)="details(kempen)">Read more</button>
 	</div>
 
-  <ion-item-divider text-left>
+  <div class="details">
     <p>RM{{kempen.fund_amount}} terkumpul setakat ini</p>
     <p>80% tepati sasaran</p>
     <p>5 hari lagi</p>
-  </ion-item-divider>
+  </div>
   
     <ion-list>
-      <ion-item (click)="commentsTapped(kempen)">
+      <ion-item (click)="commentsTapped(kempen)" >
         Comments 
-        <ion-badge color="yayasan" item-end>{{commentBadge}}</ion-badge>
+        <ion-badge color="yayasan" item-end *ngIf="commentBadge">{{commentBadge}}</ion-badge>
       </ion-item>
-      <ion-item (click)="newsTapped(kempen)">
+      <ion-item (click)="newsTapped(kempen)" >
         News 
-        <ion-badge color="yayasan" item-end>{{newsBadge}}</ion-badge>
+        <ion-badge color="yayasan" item-end *ngIf="newsBadge">{{newsBadge}}</ion-badge>
       </ion-item>
+      <!-- <ion-item (click)="newsTapped(kempen)" *ngIf="newsBadge">
+        News 
+        <ion-badge color="yayasan" item-end></ion-badge>
+      </ion-item> -->
     </ion-list>
 
     <button ion-button full round (click)="donate()">Donate</button>
-  </ion-grid>
+ 
 </ion-content>

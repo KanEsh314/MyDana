@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, LoadingController } from 'ionic-angular';
+import { HttpProvider } from '../../providers/http/http';
 
 /**
  * Generated class for the EditProfilePage page.
@@ -15,12 +16,33 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
 })
 export class EditProfilePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl:ViewController) {
+  profile : any;
+
+  constructor(public httpprovider:HttpProvider, public loading:LoadingController, public navCtrl: NavController, public navParams: NavParams, public viewCtrl:ViewController) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad EditProfilePage');
-  }
+  ionViewDidLoad(){
+    let load = this.loading.create({
+      content: 'Please wait...'
+      });
+
+        load.present();
+
+        this.httpprovider.getUserProfile().subscribe(
+            response => {
+             
+              this.profile = response;
+              console.log(this.profile)
+            },
+            err => {
+              console.log(err);
+            },
+            ()=>{
+              load.dismiss()
+            console.log('user profile revealed!')
+          }
+      );
+}
 
   
   close(){

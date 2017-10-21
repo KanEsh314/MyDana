@@ -4,14 +4,15 @@
     margin: 0;
   }
 
+  .details{
+     padding-top: 10px;
+     padding-bottom: 10px;
+     font-weight: bold;
+  }
+
   .separator{
   	border-bottom: 2px solid;
   }
-
-    ion-item:hover {
-    background-color: pink;
-    
-    }
 
     img:hover {
     background-color: pink;
