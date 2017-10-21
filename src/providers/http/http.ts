@@ -30,6 +30,16 @@ export class HttpProvider {
     .map(res => res.json())  
   }
 
+  getArticle(){
+    return this.http.get("https://mydana.herokuapp.com/api/articles")
+    .map(res => res.json())
+  }
+
+  getUserProfile(){
+    return this.http.get("https://mydana.herokuapp.com/api/user/1")
+    .map(res => res.json())
+  }
+
   postComment(details){
    
     return new Promise((resolve, reject) => {
@@ -58,6 +68,26 @@ export class HttpProvider {
       headers.append('Content-Type','application/json');
        console.log(details);
       this.http.post('https://mydana.herokuapp.com/api/fund', JSON.stringify(details), {headers:headers})
+      .subscribe(res => {
+       
+        let data = res.json();
+        console.log(data);
+        resolve(data);
+      
+      }, (err) => {
+        reject(err);
+      });
+    });
+  }
+
+  register(details){
+
+    return new Promise((resolve, reject) => {
+
+      let headers = new Headers();
+      headers.append('Content-Type','application/json');
+       console.log(details);
+      this.http.post('https://mydana.herokuapp.com/api/register', JSON.stringify(details), {headers:headers})
       .subscribe(res => {
        
         let data = res.json();

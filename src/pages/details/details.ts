@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, LoadingController } from 'ionic-angular';
 
 /**
  * Generated class for the DetailsPage page.
@@ -17,10 +17,15 @@ export class DetailsPage {
 
 	campaignDetails = String;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl :ViewController) {
+  constructor(public loading:LoadingController, public navCtrl: NavController, public navParams: NavParams, public viewCtrl :ViewController) {
 
-  		this.campaignDetails = navParams.get('description');
-  		console.log(this.campaignDetails);
+      let load = this.loading.create({
+      content: 'Please wait...'
+      });
+
+        load.present();
+    		this.campaignDetails = navParams.get('description');
+    		load.dismiss();
   }
 
   ionViewDidLoad() {

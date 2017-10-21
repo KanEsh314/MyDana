@@ -18,26 +18,26 @@
 
 <ion-content padding>
 
-	<ion-list>
+	<ion-list *ngIf="profile">
 		  <ion-item>
 		    <ion-label floating>Username</ion-label>
-		    <ion-input type="text"></ion-input>
+		    <ion-input type="text" value="{{profile.name}}"></ion-input>
 		  </ion-item>
 
 		  <ion-item>
 		    <ion-label floating>Email</ion-label>
-		    <ion-input type="password"></ion-input>
+		    <ion-input type="email" value="{{profile.email}}"></ion-input>
 		  </ion-item>
 
-		  <ion-item>
+		  <!-- <ion-item>
 		    <ion-label floating>Password</ion-label>
 		    <ion-input type="text"></ion-input>
-		  </ion-item>
+		  </ion-item> -->
 
-		  <ion-item>
+		  <!-- <ion-item>
 		    <ion-label floating>Confirm Password</ion-label>
 		    <ion-input type="password"></ion-input>
-		  </ion-item>
+		  </ion-item> -->
 
 	</ion-list>
 

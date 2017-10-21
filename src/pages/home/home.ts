@@ -53,9 +53,9 @@ export class HomePage {
       );
 
     this.httpprovider.getSliderImage().subscribe(
-        data => {
-          console.log(data)
-          this.sliderImage = data;
+        response => {
+          console.log(response)
+          this.sliderImage = response.data;
           console.log(this.sliderImage)
         },
         err => {
