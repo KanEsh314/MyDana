@@ -81,7 +81,11 @@
 </form>
 
 </ion-list>
+<h3 text-center>or</h3>
+<button color="facebook" ion-button block (click)="facebookConnect()">Sign Up with Facebook</button>
+<button color="google-plus" ion-button block >Sign Up with Google</button>
 
-
-
+<p class="legal-stuff" padding>
+    By creating an account you agree to our <a class="legal-action" (click)="showPrivacyModal()">Privacy Policy</a> and <a class="legal-action" (click)="showTermsModal()">Terms of use</a>
+  </p>
 </ion-content>

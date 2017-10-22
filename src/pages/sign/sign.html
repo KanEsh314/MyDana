@@ -29,16 +29,28 @@
       <ion-input formControlName="password" type="password" [class.invalid]="!loginForm.controls.password.valid && blur"></ion-input>
     </ion-item>
 
-    <button ion-button block type="submit" [disabled]="!loginForm.valid">
+    <button ion-button block type="submit" color="yayasan" [disabled]="!loginForm.valid">
       Login
     </button>
+    <ion-row>
+      <ion-col no-padding>
+      <button ion-button small full clear ion-start>Forgot Password?</button>
+    </ion-col>
+    <ion-col no-padding>
+      <button ion-button small full clear ion-end (click)="register()">Sign Up!</button>
+    </ion-col>
+    </ion-row>
   </form>
 
 </ion-list>
 
+<h4 text-center>Or</h4>
+
    
+
+   <button color="facebook" ion-button block (click)="facebookConnect()">Log in with Facebook</button>
+   <button color="google-plus" ion-button block >Log in with Google</button>
+  <!-- <button ion-button small full clear (click)="register()">Register Me</button> -->
  
-  <button ion-button round full (click)="facebookConnect()">Connect with Facebook</button>
-  <button ion-button small full clear (click)="register()">Register Me</button>
 
 </ion-content>

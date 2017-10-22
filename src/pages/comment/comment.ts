@@ -45,8 +45,15 @@ export class CommentPage {
           desc : this.userComment
     }
 
+     let load = this.loading.create({
+      content: 'Posting...'
+      });
+
+     load.present();
+
     this.httpprovider.postComment(details).then((result) => {
       console.log('sini');
+      load.dismiss();
       this.viewCtrl.dismiss();
     }, (err) => {
       console.log(err);
