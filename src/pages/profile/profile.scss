@@ -32,3 +32,13 @@
 .procss ion-list{
 	margin-top: 50px;
 }
+
+.user {
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  border: solid;
+  border-radius: 50%;
+
+  object-fit: cover;
+}

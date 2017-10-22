@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angu
 import { EditProfilePage } from '../edit-profile/edit-profile';
 import { AboutUsPage } from '../about-us/about-us';
 import { MyDonationPage } from '../my-donation/my-donation';
+import { HttpProvider } from '../../providers/http/http';
 
 /**
  * Generated class for the ProfilePage page.
@@ -18,10 +19,12 @@ import { MyDonationPage } from '../my-donation/my-donation';
 })
 export class ProfilePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl:ModalController) {
+  constructor(public httpprovider:HttpProvider, public navCtrl: NavController, public navParams: NavParams, public modalCtrl:ModalController) {
   }
 
   ionViewDidLoad() {
+
+    // this.httpprovider.
     console.log('ionViewDidLoad ProfilePage');
   }
 

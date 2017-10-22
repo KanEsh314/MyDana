@@ -18,8 +18,39 @@
 
 <ion-content padding>
 
+	<!--   <div class="user-image-content">
+    <ion-row no-padding class="user-image-row">
+      <ion-col no-padding width-40>
+        <preload-image class="user-image" [ratio]="{w:1, h:1}" [src]="profile.user.image" alt="this is the image" title="IMAGE!"></preload-image>
+      </ion-col>
+    </ion-row>
+    <ion-row no-padding class="user-image-row">
+      <ion-col no-padding width-60>
+        <button class="image-action-button" ion-button outline block small (click)="openImagePicker()">{{ 'CHANGE_PROFILE_PICTURE' | translate}}</button>
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <form [formGroup]="settingsForm" class="settings-form">
+    <ion-list class="user-data-content">
+      <ion-item>
+        <ion-label stacked>{{ 'NAME' | translate }}</ion-label>
+        <ion-input type="text" formControlName="name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>{{ 'LOCATION' | translate }}</ion-label>
+        <ion-input type="text" formControlName="location"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>{{ 'DESCRIPTION' | translate }}</ion-label>
+        <ion-textarea formControlName="description" rows="5" placeholder="Your description here..."></ion-textarea>
+      </ion-item>
+    </ion-list> -->
+
 	<ion-list *ngIf="profile">
-		  <ion-item>
+
+		<form>
+			<ion-item>
 		    <ion-label floating>Username</ion-label>
 		    <ion-input type="text" value="{{profile.name}}"></ion-input>
 		  </ion-item>
@@ -38,9 +69,9 @@
 		    <ion-label floating>Confirm Password</ion-label>
 		    <ion-input type="password"></ion-input>
 		  </ion-item> -->
-
+		  <button ion-button round full>Save Change</button>
+		</form>
+		  
 	</ion-list>
-
-	<button ion-button round full>Save Change</button>
 
 </ion-content>

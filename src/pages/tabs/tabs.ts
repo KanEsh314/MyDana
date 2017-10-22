@@ -1,5 +1,5 @@
 import { Component} from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ModalController } from 'ionic-angular';
 import { ContactPage } from '../contact/contact';
 import { HomePage } from '../home/home';
 import { SignPage } from '../sign/sign';
@@ -15,9 +15,10 @@ export class TabsPage {
   tab2Root = ContactPage;
   tab3Root = ProfilePage;
 
-  constructor(public navCtrl: NavController) {}
+  constructor(public navCtrl: NavController, public modalCtrl:ModalController) {}
 
   Authentication(){
-  	this.navCtrl.push(SignPage);
+  	let myModal = this.modalCtrl.create(SignPage);
+    myModal.present();
   }
 }
