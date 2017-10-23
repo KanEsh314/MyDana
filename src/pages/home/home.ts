@@ -42,7 +42,7 @@ export class HomePage {
         this.httpprovider.getLatest().subscribe(
         data => {
           console.log(data)
-          this.latestcampaign = data;
+          this.latestcampaign = data.data;
           console.log(this.latestcampaign)
         },
         err => {

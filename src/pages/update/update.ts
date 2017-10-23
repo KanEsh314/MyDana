@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
-import { HttpProvider } from '../../providers/http/http';
 
 /**
  * Generated class for the UpdatePage page.

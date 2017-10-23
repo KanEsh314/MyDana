@@ -19,7 +19,7 @@ export class ContactPage {
   	this.httpprovider.getArticle().subscribe(
       response => {
         console.log(response)
-        this.articles = response;
+        this.articles = response.data;
         console.log(this.articles)
       },
       err => {

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController, LoadingController } from 'ionic-angular';
 import { HttpProvider } from '../../providers/http/http'
-import { AboutPage } from '../about/about';
 
 /**
  * Generated class for the CommentPage page.

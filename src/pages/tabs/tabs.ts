@@ -4,7 +4,6 @@ import { ContactPage } from '../contact/contact';
 import { HomePage } from '../home/home';
 import { SignPage } from '../sign/sign';
 import { ProfilePage } from '../profile/profile';
-import { PaymentPage } from '../payment/payment';
 
 @Component({
   templateUrl: 'tabs.html'

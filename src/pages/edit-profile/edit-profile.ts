@@ -50,8 +50,8 @@ export class EditProfilePage {
 
         this.httpprovider.getUserProfile().subscribe(
             response => {
-             
-              this.profile = response;
+             console.log(response);
+              this.profile = response.data[0];
               console.log(this.profile)
             },
             err => {

@@ -20,7 +20,8 @@
 
 <ion-card *ngFor="let campaign of latestcampaign" >
   <div (click)="moreDetail(campaign)">
-    <img src="assets/img/health.jpg" />
+    <img src="{{campaign.campaign_image}}">
+    <!-- <img src="assets/img/health.jpg" /> -->
     <ion-card-content >
     <div class="cardTitle">
       <h2>{{campaign.campaign_name}}</h2>
