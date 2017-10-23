@@ -24,7 +24,6 @@ export class HomePage {
 
 
   constructor(public loading:LoadingController, public actionSheetCtrl: ActionSheetController, public navCtrl: NavController, public modalCtrl:ModalController, public httpprovider:HttpProvider, public navParams:NavParams, public socialSharing:SocialSharing) {
-
     if(this.slideData.length>0)
   	{
   		this.slideLength = true;
