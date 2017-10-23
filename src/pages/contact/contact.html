@@ -15,9 +15,11 @@
         {{article.title}}
         </ion-card-title>
         <h3>{{article.article_date}}</h3>
-      <p>
+
+        <div [innerHtml]="article.article_desc"></div>
+     <!--  <p>
         {{article.article_desc}}
-      </p>
+      </p> -->
     </ion-card-content>
   </ion-card>
 </ion-content>
