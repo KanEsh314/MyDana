@@ -35,7 +35,12 @@ fbres:any;
 
   facebookConnect(){
   	this.fb.login(['public_profile', 'user_friends', 'email'])
-    .then((res: FacebookLoginResponse ) => this.fbres = res)
+    .then((res: FacebookLoginResponse ) => {
+      this.fb.api('me?fields=id,name,email,first_name,picture.width(720).height(720).as(picture_large)', []).then(profile => {
+        console.log(profile)
+        this.response = {email: profile['email'], first_name: profile['first_name'], picture: profile['picture_large']['data']['url'], username: profile['name']}
+      });
+    })
     .catch(e => console.log('Error logging into Facebook', e));
 
     // this.fb.logEvent(this.fb.EVENTS.EVENT_NAME_ADDED_TO_CART);
