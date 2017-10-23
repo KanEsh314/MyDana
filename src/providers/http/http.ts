@@ -100,6 +100,27 @@ export class HttpProvider {
     });
   }
 
+  updateUser(details){
+
+     return new Promise((resolve, reject) => {
+
+      let headers = new Headers();
+      headers.append('Content-Type','application/json');
+       console.log(details);
+      this.http.post('https://mydana.herokuapp.com/api/user/1', JSON.stringify(details), {headers:headers})
+      .subscribe(res => {
+       
+        let data = res.json();
+        console.log(data);
+        resolve(data);
+      
+      }, (err) => {
+        reject(err);
+      });
+    });
+
+  }
+
 // login(credentials){
  
 //     return new Promise((resolve, reject) => {

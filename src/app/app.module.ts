@@ -25,6 +25,7 @@ import { Facebook } from '@ionic-native/facebook';
 import { PayPal } from '@ionic-native/paypal'
 import { HttpProvider } from '../providers/http/http';
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { GooglePlus } from '@ionic-native/google-plus';
 
 
 @NgModule({
@@ -75,7 +76,8 @@ import { SocialSharing } from '@ionic-native/social-sharing';
     Facebook,
     PayPal,
     HttpProvider,
-    SocialSharing
+    SocialSharing,
+    GooglePlus
   ]
 })
 export class AppModule {}

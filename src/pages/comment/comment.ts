@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController, LoadingController } from 'ionic-angular';
 import { HttpProvider } from '../../providers/http/http'
-import { AboutPage } from '../about/about';
 
 /**
  * Generated class for the CommentPage page.
@@ -45,8 +44,15 @@ export class CommentPage {
           desc : this.userComment
     }
 
+     let load = this.loading.create({
+      content: 'Posting...'
+      });
+
+     load.present();
+
     this.httpprovider.postComment(details).then((result) => {
       console.log('sini');
+      load.dismiss();
       this.viewCtrl.dismiss();
     }, (err) => {
       console.log(err);

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, ToastController, ViewController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EmailValidator } from '../../validators/email';
 import { HttpProvider } from '../../providers/http/http';
@@ -20,7 +20,7 @@ export class RegisterPage {
 
 	registerForm : FormGroup;
 
-  constructor(public toast:ToastController, public loading:LoadingController, public navCtrl: NavController, public navParams: NavParams, public formBuilder:FormBuilder, public httpprovider:HttpProvider) {
+  constructor(public viewCtrl:ViewController, public toast:ToastController, public loading:LoadingController, public navCtrl: NavController, public navParams: NavParams, public formBuilder:FormBuilder, public httpprovider:HttpProvider) {
 
   	this.registerForm = formBuilder.group({
   		name : ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
@@ -70,6 +70,10 @@ export class RegisterPage {
           console.log(err);
       });
     }
+  }
+
+  closeModal(){
+    this.viewCtrl.dismiss();
   }
 
 }

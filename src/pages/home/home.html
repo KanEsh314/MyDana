@@ -20,7 +20,8 @@
 
 <ion-card *ngFor="let campaign of latestcampaign" >
   <div (click)="moreDetail(campaign)">
-    <img src="assets/img/health.jpg" />
+    <img src="{{campaign.campaign_image}}">
+    <!-- <img src="assets/img/health.jpg" /> -->
     <ion-card-content >
     <div class="cardTitle">
       <h2>{{campaign.campaign_name}}</h2>
@@ -56,12 +57,13 @@
           Comment
         </button>
       </ion-col>
-      <ion-col>
+      <ion-col text-left>
         <button ion-button clear small color="danger" icon-start>
         <ion-icon name="thumbs-up"></ion-icon>
+        Like
         </button>
       </ion-col>
-      <ion-col text-right>
+      <ion-col text-left>
         <button ion-button clear small color="danger" icon-start (click)="shareButton()">
         <ion-icon name='share-alt'></ion-icon>
           Share
