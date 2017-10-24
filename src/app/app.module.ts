@@ -26,6 +26,8 @@ import { PayPal } from '@ionic-native/paypal'
 import { HttpProvider } from '../providers/http/http';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { GooglePlus } from '@ionic-native/google-plus';
+import { AuthProvider } from '../providers/auth/auth';
+import { IonicStorageModule } from '@ionic/storage';
 
 
 @NgModule({
@@ -49,7 +51,8 @@ import { GooglePlus } from '@ionic-native/google-plus';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpModule
+    HttpModule,
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -77,7 +80,8 @@ import { GooglePlus } from '@ionic-native/google-plus';
     PayPal,
     HttpProvider,
     SocialSharing,
-    GooglePlus
+    GooglePlus,
+    AuthProvider
   ]
 })
 export class AppModule {}

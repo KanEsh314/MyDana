@@ -5,11 +5,11 @@
 </ion-header>
 
 <ion-content class="home">
-  <!--  <ion-slides pager autoplay="5000" loop="true" speed="3000" *ngIf="sliderImage && sliderImage.length"> -->
-  <ion-slides pager autoplay="5000" loop="true" speed="3000">
-    <ion-slide *ngFor="let slide of slideData">
+   <ion-slides pager autoplay="5000" loop="true" speed="3000" *ngIf="sliderImage && sliderImage.length">
+  <!-- <ion-slides pager autoplay="5000" loop="true" speed="3000"> -->
+    <ion-slide *ngFor="let slide of sliderImage">
 
-      <img src="{{slide.image}}">
+      <img src="{{slide.banner_image}}">
   
     </ion-slide>
   </ion-slides>
