@@ -17,7 +17,10 @@ import { DetailsPage } from '../pages/details/details';
 import { RegisterPage } from '../pages/register/register';
 import { EditProfilePage} from '../pages/edit-profile/edit-profile';
 import { AboutUsPage } from '../pages/about-us/about-us';
-import { MyDonationPage } from '../pages/my-donation/my-donation';
+// import { MyDonationPage } from '../pages/my-donation/my-donation';
+import { ForgetPasswordPage } from '../pages/forget-password/forget-password';
+import { ArticleDetailsPage } from '../pages/article-details/article-details';
+import { NewsDetailsPage } from '../pages/news-details/news-details';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -46,7 +49,10 @@ import { IonicStorageModule } from '@ionic/storage';
     RegisterPage,
     EditProfilePage,
     AboutUsPage,
-    MyDonationPage
+    ForgetPasswordPage,
+    ArticleDetailsPage,
+    NewsDetailsPage
+    // MyDonationPage
   ],
   imports: [
     BrowserModule,
@@ -70,7 +76,10 @@ import { IonicStorageModule } from '@ionic/storage';
     RegisterPage,
     EditProfilePage,
     AboutUsPage,
-    MyDonationPage
+    ForgetPasswordPage,
+    ArticleDetailsPage,
+    NewsDetailsPage
+    // MyDonationPage
   ],
   providers: [
     StatusBar,

@@ -6,6 +6,7 @@ import { RegisterPage } from '../register/register';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { AuthProvider } from '../../providers/auth/auth'
 import { TabsPage } from '../tabs/tabs';
+import { ForgetPasswordPage } from '../forget-password/forget-password'
 
 /**
  * Generated class for the SignPage page.
@@ -106,6 +107,11 @@ export class SignPage {
               console.log(err);
         });
     }
+  }
+
+  forgetPassword(){
+    let myModal = this.modalCtrl.create(ForgetPasswordPage);
+      myModal.present();
   }
 
   closeModal(){

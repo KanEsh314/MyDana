@@ -27,9 +27,10 @@
       <h2>{{campaign.campaign_name}}</h2>
     </div>
       <ion-card-title>
-      <div>
-        <h1>{{campaign.organiser}}</h1>
-        <h4>{{campaign.location}}</h4>
+      <div padding-bottom=10px>
+        <p>{{campaign.organiser}}</p>
+        <p>{{campaign.location}}</p>
+        <p>{{campaign.campaign_start_date}} - {{campaign.campaign_end_date}}</p>
       </div>
       </ion-card-title>
         <p>{{campaign.description}}</p>
@@ -43,13 +44,16 @@
       
       
       <div class="detailUpdate">
-        RM {{campaign.fund_amount}} terkumpul
+        RM {{campaign.total_amount}} terkumpul
         <!-- <p>{{card.perce}}</p>
         <p>{{card.day}}</p> -->
       </div>
       
   </ion-card-content>
   </div>
+  <!-- <ion-row padding-left=10px>
+    <p text-left>200 Likes 10 Comments</p>
+  </ion-row> -->
   <ion-row no-padding class="botBorder">
       <ion-col text-left>
         <button ion-button clear small color="danger" icon-start (click)=commentPress(campaign)>

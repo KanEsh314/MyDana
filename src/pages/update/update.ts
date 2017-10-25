@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController,ModalController } from 'ionic-angular';
+import { NewsDetailsPage } from '../news-details/news-details'
 
 /**
  * Generated class for the UpdatePage page.
@@ -17,10 +18,15 @@ export class UpdatePage {
 
 	news : any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl:ViewController) {
+  constructor(public modalCtrl:ModalController, public navCtrl: NavController, public navParams: NavParams, public viewCtrl:ViewController) {
 
     this.news = navParams.get('news');
     console.log(this.news);
+  }
+
+  newsDetails(news){
+  	let myModal = this.modalCtrl.create(NewsDetailsPage, {news:news});
+    myModal.present();
   }
 
 closeModal(){

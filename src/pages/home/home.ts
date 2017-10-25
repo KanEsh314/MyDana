@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
 import { AboutPage } from '../about/about';
 import { ModalController } from 'ionic-angular';
 import { CommentPage } from '../comment/comment';
@@ -23,7 +23,7 @@ export class HomePage {
 	slideLength : boolean = false;
 
 
-  constructor(public loading:LoadingController, public actionSheetCtrl: ActionSheetController, public navCtrl: NavController, public modalCtrl:ModalController, public httpprovider:HttpProvider, public navParams:NavParams, public socialSharing:SocialSharing) {
+  constructor(public toast:ToastController, public loading:LoadingController, public actionSheetCtrl: ActionSheetController, public navCtrl: NavController, public modalCtrl:ModalController, public httpprovider:HttpProvider, public navParams:NavParams, public socialSharing:SocialSharing) {
     if(this.slideData.length>0)
   	{
   		this.slideLength = true;
@@ -80,26 +80,61 @@ export class HomePage {
   }
 
   shareButton() {
+   
     let actionSheet = this.actionSheetCtrl.create({
       title: 'Select Social Sharing',
       buttons: [
         {
           text: 'Facebook',
-          // role: 'destructive',
+          role: 'button',
           handler: () => {
-               this.socialSharing.shareViaFacebook('Share', this.latestcampaign).then(() => {
-                }).catch(() => {
-                });
+             
+                
+                   this.socialSharing.shareViaFacebook(this.latestcampaign)
+                   .then((data) =>
+                   {
+                     const toast = this.toast.create({
+                        message: 'shared via fb',
+                        duration: 3000,
+                        position: 'middle'
+                      });
+                       toast.present();
+                      console.log('Shared via Facebook');
+                   })
+                   .catch((err) =>
+                   {
+                     const toast = this.toast.create({
+                        message: 'Not Shared via Fb',
+                        duration: 3000,
+                        position: 'middle'
+                      });
+                       toast.present();
+                      console.log('Was not shared via Facebook');
+                   });
+
             console.log('Destructive clicked');
           }
         },{
           text: 'Twitter',
+          role: 'button',
           handler: () => {
-            this.socialSharing.shareViaTwitter('Share', this.latestcampaign).then(() => {
-            }).catch(() => {
-            
-            });
-            console.log('Archive clicked');
+         
+                  this.socialSharing.shareViaTwitter(this.latestcampaign)
+                  .then((data) =>
+                  {
+                     console.log('Shared via Twitter');
+                  })
+                  .catch((err) =>
+                  {  const toast = this.toast.create({
+                        message: 'cannot shared via twitter',
+                        duration: 3000,
+                        position: 'middle'
+                      });
+                       toast.present();
+                     console.log('Was not shared via Twitter');
+                  });
+
+                  console.log('Archive clicked');
           }
         },{
           text: 'Cancel',
@@ -111,6 +146,5 @@ export class HomePage {
       ]
     });
     actionSheet.present();
-  }
 }
-
+}

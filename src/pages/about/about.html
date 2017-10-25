@@ -23,9 +23,10 @@
       
       </ion-col>
     </ion-row>
-  <div >
-    <h3 >{{kempen.campaign_name}}</h3>
-    <h5 >{{kempen.location}}</h5>
+  <div padding-bottom="10px">
+    <h3>{{kempen.campaign_name}}</h3>
+    <p>{{kempen.location}}</p>
+    <p>{{kempen.campaign_start_date}}-{{kempen.campaign_end_date}}</p>
   </div>
   	
 
@@ -55,6 +56,6 @@
       </ion-item> -->
     </ion-list>
 
-    <button ion-button full round (click)="donate()">Donate</button>
+    <button ion-button full round color="yayasan" (click)="donate()">Donate</button>
  
 </ion-content>

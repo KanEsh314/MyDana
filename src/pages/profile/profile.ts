@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { EditProfilePage } from '../edit-profile/edit-profile';
 import { AboutUsPage } from '../about-us/about-us';
-import { MyDonationPage } from '../my-donation/my-donation';
+// import { MyDonationPage } from '../my-donation/my-donation';
 import { HttpProvider } from '../../providers/http/http';
 
 /**
@@ -38,9 +38,9 @@ export class ProfilePage {
     myModal.present();
   }
 
-  myDonation(){
-    let myModal = this.modalCtrl.create(MyDonationPage);
-    myModal.present();
-  }
+  // myDonation(){
+  //   let myModal = this.modalCtrl.create(MyDonationPage);
+  //   myModal.present();
+  // }
 
 }
