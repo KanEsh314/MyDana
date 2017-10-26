@@ -17,10 +17,10 @@ import { DetailsPage } from '../pages/details/details';
 import { RegisterPage } from '../pages/register/register';
 import { EditProfilePage} from '../pages/edit-profile/edit-profile';
 import { AboutUsPage } from '../pages/about-us/about-us';
-// import { MyDonationPage } from '../pages/my-donation/my-donation';
 import { ForgetPasswordPage } from '../pages/forget-password/forget-password';
 import { ArticleDetailsPage } from '../pages/article-details/article-details';
 import { NewsDetailsPage } from '../pages/news-details/news-details';
+import { UserDetailsPage } from '../pages/user-details/user-details';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -31,6 +31,7 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { AuthProvider } from '../providers/auth/auth';
 import { IonicStorageModule } from '@ionic/storage';
+import { IonicImageViewerModule } from 'ionic-img-viewer'
 
 
 @NgModule({
@@ -51,14 +52,15 @@ import { IonicStorageModule } from '@ionic/storage';
     AboutUsPage,
     ForgetPasswordPage,
     ArticleDetailsPage,
-    NewsDetailsPage
-    // MyDonationPage
+    NewsDetailsPage,
+    UserDetailsPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpModule,
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    IonicImageViewerModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -78,8 +80,8 @@ import { IonicStorageModule } from '@ionic/storage';
     AboutUsPage,
     ForgetPasswordPage,
     ArticleDetailsPage,
-    NewsDetailsPage
-    // MyDonationPage
+    NewsDetailsPage,
+    UserDetailsPage
   ],
   providers: [
     StatusBar,

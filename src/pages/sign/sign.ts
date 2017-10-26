@@ -47,6 +47,7 @@ export class SignPage {
                          first_name: profile['first_name'],
                          picture: profile['picture_large']['data']['url'],
                          username: profile['name']}
+                 console.log(this.response)
       });
 
       //   this.httpprovider.fbLogin(this.response).then((result) => {
@@ -98,13 +99,17 @@ export class SignPage {
           content: 'Please wait...'
           });
 
+            load.present();
+
             this.authprovider.login(details).then(result => {
             
             console.log(result);
             this.navCtrl.setRoot(TabsPage);
+            load.dismiss();
         }, 
           (err) => {
               console.log(err);
+              load.dismiss();
         });
     }
   }

@@ -10,11 +10,12 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content class="procss">
-
-<div text-center>  
-  <img src="assets/img/photo.png" class="user"> 
-  <h2>Mohamad Faizal</h2>
+<ion-content class="procss" >
+<div *ngIf="profile">
+<div text-center padding (click)="userDetails()">  
+  <img src="{{profile.image}}" class="user"> 
+  <h2>{{profile.first_name}} {{profile.last_name}}</h2>
+  <p>{{profile.email}}</p>
 </div>
 
 <p text-center>Yayasan My Prihatin</p>
@@ -51,18 +52,13 @@
     		<h2>Edit Profile</h2>
   		</ion-item>
 
-  	<!-- 	<ion-item (click)="myDonation()">
-    		<h2>My Donations</h2> 
-  		</ion-item> -->
-
-  		<ion-item>
-    		<h2>Pledge</h2>
-  		</ion-item>
-
       <ion-item (click)="aboutUs()">
         <h2>About Us</h2>
       </ion-item>
 
 	</ion-list>
+</div>
+
+<button *ngIf="!profile">login</button>
 
 </ion-content>

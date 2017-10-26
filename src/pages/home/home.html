@@ -33,7 +33,7 @@
         <p>{{campaign.campaign_start_date}} - {{campaign.campaign_end_date}}</p>
       </div>
       </ion-card-title>
-        <p>{{campaign.description}}</p>
+        <p>{{campaign.short_desc}}</p>
 
       
         <div class="process">
@@ -78,5 +78,9 @@
   
   
 </ion-card>
+
+<ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+   <ion-infinite-scroll-content *ngIf="pagingEnabled"></ion-infinite-scroll-content>
+</ion-infinite-scroll>
 
 </ion-content>

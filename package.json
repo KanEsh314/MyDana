@@ -45,6 +45,7 @@
         "es6-promise-plugin": "^4.1.0",
         "fcm": "^1.0.3",
         "ionic-angular": "3.6.0",
+        "ionic-img-viewer": "^2.7.3",
         "ionic-plugin-keyboard": "^2.2.1",
         "ionicons": "3.0.0",
         "rxjs": "5.4.0",

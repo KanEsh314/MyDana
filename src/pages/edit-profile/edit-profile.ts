@@ -56,6 +56,7 @@ export class EditProfilePage {
             },
             err => {
               console.log(err);
+              load.dismiss();
             },
             ()=>{
               load.dismiss()
@@ -93,6 +94,16 @@ save(){
             // console.log('register success');
         },
           (err) => {
+
+             const toast = this.toast.create({
+                message: 'Profile Not Updated',
+                duration: 3000,
+                position: 'middle'
+              });
+
+             toast.present();
+
+            load.dismiss();
           console.log(err);
       });
     }

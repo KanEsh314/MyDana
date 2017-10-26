@@ -18,6 +18,8 @@ export class CommentPage {
 
 	comments : any;
   userComment = '';
+  kempen:any;
+  user:any;
 
   constructor(public loading:LoadingController, public navCtrl: NavController, public navParams: NavParams, public httpprovider:HttpProvider, public viewCtrl:ViewController) {
   
@@ -26,7 +28,12 @@ export class CommentPage {
       });
 
         load.present();
-        this.comments = navParams.get('comments');
+        this.kempen = navParams.get('kempen');
+        this.comments = this.kempen.comments;
+        // this.user = this.comments.users;
+
+        console.log(this.kempen.campaign_id)
+        console.log(this.comments)
         load.dismiss();
 
   }
@@ -38,7 +45,7 @@ export class CommentPage {
    sendComment(){
 
     let details = {
-          campaign_id : 1,
+          campaign_id : this.kempen.campaign_id,
           user_id : 1,
           title : 'this is my comment',
           desc : this.userComment
@@ -56,6 +63,7 @@ export class CommentPage {
       this.viewCtrl.dismiss();
     }, (err) => {
       console.log(err);
+      load.dismiss();
     });
   }
 }

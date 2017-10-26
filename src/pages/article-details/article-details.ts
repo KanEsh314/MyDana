@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, LoadingController } from 'ionic-angular';
 
 /**
  * Generated class for the ArticleDetailsPage page.
@@ -17,10 +17,16 @@ export class ArticleDetailsPage {
 
 	details :any;
 
-  constructor(public viewCtrl:ViewController, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public loading:LoadingController, public viewCtrl:ViewController, public navCtrl: NavController, public navParams: NavParams) {
 
+     let load = this.loading.create({
+      content: 'Please wait...'
+      });
+
+     load.present();
   	this.details = navParams.get('article');
   	console.log(this.details);
+    load.dismiss();
   }
 
   ionViewDidLoad() {

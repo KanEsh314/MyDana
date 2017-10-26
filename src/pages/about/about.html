@@ -8,18 +8,18 @@
 
 </ion-header>
 
-<ion-content padding>
-	
+<ion-content padding *ngIf="kempen">
+
     <ion-row>  
         <div>
-        	<img src="assets/img/qurban.jpg">
+        	<img src="{{image}}" >
         </div>
       
     </ion-row>
     <ion-row >
       <ion-col *ngFor="let im of moreImg" item-wrap>
         
-        	<img src="{{im.image}}">
+        	<img src="{{im.image}}" (click)="imageTapped(im.image)">
       
       </ion-col>
     </ion-row>
@@ -31,7 +31,7 @@
   	
 
 	<div text-wrap>
-    <p>{{kempen.description}}</p>	
+    <p>{{kempen.short_desc}}</p>	
     <button (click)="details(kempen)">Read more</button>
 	</div>
 

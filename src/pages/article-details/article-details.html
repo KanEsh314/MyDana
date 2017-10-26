@@ -18,11 +18,16 @@
 
 <ion-content padding>
 	
-	<img src="{{details.article_image}}">
+	<img src="{{details.header_image}}">
 
-	<div>
-	    <h3>{{details.title}}</h3>
-	    <p padding-top=10px text-wrap>{{details.article_desc}}</p>
+	<div padding-top=5px>
+	    <h3>{{details.article_title}}</h3>
+	    <p padding-top=10px text-wrap>{{details.article_date}}</p>
 	</div>
+  <ion-list padding-top=5px>
+  <ion-item (click)="commentsTapped(kempen)">Comments 
+        <ion-badge color="yayasan" item-end></ion-badge>
+  </ion-item>
+</ion-list>
 
 </ion-content>

@@ -5,6 +5,7 @@ import { UpdatePage } from '../update/update';
 import { DetailsPage } from '../details/details';
 import { PaymentPage } from '../payment/payment';
 import { HttpProvider } from '../../providers/http/http';
+import { ImageViewerController } from 'ionic-img-viewer'
 
 /**
  * Generated class for the AboutPage page.
@@ -30,18 +31,12 @@ export class AboutPage {
 
 items = [];
 
-  constructor(public loading:LoadingController, public modalCtrl:ModalController, public navParams:NavParams, public navCtrl: NavController , public viewCtrl: ViewController, public httpprovider:HttpProvider) {
+image:any;
+
+  constructor(public imgViewer:ImageViewerController, public loading:LoadingController, public modalCtrl:ModalController, public navParams:NavParams, public navCtrl: NavController , public viewCtrl: ViewController, public httpprovider:HttpProvider) {
 
     this.campaign = navParams.get('campaign');
     console.log(this.campaign);
-
-  	this.items = [
-
-      'Campaign',
-  		'Comment',
-  		'Update'
-
-  	];
   }
 
   ionViewDidLoad(){
@@ -58,10 +53,11 @@ items = [];
               console.log(this.kempen)
               this.commentBadge = response.data.comments.length;
               this.newsBadge = response.data.news.length;
-              // console.log(this.newsBadge);
+              this.image = response.data.campaign_image;
             },
             err => {
               console.log(err);
+              load.dismiss();
             },
             ()=>{
               load.dismiss();
@@ -70,14 +66,14 @@ items = [];
     );
 }
 
- 
+imageTapped(image){
+  this.image = image;
 
-   // commentsTapped(kempen){
-   //   this.navCtrl.push(CommentPage, kempen);
-   // }
+}
+
 
    commentsTapped(kempen){
-    let myModal = this.modalCtrl.create(CommentPage, kempen);
+    let myModal = this.modalCtrl.create(CommentPage, {kempen:kempen});
     myModal.present();
   }
 

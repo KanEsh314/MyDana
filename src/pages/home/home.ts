@@ -17,18 +17,11 @@ export class HomePage {
 
   sliderImage : any;
 
-	slideData = [{image: "assets/img/bantu.jpg"},
-               {image: "assets/img/health.jpg"},
-               {image: "assets/img/qurban.jpg"}]
 	slideLength : boolean = false;
 
-
   constructor(public toast:ToastController, public loading:LoadingController, public actionSheetCtrl: ActionSheetController, public navCtrl: NavController, public modalCtrl:ModalController, public httpprovider:HttpProvider, public navParams:NavParams, public socialSharing:SocialSharing) {
-    if(this.slideData.length>0)
-  	{
-  		this.slideLength = true;
-  	}
-
+     
+    
   }
 
   ionViewDidLoad(){
@@ -45,9 +38,11 @@ export class HomePage {
           console.log(this.latestcampaign)
         },
         err => {
+          load.dismiss();
           console.log(err);
         },
         ()=>{
+          load.dismiss();
         console.log('Latest is ok!')
       }
       );
@@ -59,10 +54,11 @@ export class HomePage {
           console.log(this.sliderImage)
         },
         err => {
+          // load.dismiss();
           console.log(err);
         },
         ()=>{
-          load.dismiss()
+          // load.dismiss();
         console.log('Slider is ok!')
       }
       );
@@ -89,20 +85,20 @@ export class HomePage {
           role: 'button',
           handler: () => {
              
-                
+                    let load = this.loading.create({
+                      content: 'Please wait...'
+                      });
+                    load.present();
                    this.socialSharing.shareViaFacebook(this.latestcampaign)
                    .then((data) =>
                    {
-                     const toast = this.toast.create({
-                        message: 'shared via fb',
-                        duration: 3000,
-                        position: 'middle'
-                      });
-                       toast.present();
                       console.log('Shared via Facebook');
+                      load.dismiss();
+
                    })
                    .catch((err) =>
                    {
+                     load.dismiss();
                      const toast = this.toast.create({
                         message: 'Not Shared via Fb',
                         duration: 3000,
@@ -118,14 +114,22 @@ export class HomePage {
           text: 'Twitter',
           role: 'button',
           handler: () => {
-         
+                   let load = this.loading.create({
+                     content: 'please wait...'
+                   });
+
+                   load.present();
+
                   this.socialSharing.shareViaTwitter(this.latestcampaign)
                   .then((data) =>
                   {
+                    load.dismiss();
                      console.log('Shared via Twitter');
                   })
                   .catch((err) =>
-                  {  const toast = this.toast.create({
+                  {  
+                    load.dismiss();
+                    const toast = this.toast.create({
                         message: 'cannot shared via twitter',
                         duration: 3000,
                         position: 'middle'
@@ -133,8 +137,6 @@ export class HomePage {
                        toast.present();
                      console.log('Was not shared via Twitter');
                   });
-
-                  console.log('Archive clicked');
           }
         },{
           text: 'Cancel',

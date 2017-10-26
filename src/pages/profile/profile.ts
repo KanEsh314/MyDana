@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
-import { EditProfilePage } from '../edit-profile/edit-profile';
+import { IonicPage, NavController, NavParams, ModalController, LoadingController } from 'ionic-angular';
 import { AboutUsPage } from '../about-us/about-us';
-// import { MyDonationPage } from '../my-donation/my-donation';
+import { UserDetailsPage} from '../user-details/user-details';
 import { HttpProvider } from '../../providers/http/http';
 
 /**
@@ -19,22 +18,42 @@ import { HttpProvider } from '../../providers/http/http';
 })
 export class ProfilePage {
 
-  constructor(public httpprovider:HttpProvider, public navCtrl: NavController, public navParams: NavParams, public modalCtrl:ModalController) {
+  profile = {};
+
+  constructor(public loading:LoadingController, public httpprovider:HttpProvider, public navCtrl: NavController, public navParams: NavParams, public modalCtrl:ModalController) {
   }
 
-  ionViewDidLoad() {
+  ionViewDidLoad(){
+    let load = this.loading.create({
+      content: 'Please wait...'
+      });
 
-    // this.httpprovider.
-    console.log('ionViewDidLoad ProfilePage');
+        load.present();
+
+        this.httpprovider.getUserProfile().subscribe(
+            response => {
+             console.log(response);
+              this.profile = response.data[0];
+              console.log(this.profile)
+            },
+            err => {
+              console.log(err);
+              load.dismiss();
+            },
+            ()=>{
+              load.dismiss()
+            console.log('user profile revealed!')
+          }
+      );
   }
-
-  editProfile(){
-  	let myModal = this.modalCtrl.create(EditProfilePage);
+  
+  aboutUs(){
+    let myModal = this.modalCtrl.create(AboutUsPage);
     myModal.present();
   }
 
-  aboutUs(){
-    let myModal = this.modalCtrl.create(AboutUsPage);
+  userDetails(profile){
+    let myModal = this.modalCtrl.create(UserDetailsPage, {profile:profile});
     myModal.present();
   }
 
