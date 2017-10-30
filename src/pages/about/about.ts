@@ -5,7 +5,8 @@ import { UpdatePage } from '../update/update';
 import { DetailsPage } from '../details/details';
 import { PaymentPage } from '../payment/payment';
 import { HttpProvider } from '../../providers/http/http';
-import { ImageViewerController } from 'ionic-img-viewer'
+import { ImageViewerController } from 'ionic-img-viewer';
+import * as moment from 'moment'; 
 
 /**
  * Generated class for the AboutPage page.
@@ -22,16 +23,15 @@ import { ImageViewerController } from 'ionic-img-viewer'
 export class AboutPage {
 
   campaign:any;
-  kempen = {};
-
+  kempen :any;
   commentBadge : any;
   newsBadge : any;
-
+  remainingDays:any;
 	moreImg = [{image: "assets/img/health.jpg"} , {image: "assets/img/qurban.jpg"} , {image: "assets/img/bantu.jpg"}];
 
-items = [];
+  items = [];
 
-image:any;
+  image:any;
 
   constructor(public imgViewer:ImageViewerController, public loading:LoadingController, public modalCtrl:ModalController, public navParams:NavParams, public navCtrl: NavController , public viewCtrl: ViewController, public httpprovider:HttpProvider) {
 
@@ -51,9 +51,11 @@ image:any;
               // console.log(response)
               this.kempen = response.data;
               console.log(this.kempen)
-              this.commentBadge = response.data.comments.length;
-              this.newsBadge = response.data.news.length;
+              this.commentBadge = response.data.campaign_comments.length;
+              this.newsBadge = response.data.campaign_news.length;
               this.image = response.data.campaign_image;
+              this.remainingDays = moment(response.data.campaign_end_date, "YYYYMMDD").fromNow();
+              console.log(this.remainingDays)
             },
             err => {
               console.log(err);

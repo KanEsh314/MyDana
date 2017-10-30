@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 
 /**
  * Generated class for the UserDetailsPage page.
@@ -15,11 +15,19 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class UserDetailsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+profile:any;
+  constructor(public navCtrl: NavController,public viewCtrl:ViewController, public navParams: NavParams) {
+  
+  	this.profile = navParams.get('profile');
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad UserDetailsPage');
+  }
+
+  closeModal(){
+  	this.viewCtrl.dismiss();
   }
 
 }

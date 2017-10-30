@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, ToastController} from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, ToastController, ModalController} from 'ionic-angular';
 import { PayPal, PayPalConfiguration, PayPalPayment} from '@ionic-native/paypal';
-import { HttpProvider } from '../../providers/http/http'
+import { HttpProvider } from '../../providers/http/http';
+import { MyDonationPage } from '../my-donation/my-donation';
 
 /**
  * Generated class for the PaymentPage page.
@@ -25,7 +26,11 @@ export class PaymentPage {
 
   value : number = 0;
   
-  constructor(public toast:ToastController, public httpProvider:HttpProvider, public navCtrl: NavController, public navParams: NavParams, private payPal: PayPal, public viewCtrl : ViewController) {
+  constructor(public modalCtrl:ModalController, public toast:ToastController, public httpProvider:HttpProvider, public navCtrl: NavController, public navParams: NavParams, private payPal: PayPal, public viewCtrl : ViewController) {
+  
+
+   
+
   }
 
   ionViewDidLoad() {
@@ -36,30 +41,29 @@ export class PaymentPage {
     this.viewCtrl.dismiss();
   }
 
-  donateButton(){
+  donateButton(value){
 
-    let details = {
-          campaign_id : 1,
-          user_id : 1,
-          amount : this.value
-    }
+    let myModal = this.modalCtrl.create(MyDonationPage, {value});
+      myModal.present();
 
-    this.httpProvider.postFund(details).then((result) => {
-        const toast = this.toast.create({
-          message: 'Donate added successfully',
-          duration: 3000,
-          position: 'middle'
-        });
+    // this.httpProvider.postFund(details).then((result) => {
+    //     const toast = this.toast.create({
+    //       message: 'Donate added successfully',
+    //       duration: 3000,
+    //       position: 'middle'
+    //     });
 
-        toast.onDidDismiss(() => {
-          console.log('Dismissed toast');
-        });
+    //     toast.onDidDismiss(() => {
+    //       console.log('Dismissed toast');
+    //     });
 
-        toast.present();
-    }, (err) => {
-      console.log(err);
-    });
+    //     toast.present();
+    // }, (err) => {
+    //   console.log(err);
+    // });
   }
+
+
 
   payPalClick(){
 

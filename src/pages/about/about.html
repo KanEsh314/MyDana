@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar color="yayasan">
-  <ion-title>{{kempen.campaign_name}}</ion-title>
+  <ion-title>Kempen</ion-title>
     <ion-buttons right>
       <button ion-button icon-only (click)="closeModal()"><ion-icon name="ios-close-circle-outline"></ion-icon></button>
     </ion-buttons>
@@ -8,8 +8,8 @@
 
 </ion-header>
 
-<ion-content padding *ngIf="kempen">
-
+<ion-content padding >
+<div *ngIf="kempen">
     <ion-row>  
         <div>
         	<img src="{{image}}" >
@@ -26,7 +26,7 @@
   <div padding-bottom="10px">
     <h3>{{kempen.campaign_name}}</h3>
     <p>{{kempen.location}}</p>
-    <p>{{kempen.campaign_start_date}}-{{kempen.campaign_end_date}}</p>
+    <p>{{kempen.campaign_start_date | date:'dd/MM/yyyy'}} - {{kempen.campaign_end_date | date:'dd/MM/yyyy'}}</p>
   </div>
   	
 
@@ -38,7 +38,7 @@
   <div class="details">
     <p>RM{{kempen.fund_amount}} terkumpul setakat ini</p>
     <p>80% tepati sasaran</p>
-    <p>5 hari lagi</p>
+    <p>{{remainingDays}} lagi</p>
   </div>
   
     <ion-list>
@@ -57,5 +57,5 @@
     </ion-list>
 
     <button ion-button full round color="yayasan" (click)="donate()">Donate</button>
- 
+ </div>
 </ion-content>

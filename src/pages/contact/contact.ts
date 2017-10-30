@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, ModalController, Platform, ToastController, LoadingController } from 'ionic-angular';
 import { ArticleDetailsPage } from '../article-details/article-details';
+import { ArticleCommentPage } from '../article-comment/article-comment';
 import { HttpProvider } from '../../providers/http/http'
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { ActionSheetController } from 'ionic-angular';
@@ -46,6 +47,11 @@ export class ContactPage {
     let myModal = this.modalCtrl.create(ArticleDetailsPage, {article:article});
     myModal.present();
   
+  }
+
+  commentPress(article){
+    let myModal = this.modalCtrl.create(ArticleCommentPage, {article:article});
+    myModal.present();
   }
 
   shareButton() {

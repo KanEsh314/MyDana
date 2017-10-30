@@ -20,7 +20,7 @@ export class UpdatePage {
 
   constructor(public modalCtrl:ModalController, public navCtrl: NavController, public navParams: NavParams, public viewCtrl:ViewController) {
 
-    this.news = navParams.get('news');
+    this.news = navParams.get('campaign_news');
     console.log(this.news);
   }
 

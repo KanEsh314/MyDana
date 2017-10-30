@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, ToastController } from 'ionic-angular';
+import { HttpProvider } from '../../providers/http/http'
 
 /**
  * Generated class for the MyDonationPage page.
@@ -15,11 +16,68 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
 })
 export class MyDonationPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl:ViewController) {
+  donate:any;
+
+  constructor(public toast:ToastController, private httpprovider:HttpProvider, public navCtrl: NavController, public navParams: NavParams, public viewCtrl:ViewController) {
+
+    this.donate = navParams.get('value');
+    console.log(this.donate);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MyDonationPage');
+  }
+
+  confirmButton(){
+   let details = {
+            campaign_id : 1,
+            user_id : 1,
+            amount : this.donate,
+            status : 'success'
+      }
+
+         this.httpprovider.postFund(details).then((result) => {
+            const toast = this.toast.create({
+              message: 'Donate added successfully',
+              duration: 3000,
+              position: 'middle'
+            });
+
+            toast.onDidDismiss(() => {
+              console.log('Dismissed toast');
+            });
+
+            toast.present();
+        }, (err) => {
+          console.log(err);
+        });
+  }
+
+  failButton(){
+
+    let details = {
+          campaign_id : 1,
+          user_id : 1,
+          amount : this.donate,
+           status : 'fail'
+    }
+
+       this.httpprovider.postFund(details).then((result) => {
+          const toast = this.toast.create({
+            message: 'Donate added failed',
+            duration: 3000,
+            position: 'middle'
+          });
+
+          toast.onDidDismiss(() => {
+            console.log('Dismissed toast');
+          });
+
+          toast.present();
+      }, (err) => {
+        console.log(err);
+      });
+
   }
 
   closeModal(){

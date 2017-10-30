@@ -12,7 +12,7 @@
 
 <ion-content class="procss" >
 <div *ngIf="profile">
-<div text-center padding (click)="userDetails()">  
+<div text-center padding (click)="userDetails(profile)">  
   <img src="{{profile.image}}" class="user"> 
   <h2>{{profile.first_name}} {{profile.last_name}}</h2>
   <p>{{profile.email}}</p>
@@ -31,11 +31,13 @@
 <hr>
 <div text-center>
   <h2>Aktiviti</h2>
-  
+  <ion-list no-lines *ngFor="let activity of activities">  
     <ion-item text-center no-lines>
-      <h4>14 oct 2017</h4>
-      <p>Sumbangan ke kempen Qurban</p>
+      <h4>{{activity.donation_date.date  | date:'dd/MM/yyyy'}}</h4>
+      <p>Sumbangan ke {{activity.campaign_name}} sebanyak RM{{activity.amount}}</p>
+      <ion-icon name="arrow-round-down" *ngIf="activity > 1"></ion-icon>
     </ion-item>
+  </ion-list>
   
 </div>
 	<!-- <div class="main-cnt">

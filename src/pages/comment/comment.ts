@@ -29,10 +29,10 @@ export class CommentPage {
 
         load.present();
         this.kempen = navParams.get('kempen');
-        this.comments = this.kempen.comments;
-        // this.user = this.comments.users;
+        this.comments = this.kempen.campaign_comments;
+        // this.user = this.comments.user;
 
-        console.log(this.kempen.campaign_id)
+        // console.log(this.kempen.campaign_id)
         console.log(this.comments)
         load.dismiss();
 

@@ -19,6 +19,7 @@ import { HttpProvider } from '../../providers/http/http';
 export class ProfilePage {
 
   profile = {};
+  activities:any;
 
   constructor(public loading:LoadingController, public httpprovider:HttpProvider, public navCtrl: NavController, public navParams: NavParams, public modalCtrl:ModalController) {
   }
@@ -33,8 +34,9 @@ export class ProfilePage {
         this.httpprovider.getUserProfile().subscribe(
             response => {
              console.log(response);
-              this.profile = response.data[0];
-              console.log(this.profile)
+              this.profile = response.data;
+              this.activities = response.data.fund;
+              console.log(this.activities)
             },
             err => {
               console.log(err);

@@ -21,6 +21,8 @@ import { ForgetPasswordPage } from '../pages/forget-password/forget-password';
 import { ArticleDetailsPage } from '../pages/article-details/article-details';
 import { NewsDetailsPage } from '../pages/news-details/news-details';
 import { UserDetailsPage } from '../pages/user-details/user-details';
+import { MyDonationPage } from '../pages/my-donation/my-donation';
+import { ArticleCommentPage }  from '../pages/article-comment/article-comment';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -31,7 +33,8 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { AuthProvider } from '../providers/auth/auth';
 import { IonicStorageModule } from '@ionic/storage';
-import { IonicImageViewerModule } from 'ionic-img-viewer'
+import { IonicImageViewerModule } from 'ionic-img-viewer';
+import * as moment from 'moment';  
 
 
 @NgModule({
@@ -53,7 +56,9 @@ import { IonicImageViewerModule } from 'ionic-img-viewer'
     ForgetPasswordPage,
     ArticleDetailsPage,
     NewsDetailsPage,
-    UserDetailsPage
+    UserDetailsPage,
+    MyDonationPage,
+    ArticleCommentPage
   ],
   imports: [
     BrowserModule,
@@ -81,7 +86,9 @@ import { IonicImageViewerModule } from 'ionic-img-viewer'
     ForgetPasswordPage,
     ArticleDetailsPage,
     NewsDetailsPage,
-    UserDetailsPage
+    UserDetailsPage,
+    MyDonationPage,
+    ArticleCommentPage
   ],
   providers: [
     StatusBar,

@@ -14,7 +14,7 @@ import { ActionSheetController } from 'ionic-angular';
 export class HomePage {
 
   latestcampaign : any;
-
+  progressBar:any;
   sliderImage : any;
 
 	slideLength : boolean = false;
@@ -36,13 +36,16 @@ export class HomePage {
           console.log(data)
           this.latestcampaign = data.data;
           console.log(this.latestcampaign)
+          console.log(this.latestcampaign[0].fund_amount/this.latestcampaign[0].total_amount * 300)
+
+          console.log(this.latestcampaign.length)
         },
         err => {
           load.dismiss();
           console.log(err);
         },
         ()=>{
-          load.dismiss();
+          // load.dismiss();
         console.log('Latest is ok!')
       }
       );
@@ -54,11 +57,11 @@ export class HomePage {
           console.log(this.sliderImage)
         },
         err => {
-          // load.dismiss();
+          load.dismiss();
           console.log(err);
         },
         ()=>{
-          // load.dismiss();
+          load.dismiss();
         console.log('Slider is ok!')
       }
       );
@@ -148,5 +151,15 @@ export class HomePage {
       ]
     });
     actionSheet.present();
+}
+getWidth(id){
+
+
+  for (let campagin of this.latestcampaign){
+              if (id === campagin["campaign_id"]){
+             return (campagin["fund_amount"]/campagin["total_amount"]*300)+"px";
+           }
+        }
+  return "0px";
 }
 }
