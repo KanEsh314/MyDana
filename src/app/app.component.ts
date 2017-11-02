@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
+import { Deeplinks } from '@ionic-native/deeplinks'
 import { TabsPage } from '../pages/tabs/tabs';
 
 
@@ -18,7 +18,7 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public deeplinks:Deeplinks, public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
   }
 
@@ -30,31 +30,40 @@ export class MyApp {
       this.splashScreen.hide();
   
     });
-  /*  FCMPlugin.onNotification(
-    function(data){
-        if(data.wasTapped){
-//Notification was received on device tray and tapped by the user.
-            alert("Tapped: " +  JSON.stringify(data) );
-        }else{
-//Notification was received in foreground. Maybe the user needs to be notified.
-            alert("Not tapped: " + JSON.stringify(data) );
-        }
-    },
-    function(msg){
-        alert('onNotification callback successfully registered: ' + msg);
-        console.log('onNotification callback successfully registered: ' + msg);
-    },
-    function(err){
-        alert('Error registering onNotification callback: ' + err);
-        console.log('Error registering onNotification callback: ' + err);
-    }
-);*/
-
-
-
- 
-
 }
+
+ngAfterViewInit() {
+    this.platform.ready().then(() => {
+      
+    this.deeplinks.route({
+     '/tabs': TabsPage
+     // '/universal-links-test': AboutPage,
+     // '/products/:productId': ProductPage
+   }).subscribe((match) => {
+     // match.$route - the route we matched, which is the matched entry from the arguments to route()
+     // match.$args - the args passed in the link
+     // match.$link - the full link data
+     console.log('Successfully matched route', match);
+   }, (nomatch) => {
+     // nomatch.$link - the full link data
+     console.error('Got a deeplink that didn\'t match', nomatch);
+   });
+      
+// this.deeplinks.routeWithNavController(this.navCtrl, {
+//   '/about-us': TabsPage,
+//   // '/products/:productId': ProductPage
+// }).subscribe((match) => {
+//     // match.$route - the route we matched, which is the matched entry from the arguments to route()
+//     // match.$args - the args passed in the link
+//     // match.$link - the full link data
+//     console.log('Successfully matched route', match);
+//   }, (nomatch) => {
+//     // nomatch.$link - the full link data
+//     console.error('Got a deeplink that didn\'t match', nomatch);
+//   });
+
+    })
+  }
 
   openPage(page){
     this.nav.setRoot(page.component);

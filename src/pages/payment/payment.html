@@ -17,114 +17,50 @@
 </ion-header>
 
 <ion-content padding>
-	<ion-grid>
-		<ion-row>
-			<ion-col>
-				<div>
-					<h1>Your Pledge</h1>
-				</div>
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				<div text-left>
-					Your $9.00 pledge to Angee.The First Truly Autonomous Home Security System has been 
-					decline by your card provider.
-				</div>
-				<div text-left>
-					This error is usually caused by a recently expired, canceled, or maxed-out credit or debit card.
-				</div>
-				<div text-left>
-					To correct this error and complete your pledge, click the button below and update your pledge
-					with a different card.
-				</div>
-			</ion-col>
-		</ion-row>
+
 		
 		<ion-row>
 			<ion-col>
 				 <ion-range min="0" max="2000" [(ngModel)]="value" snaps="true"></ion-range>
 			</ion-col>
 		</ion-row>
-		<ion-row text-center>
-			<ion-col>
-				<h5>Tetapkan Nilai</h5>
-			</ion-col>
-			<ion-col>
-				<h5>RM {{value}}</h5>
-			</ion-col>
-		</ion-row>
-		<button ion-button full round color="yayasan" (click)="donateButton(value)">Donate Button</button>
-	</ion-grid>
 
-	<ion-grid>
-		<ion-row>
-			<ion-col>
-				<div>
-					<h1>Select Payment Method</h1>
-				</div>
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				<div>
-					<ion-item>
-        				<ion-radio value="golang" checked="true">
-        				</ion-radio><ion-label>Cash</ion-label>
-      				</ion-item>
-      				<ion-item>
-        				<ion-radio value="golang"></ion-radio>
-        				<ion-label>Card</ion-label>
-      				</ion-item>
-				</div>
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				<div>
-      				<ion-input type="text" placeholder="Name"></ion-input>
-        		</div>
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				<div>
-					<ion-input type="text" placeholder="Card Number"></ion-input>
-				</div>
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				<div>
-					<ion-input type="text" placeholder="Card Number"></ion-input>
-				</div>
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-			<div>
-				<ion-item>
-      				<ion-label>Expiration</ion-label>
-      				<ion-datetime displayFormat="MMM YYYY" [(ngModel)]="event.month"></ion-datetime>
-    			</ion-item>
-    		</div>	
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				<div>
-					<ion-input type="number" placeholder="CCV"></ion-input>
-				</div>
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				<div>
-					By pledging you agree to kickstarter's Terms of Use and Privacy Policy
+<form [formGroup]="donationForm" (submit)="donate()" novalidate>
 
-					<button ion-button round full (click)=payPalClick()>Pledge</button>
-				</div>
-			</ion-col>
-		</ion-row>
-	</ion-grid>
+  	<ion-item>
+      <ion-label stacked>Amount</ion-label>
+      <ion-input formControlName="amount" type="text"
+        [class.invalid]="!donationForm.controls.amount.valid && donationForm.controls.amount.dirty" value="{{value}}"></ion-input>
+    </ion-item>
+
+    <ion-item class="error-message" 
+      *ngIf="!donationForm.controls.amount.valid && donationForm.controls.amount.dirty">
+      <p>
+        Amount is required.
+      </p>amount
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Campaign ID</ion-label>
+      <ion-input formControlName="campaign_id" type="text" 
+        [class.invalid]="!donationForm.controls.campaign_id.valid && donationForm.controls.campaign_id.dirty">
+      </ion-input>
+    </ion-item>
+
+    <ion-item class="error-message" 
+      *ngIf="!donationForm.controls.campaign_id.valid && donationForm.controls.campaign_id.dirty">
+      <p>
+        Campaign ID is required.
+      </p>
+    </ion-item>
+
+
+    <button ion-button block type="submit" [disabled]="!donationForm.valid">
+      Donate
+    </button>
+
+  </form>
+		
+
+	
 </ion-content>

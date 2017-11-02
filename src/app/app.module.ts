@@ -34,6 +34,8 @@ import { GooglePlus } from '@ionic-native/google-plus';
 import { AuthProvider } from '../providers/auth/auth';
 import { IonicStorageModule } from '@ionic/storage';
 import { IonicImageViewerModule } from 'ionic-img-viewer';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { Deeplinks } from '@ionic-native/deeplinks';
 import * as moment from 'moment';  
 
 
@@ -99,7 +101,9 @@ import * as moment from 'moment';
     HttpProvider,
     SocialSharing,
     GooglePlus,
-    AuthProvider
+    AuthProvider,
+    InAppBrowser,
+    Deeplinks,
   ]
 })
 export class AppModule {}

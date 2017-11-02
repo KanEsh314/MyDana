@@ -3,13 +3,8 @@ import { IonicPage, NavController, NavParams, ViewController, ToastController, M
 import { PayPal, PayPalConfiguration, PayPalPayment} from '@ionic-native/paypal';
 import { HttpProvider } from '../../providers/http/http';
 import { MyDonationPage } from '../my-donation/my-donation';
-
-/**
- * Generated class for the PaymentPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 @IonicPage()
 @Component({
@@ -25,92 +20,48 @@ export class PaymentPage {
   }
 
   value : number = 0;
+  public donationForm:FormGroup;
   
-  constructor(public modalCtrl:ModalController, public toast:ToastController, public httpProvider:HttpProvider, public navCtrl: NavController, public navParams: NavParams, private payPal: PayPal, public viewCtrl : ViewController) {
-  
-
-   
-
+  constructor(public iab:InAppBrowser, public formBuilder:FormBuilder, public modalCtrl:ModalController, public toast:ToastController, public httpProvider:HttpProvider, public navCtrl: NavController, public navParams: NavParams, private payPal: PayPal, public viewCtrl : ViewController) {
+      
+      this.donationForm = formBuilder.group({
+            amount: ['', Validators.compose([Validators.required])],
+            campaign_id: ['', Validators.compose([Validators.required])]
+        });
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PaymentPage');
   }
 
-  closeModal(){
-    this.viewCtrl.dismiss();
-  }
+ 
+  donate(){
 
-  donateButton(value){
+    if(!this.donationForm.valid){
+        // console.log(this.registerForm.value);
+    }
+    else {
+          console.log("success!")
+          // console.log(this.registerForm.value);
 
-    let myModal = this.modalCtrl.create(MyDonationPage, {value});
-      myModal.present();
+          let details = this.donationForm.value;
+          console.log(details);
 
-    // this.httpProvider.postFund(details).then((result) => {
-    //     const toast = this.toast.create({
-    //       message: 'Donate added successfully',
-    //       duration: 3000,
-    //       position: 'middle'
-    //     });
+  
 
-    //     toast.onDidDismiss(() => {
-    //       console.log('Dismissed toast');
-    //     });
+          this.httpProvider.molpay(details).then((result) => {
 
-    //     toast.present();
-    // }, (err) => {
-    //   console.log(err);
-    // });
-  }
-
-
-
-  payPalClick(){
-
-      this.payPal.init({
-      PayPalEnvironmentProduction: 'YOUR_PRODUCTION_CLIENT_ID',
-      PayPalEnvironmentSandbox: 'YOUR_SANDBOX_CLIENT_ID'
-      }).then(() => {
-
-      // Environments: PayPalEnvironmentNoNetwork, PayPalEnvironmentSandbox, PayPalEnvironmentProduction
-      this.payPal.prepareToRender('PayPalEnvironmentSandbox', new PayPalConfiguration({
-
-        // Only needed if you get an "Internal Service Error" after PayPal login!
-        //payPalShippingAddressOption: 2 // PayPalShippingAddressOptionPayPal
-
-      })).then(() => {
-
-        let payment = new PayPalPayment('3.33', 'USD', 'Description', 'sale');
-        this.payPal.renderSinglePaymentUI(payment).then(() => {
-          console.log("Successfully paid");
-
-          // Example sandbox response
-          //
-          // {
-          //   "client": {
-          //     "environment": "sandbox",
-          //     "product_name": "PayPal iOS SDK",
-          //     "paypal_sdk_version": "2.16.0",
-          //     "platform": "iOS"
-          //   },
-          //   "response_type": "payment",
-          //   "response": {
-          //     "id": "PAY-1AB23456CD789012EF34GHIJ",
-          //     "state": "approved",
-          //     "create_time": "2016-10-03T13:33:33Z",
-          //     "intent": "sale"
-          //   }
-          // }
-        }, () => {
-          // Error or render dialog closed without being successful
-        });
-      }, () => {
-        // Error in configuration
+            console.log(result);
+            const browser = this.iab.create(result.toString());
+        },
+          (err) => {
+          console.log(err);
       });
-    }, () => {
-      // Error in initialization, maybe PayPal isn't supported or something else
-    });
+    }
+  }
 
-      }
+ closeModal(){
+    this.viewCtrl.dismiss();
+ }
 
 }
