@@ -27,6 +27,7 @@ export class AboutPage {
   commentBadge : any;
   newsBadge : any;
   remainingDays:any;
+  percentage:any;
 	moreImg = [{image: "assets/img/health.jpg"} , {image: "assets/img/qurban.jpg"} , {image: "assets/img/bantu.jpg"}];
 
   items = [];
@@ -55,7 +56,8 @@ export class AboutPage {
               this.newsBadge = response.data.campaign_news.length;
               this.image = response.data.campaign_image;
               this.remainingDays = moment(response.data.campaign_end_date, "YYYYMMDD").fromNow();
-              console.log(this.remainingDays)
+              this.percentage = (response.data.fund_amount/response.data.total_amount)*100;
+              console.log(this.percentage)
             },
             err => {
               console.log(err);
@@ -76,6 +78,14 @@ imageTapped(image){
 
    commentsTapped(kempen){
     let myModal = this.modalCtrl.create(CommentPage, {kempen:kempen});
+
+    myModal.onDidDismiss(data => {
+       console.log(data);
+      if(data == true){
+       this.ionViewDidLoad();
+      }
+
+    });
     myModal.present();
   }
 
@@ -93,8 +103,8 @@ imageTapped(image){
     this.viewCtrl.dismiss();
   }
 
-  donate(){
-    let myModal = this.modalCtrl.create(PaymentPage);
+  donate(kempen){
+    let myModal = this.modalCtrl.create(PaymentPage, kempen);
     myModal.present();
   }
 }

@@ -40,21 +40,6 @@
       </p>amount
     </ion-item>
 
-    <ion-item>
-      <ion-label stacked>Campaign ID</ion-label>
-      <ion-input formControlName="campaign_id" type="text" 
-        [class.invalid]="!donationForm.controls.campaign_id.valid && donationForm.controls.campaign_id.dirty">
-      </ion-input>
-    </ion-item>
-
-    <ion-item class="error-message" 
-      *ngIf="!donationForm.controls.campaign_id.valid && donationForm.controls.campaign_id.dirty">
-      <p>
-        Campaign ID is required.
-      </p>
-    </ion-item>
-
-
     <button ion-button block type="submit" [disabled]="!donationForm.valid">
       Donate
     </button>

@@ -1,3 +1,23 @@
 page-user-details {
 
+	.user {
+	  display: inline-block;
+	  width: 150px;
+	  height: 150px;
+	  border: solid;
+	  border-radius: 50%;
+
+	  object-fit: cover;
+	}
+
+	  .card-title {
+	  	background-color: transparent;
+	    position: absolute;
+	    top: 36%;
+	    font-size: 2.0em;
+	    width: 100%;
+	    font-weight: bold;
+	    color: #000;
+	  }
+
 }

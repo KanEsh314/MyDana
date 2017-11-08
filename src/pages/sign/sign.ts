@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController, ViewController, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, ViewController, LoadingController, ToastController } from 'ionic-angular';
 import { Facebook, FacebookLoginResponse} from '@ionic-native/facebook';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { RegisterPage } from '../register/register';
@@ -25,7 +25,7 @@ export class SignPage {
   loginForm : FormGroup;
   response: any;
 
-  constructor(public authprovider:AuthProvider, public loading:LoadingController, public google:GooglePlus, public viewCtrl:ViewController, public modalCtrl:ModalController, public navCtrl: NavController, public navParams: NavParams, private fb:Facebook, public formBuilder:FormBuilder) {
+  constructor(public toast:ToastController, public authprovider:AuthProvider, public loading:LoadingController, public google:GooglePlus, public viewCtrl:ViewController, public modalCtrl:ModalController, public navCtrl: NavController, public navParams: NavParams, private fb:Facebook, public formBuilder:FormBuilder) {
     this.loginForm = formBuilder.group({
       name : ['', Validators.compose([Validators.maxLength(30), Validators.required])],
       password : ['', Validators.compose([Validators.minLength(8), Validators.required])]
@@ -96,7 +96,7 @@ export class SignPage {
             load.present();
 
             this.authprovider.login(details).then(result => {
-            
+            console.log('result')
             console.log(result);
             this.navCtrl.setRoot(TabsPage);
             load.dismiss();
@@ -104,6 +104,12 @@ export class SignPage {
           (err) => {
               console.log(err);
               load.dismiss();
+              const toast = this.toast.create({
+                message: 'Login Fail',
+                duration: 3000,
+                position: 'middle'
+              });
+               toast.present();
         });
     }
   }

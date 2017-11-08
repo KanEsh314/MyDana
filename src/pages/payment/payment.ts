@@ -20,13 +20,17 @@ export class PaymentPage {
   }
 
   value : number = 0;
+  campaignId : any;
+
   public donationForm:FormGroup;
   
   constructor(public iab:InAppBrowser, public formBuilder:FormBuilder, public modalCtrl:ModalController, public toast:ToastController, public httpProvider:HttpProvider, public navCtrl: NavController, public navParams: NavParams, private payPal: PayPal, public viewCtrl : ViewController) {
       
+      this.campaignId = navParams.get('campaign_id');
+
       this.donationForm = formBuilder.group({
             amount: ['', Validators.compose([Validators.required])],
-            campaign_id: ['', Validators.compose([Validators.required])]
+            campaign_id : this.campaignId
         });
   }
 

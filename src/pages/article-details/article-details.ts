@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, LoadingController, ModalController } from 'ionic-angular';
+import { ArticleCommentPage } from '../article-comment/article-comment';
 
 /**
  * Generated class for the ArticleDetailsPage page.
@@ -17,7 +18,7 @@ export class ArticleDetailsPage {
 
 	details :any;
 
-  constructor(public loading:LoadingController, public viewCtrl:ViewController, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public modalCtrl:ModalController, public loading:LoadingController, public viewCtrl:ViewController, public navCtrl: NavController, public navParams: NavParams) {
 
      let load = this.loading.create({
       content: 'Please wait...'
@@ -31,6 +32,21 @@ export class ArticleDetailsPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ArticleDetailsPage');
+  }
+
+  commentsTapped(details){
+
+    let myModal = this.modalCtrl.create(ArticleCommentPage, details);
+
+    myModal.onDidDismiss(data => {
+       
+      if(data == true){
+       this.ionViewDidLoad();
+      }
+
+    });
+    myModal.present();
+
   }
 
   closeModal(){

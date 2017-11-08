@@ -31,6 +31,7 @@ export class ContactPage {
         console.log(response)
         this.articles = response.data;
         console.log(this.articles)
+        console.log('sini')
       },
       err => {
         console.log(err);
@@ -51,6 +52,14 @@ export class ContactPage {
 
   commentPress(article){
     let myModal = this.modalCtrl.create(ArticleCommentPage, {article:article});
+
+    myModal.onDidDismiss(data => {
+       
+      if(data == true){
+       this.ionViewDidLoad();
+      }
+
+    });
     myModal.present();
   }
 

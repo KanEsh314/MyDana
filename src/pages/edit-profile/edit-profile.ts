@@ -24,6 +24,9 @@ export class EditProfilePage {
 
   constructor(public toast:ToastController, public formBuilder:FormBuilder, public httpprovider:HttpProvider, public loading:LoadingController, public navCtrl: NavController, public navParams: NavParams, public viewCtrl:ViewController) {
       
+      this.profile = navParams.get('profile');
+      console.log(this.profile)
+
       this.editForm = formBuilder.group({
       name : ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
       first_name : ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
@@ -42,27 +45,27 @@ export class EditProfilePage {
   }
 
   ionViewDidLoad(){
-    let load = this.loading.create({
-      content: 'Please wait...'
-      });
+    // let load = this.loading.create({
+    //   content: 'Please wait...'
+    //   });
 
-        load.present();
+    //     load.present();
 
-        this.httpprovider.getUserProfile().subscribe(
-            response => {
-             console.log(response);
-              this.profile = response.data[0];
-              console.log(this.profile)
-            },
-            err => {
-              console.log(err);
-              load.dismiss();
-            },
-            ()=>{
-              load.dismiss()
-            console.log('user profile revealed!')
-          }
-      );
+    //     this.httpprovider.getUserProfile().subscribe(
+    //         response => {
+    //          console.log(response);
+    //           this.profile = response.data[0];
+    //           console.log(this.profile)
+    //         },
+    //         err => {
+    //           console.log(err);
+    //           load.dismiss();
+    //         },
+    //         ()=>{
+    //           load.dismiss()
+    //         console.log('user profile revealed!')
+    //       }
+    //   );
   }
 
 save(){

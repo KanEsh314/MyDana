@@ -28,7 +28,7 @@ export class ArticleCommentPage {
   }
 
   closeModal(){
-  	this.viewCtrl.dismiss();
+  	this.viewCtrl.dismiss(false);
   }
 
 }

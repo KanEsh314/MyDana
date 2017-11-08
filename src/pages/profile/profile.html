@@ -34,7 +34,7 @@
   <ion-list no-lines *ngFor="let activity of activities">  
     <ion-item text-center no-lines>
       <h4>{{activity.donation_date.date  | date:'dd/MM/yyyy'}}</h4>
-      <p>Sumbangan ke {{activity.campaign_name}} sebanyak RM{{activity.amount}}</p>
+      <p text-wrap>Sumbangan ke {{activity.campaign_name}} sebanyak RM{{activity.amount}}</p>
       <ion-icon name="arrow-round-down" *ngIf="activity > 1"></ion-icon>
     </ion-item>
   </ion-list>
@@ -60,7 +60,5 @@
 
 	</ion-list>
 </div>
-
-<button *ngIf="!profile">login</button>
 
 </ion-content>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController, LoadingController } from 'ionic-angular';
-import { HttpProvider } from '../../providers/http/http'
+import { HttpProvider } from '../../providers/http/http';
+import { Storage } from '@ionic/storage';
 
 /**
  * Generated class for the CommentPage page.
@@ -20,9 +21,13 @@ export class CommentPage {
   userComment = '';
   kempen:any;
   user:any;
+  token:any;
 
-  constructor(public loading:LoadingController, public navCtrl: NavController, public navParams: NavParams, public httpprovider:HttpProvider, public viewCtrl:ViewController) {
+  constructor(private storage:Storage, public loading:LoadingController, public navCtrl: NavController, public navParams: NavParams, public httpprovider:HttpProvider, public viewCtrl:ViewController) {
   
+    this.token = this.storage.get('token');
+    console.log(this.token)
+
     let load = this.loading.create({
       content: 'Please wait...'
       });
@@ -30,16 +35,12 @@ export class CommentPage {
         load.present();
         this.kempen = navParams.get('kempen');
         this.comments = this.kempen.campaign_comments;
-        // this.user = this.comments.user;
-
-        // console.log(this.kempen.campaign_id)
-        console.log(this.comments)
         load.dismiss();
 
   }
 
   closeModal(){
-    this.viewCtrl.dismiss();
+    this.viewCtrl.dismiss(false);
   }
 
    sendComment(){
@@ -58,12 +59,18 @@ export class CommentPage {
      load.present();
 
     this.httpprovider.postComment(details).then((result) => {
-      console.log('sini');
+
       load.dismiss();
-      this.viewCtrl.dismiss();
+      this.viewCtrl.dismiss(true);
+
     }, (err) => {
+
       console.log(err);
       load.dismiss();
+
     });
+
+
+    
   }
 }

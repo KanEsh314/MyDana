@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, ModalController } from 'ionic-angular';
+import { EditProfilePage } from '../edit-profile/edit-profile'
 
 /**
  * Generated class for the UserDetailsPage page.
@@ -16,9 +17,10 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
 export class UserDetailsPage {
 
 profile:any;
-  constructor(public navCtrl: NavController,public viewCtrl:ViewController, public navParams: NavParams) {
+  constructor(public modalCtrl:ModalController, public navCtrl: NavController,public viewCtrl:ViewController, public navParams: NavParams) {
   
   	this.profile = navParams.get('profile');
+    console.log(this.profile)
 
   }
 
@@ -28,6 +30,11 @@ profile:any;
 
   closeModal(){
   	this.viewCtrl.dismiss();
+  }
+
+  editProfile(profile){
+    let myModal = this.modalCtrl.create(EditProfilePage, {profile:profile});
+    myModal.present();
   }
 
 }

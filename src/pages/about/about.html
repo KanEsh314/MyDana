@@ -37,7 +37,7 @@
 
   <div class="details">
     <p>RM{{kempen.fund_amount}} terkumpul setakat ini</p>
-    <p>80% tepati sasaran</p>
+    <p>{{percentage}}% tepati sasaran</p>
     <p>{{remainingDays}} lagi</p>
   </div>
   
@@ -56,6 +56,6 @@
       </ion-item> -->
     </ion-list>
 
-    <button ion-button full round color="yayasan" (click)="donate()">Donate</button>
+    <button ion-button full round color="yayasan" (click)="donate(kempen)">Donate</button>
  </div>
 </ion-content>
