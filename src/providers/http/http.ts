@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions } from '@angular/http';
+import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 /*
@@ -35,14 +35,16 @@ export class HttpProvider {
     .map(res => res.json())
   }
 
-  getUserProfile(token){
-
-    let headers = new Headers();
-    headers.append('Authorization','Bearer ' + token);
-
-    var options = new RequestOptions({headers:headers})
-    return this.http.get("https://mydana.herokuapp.com/api/user/", options)
+  getUserProfile(){
+    return this.http.get("https://mydana.herokuapp.com/api/user/1")
     .map(res => res.json())
+
+    // let headers = new Headers();
+    // headers.append('Authorization','Bearer ' + token);
+
+    // var options = new RequestOptions({headers:headers})
+    // return this.http.get("https://mydana.herokuapp.com/api/user/", options)
+    // .map(res => res.json())
   }
 
   postComment(details){

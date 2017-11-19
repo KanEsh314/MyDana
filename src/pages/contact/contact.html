@@ -7,6 +7,9 @@
 </ion-header>
 
 <ion-content>
+  <ion-item-divider><div><h1>
+    Artikel
+  </h1></div></ion-item-divider>
 
   <ion-card *ngFor="let article of articles">
   <div (click)="details(article)">
@@ -15,14 +18,13 @@
     <ion-card-content >
     
       
-      <ion-card-title>
-      {{article.article_title}}
-      <p>{{article.source}} || {{article.article_date}}</p>
+      
+      <strong>{{article.article_title}}</strong>
+      <p>{{article.article_date | date:'dd/MM/yyyy'}}</p>
       <hr>
-      </ion-card-title>
+      
       <div>
-        <h4>{{article.article_date}}</h4>
-        <h4>{{article.source}}</h4>
+        <p>{{article.source}}</p>
       </div>
       
   </ion-card-content>

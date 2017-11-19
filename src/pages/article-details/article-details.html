@@ -21,11 +21,12 @@
 	<img src="{{details.header_image}}">
 
 	<div padding-top=5px>
-      <p>{{details.source}}</p>
-	    <h3>{{details.article_title}}</h3>
+	    <strong>{{details.article_title}}</strong>
 	    <p padding-top=10px text-wrap>{{details.article_date}}</p>
+      <p>{{details.source}}</p>
 	</div>
-  <ion-list padding-top=5px>
+
+<ion-list padding-top=5px>
   <ion-item (click)="commentsTapped(details)">Comments 
         <ion-badge color="yayasan" item-end></ion-badge>
   </ion-item>

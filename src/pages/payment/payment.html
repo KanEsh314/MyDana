@@ -18,6 +18,8 @@
 
 <ion-content padding>
 
+  <h4>{{campaign.campaign_name}}</h4>
+
 		
 		<ion-row>
 			<ion-col>
@@ -28,9 +30,9 @@
 <form [formGroup]="donationForm" (submit)="donate()" novalidate>
 
   	<ion-item>
-      <ion-label stacked>Amount</ion-label>
+      <ion-label stacked>Tetapkan Nilai</ion-label>
       <ion-input formControlName="amount" type="text"
-        [class.invalid]="!donationForm.controls.amount.valid && donationForm.controls.amount.dirty" value="{{value}}"></ion-input>
+        [class.invalid]="!donationForm.controls.amount.valid && donationForm.controls.amount.dirty" value="RM {{value}}"></ion-input>
     </ion-item>
 
     <ion-item class="error-message" 

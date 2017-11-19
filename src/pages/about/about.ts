@@ -28,6 +28,7 @@ export class AboutPage {
   newsBadge : any;
   remainingDays:any;
   percentage:any;
+  progressbar : any;
 	moreImg = [{image: "assets/img/health.jpg"} , {image: "assets/img/qurban.jpg"} , {image: "assets/img/bantu.jpg"}];
 
   items = [];
@@ -57,7 +58,7 @@ export class AboutPage {
               this.image = response.data.campaign_image;
               this.remainingDays = moment(response.data.campaign_end_date, "YYYYMMDD").fromNow();
               this.percentage = (response.data.fund_amount/response.data.total_amount)*100;
-              console.log(this.percentage)
+              this.progressbar = ((response.data.fund_amount/response.data.total_amount)*300)+"px";
             },
             err => {
               console.log(err);
@@ -104,7 +105,7 @@ imageTapped(image){
   }
 
   donate(kempen){
-    let myModal = this.modalCtrl.create(PaymentPage, kempen);
+    let myModal = this.modalCtrl.create(PaymentPage, {kempen:kempen});
     myModal.present();
   }
 }

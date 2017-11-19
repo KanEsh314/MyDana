@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content class="home">
-   <ion-slides pager autoplay="5000" loop="true" speed="3000" *ngIf="sliderImage && sliderImage.length">
+   <ion-slides pager autoplay="5000" loop="true" speed="3000" *ngIf="sliderImage && sliderImage.length" class="slideSize">
   <!-- <ion-slides pager autoplay="5000" loop="true" speed="3000"> -->
     <ion-slide *ngFor="let slide of sliderImage">
 
@@ -23,29 +23,29 @@
     <img src="{{campaign.campaign_image}}">
     <!-- <img src="assets/img/health.jpg" /> -->
     <ion-card-content >
-    <div class="cardTitle">
-      <h2>{{campaign.campaign_name}}</h2>
-    </div>
-      <ion-card-title>
-      <div padding-bottom=10px>
-        <p>{{campaign.organiser}}</p>
-        <p>{{campaign.location}}</p>
-        <p>{{campaign.campaign_start_date  | date:'dd/MM/yyyy'}} - {{campaign.campaign_end_date | date:'dd/MM/yyyy'}}</p>
-      </div>
+      <h6>{{campaign.category_id}}</h6>
+      <ion-card-title> 
+        <h2 text-wrap>{{campaign.campaign_name}}</h2>
       </ion-card-title>
+     <!--  <ion-card-title>
+      <div padding-bottom=10px>
+        <p>Anjuran : {{campaign.organiser}}</p>
+        <p>Lokasi  : {{campaign.location}}</p>
+        <p>Tarikh  : {{campaign.campaign_start_date  | date:'dd/MM/yyyy'}} - {{campaign.campaign_end_date | date:'dd/MM/yyyy'}}</p>
+      </div>
+      </ion-card-title> -->
         <p>{{campaign.short_desc}}</p>
 
         <div class="process">
           <div class="raised">
-
             <span [ngStyle]="{'width':getWidth(campaign.campaign_id)}"></span>
           </div>
         </div>
       
       
-      <div class="detailUpdate">
-        RM {{campaign.fund_amount}} terkumpul
-      </div>
+      <p><strong>RM {{campaign.fund_amount}}</strong> terkumpul setakat ini</p>
+      <p><strong>{{(campaign.fund_amount/campaign.total_amount)*100}}%</strong> tepati sasaran</p>
+      <p><strong>{{remainingDays}}</strong> lagi</p>
       
   </ion-card-content>
   </div>
@@ -56,19 +56,18 @@
       <ion-col text-left>
         <button ion-button clear small color="danger" icon-start (click)=commentPress(campaign)>
         <ion-icon name='chatbubbles'></ion-icon>
-          Comment
         </button>
       </ion-col>
       <ion-col text-left>
         <button ion-button clear small color="danger" icon-start>
         <ion-icon name="thumbs-up"></ion-icon>
-        Like
+        
         </button>
       </ion-col>
       <ion-col text-left>
-        <button ion-button clear small color="danger" icon-start (click)="shareButton()">
+        <button ion-button clear small color="danger" (click)="shareButton()">
         <ion-icon name='share-alt'></ion-icon>
-          Share
+          
         </button>
       </ion-col>
     </ion-row>

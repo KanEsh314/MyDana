@@ -6,6 +6,7 @@ import { CommentPage } from '../comment/comment';
 import { HttpProvider } from '../../providers/http/http';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { ActionSheetController } from 'ionic-angular';
+import * as moment from 'moment'; 
 
 @Component({
   selector: 'page-home',
@@ -16,7 +17,8 @@ export class HomePage {
   latestcampaign : any;
   progressBar:any;
   sliderImage : any;
-
+  remainingDays : any;
+  percentage : any;
 	slideLength : boolean = false;
 
   constructor(public toast:ToastController, public loading:LoadingController, public actionSheetCtrl: ActionSheetController, public navCtrl: NavController, public modalCtrl:ModalController, public httpprovider:HttpProvider, public navParams:NavParams, public socialSharing:SocialSharing) {
@@ -36,9 +38,8 @@ export class HomePage {
           console.log(data)
           this.latestcampaign = data.data;
           console.log(this.latestcampaign)
-          console.log(this.latestcampaign[0].fund_amount/this.latestcampaign[0].total_amount * 300)
-
-          console.log(this.latestcampaign.length)
+          this.remainingDays = moment(data.data.campaign_end_date, "YYYYMMDD").fromNow();
+          this.percentage = (data.data.fund_amount/data.data.total_amount)*100;
         },
         err => {
           load.dismiss();

@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams, ModalController, LoadingController
 import { AboutUsPage } from '../about-us/about-us';
 import { UserDetailsPage} from '../user-details/user-details';
 import { HttpProvider } from '../../providers/http/http';
-import { Storage } from '@ionic/storage';
 
 /**
  * Generated class for the ProfilePage page.
@@ -21,24 +20,18 @@ export class ProfilePage {
 
   profile : any;
   activities:any;
-  token:any;
 
-  constructor(public storage:Storage, public loading:LoadingController, public httpprovider:HttpProvider, public navCtrl: NavController, public navParams: NavParams, public modalCtrl:ModalController) {
+  constructor(public loading:LoadingController, public httpprovider:HttpProvider, public navCtrl: NavController, public navParams: NavParams, public modalCtrl:ModalController) {
   }
 
   ionViewDidLoad(){
-
-      let load = this.loading.create({
+    let load = this.loading.create({
       content: 'Please wait...'
       });
 
         load.present();
 
-    this.storage.get('token').then((token)=>{
-
-      console.log(token);
-      
-      this.httpprovider.getUserProfile(token).subscribe(
+        this.httpprovider.getUserProfile().subscribe(
             response => {
              console.log(response);
               this.profile = response.data;
@@ -54,7 +47,34 @@ export class ProfilePage {
             console.log('user profile revealed!')
           }
       );
-    });
+
+    //      let load = this.loading.create({
+    //   content: 'Please wait...'
+    //   });
+
+    //     load.present();
+
+    // this.storage.get('token').then((token)=>{
+
+    //   console.log(token);
+      
+    //   this.httpprovider.getUserProfile(token).subscribe(
+    //         response => {
+    //          console.log(response);
+    //           this.profile = response.data;
+    //           this.activities = response.data.fund;
+    //           console.log(this.activities)
+    //         },
+    //         err => {
+    //           console.log(err);
+    //           load.dismiss();
+    //         },
+    //         ()=>{
+    //           load.dismiss()
+    //         console.log('user profile revealed!')
+    //       }
+    //   );
+    // });
   }
   
   aboutUs(){
@@ -66,5 +86,7 @@ export class ProfilePage {
     let myModal = this.modalCtrl.create(UserDetailsPage, {profile:profile});
     myModal.present();
   }
+
+
 
 }
