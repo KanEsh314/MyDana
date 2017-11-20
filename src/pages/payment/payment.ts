@@ -22,17 +22,17 @@ export class PaymentPage {
   value : number = 0;
   campaign : any;
 
-  public donationForm:FormGroup;
+  // public donationForm:FormGroup;
   
   constructor(public iab:InAppBrowser, public formBuilder:FormBuilder, public modalCtrl:ModalController, public toast:ToastController, public httpProvider:HttpProvider, public navCtrl: NavController, public navParams: NavParams, private payPal: PayPal, public viewCtrl : ViewController) {
       
       this.campaign = navParams.get('kempen');
       console.log(this.campaign);
 
-      this.donationForm = formBuilder.group({
-            amount: ['', Validators.compose([Validators.required])],
-            campaign_id : this.campaign.campaign_id
-        });
+      // this.donationForm = formBuilder.group({
+      //       amount: ['', Validators.compose([Validators.required])],
+      //       campaign_id : this.campaign.campaign_id
+      //   });
   }
 
   ionViewDidLoad() {
@@ -42,17 +42,20 @@ export class PaymentPage {
  
   donate(){
 
-    if(!this.donationForm.valid){
-        // console.log(this.registerForm.value);
-    }
-    else {
-          console.log("success!")
-          // console.log(this.registerForm.value);
+    // if(!this.donationForm.valid){
+    //     // console.log(this.registerForm.value);
+    // }
+    // else {
+    //       console.log("success!")
+    //       // console.log(this.registerForm.value);
 
-          let details = this.donationForm.value;
-          console.log(details);
+    //       let details = this.donationForm.value;
+    //       console.log(details);
 
-  
+          let details = {
+              campaign_id : this.campaign.campaign_id,
+              amount : this.value
+          }
 
           this.httpProvider.molpay(details).then((result) => {
 
@@ -63,7 +66,7 @@ export class PaymentPage {
           console.log(err);
       });
     }
-  }
+  // }
 
  closeModal(){
     this.viewCtrl.dismiss();

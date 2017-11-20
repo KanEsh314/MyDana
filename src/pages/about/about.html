@@ -8,7 +8,7 @@
 
 </ion-header>
 
-<ion-content padding>
+<ion-content>
 <div *ngIf="kempen">
     <ion-row>  
         <div>
@@ -16,13 +16,14 @@
         </div>  
     </ion-row>
     <ion-row>
-      <ion-col col-4 *ngFor="let im of moreImg" item-wrap no-padding style="padding-right: 2px">
+      <ion-col col-4 *ngFor="let im of moreImg" item-wrap no-padding style="padding-right: 3px; padding-top: 3px">
         	<img src="{{im.image}}" (click)="imageTapped(im.image)">
       </ion-col>
     </ion-row>
 
-  <h6>{{kempen.category_id}}</h6>
-  <h5 text-wrap>{{kempen.campaign_name}}</h5>
+<ion-item>
+  <h6 style="padding-bottom: 5px">{{kempen.category_id}}</h6>
+  <h1 text-wrap style="padding-bottom: 5px">{{kempen.campaign_name}}</h1>
 
   <!-- <div>
     <p>Anjuran   : {{kempen.organiser}}</p>
@@ -47,6 +48,7 @@
     <p><strong>{{percentage}}%</strong> tepati sasaran</p>
     <p><strong>{{remainingDays}}</strong> lagi</p>
   </div>
+</ion-item>
   
     <ion-list>
       <ion-item (click)="commentsTapped(kempen)" >
@@ -63,6 +65,9 @@
       </ion-item> -->
     </ion-list>
 
-    <button ion-button text-center color="yayasan" (click)="donate(kempen)">Donate</button>
+  <div padding>
+    <button ion-button full color="yayasan" (click)="donate(kempen)">Derma</button>
+  </div>
+
  </div>
 </ion-content>

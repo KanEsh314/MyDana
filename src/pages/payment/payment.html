@@ -17,37 +17,50 @@
 </ion-header>
 
 <ion-content padding>
+  <h1 style="padding-bottom: 10px">Derma</h1>
+  <h4 style="padding-bottom: 10px">{{campaign.campaign_name}}</h4>
 
-  <h4>{{campaign.campaign_name}}</h4>
+<div style="padding-bottom: 20px">
+  <ion-item no-padding no-lines>
+  <p text-wrap>By clicking Register me, you indicate that you have read and understand our Privacy Policy and Terms of Use and represent that you are at least 13 years of age</p>
+</ion-item>
+</div>
+  
+<div style="padding-bottom: 20px">
+  <ion-grid no-padding>
+  <ion-row>
+    <ion-col col-sm-6>
+      <strong >Tetapkan nilai</strong>
+    </ion-col>
+    <ion-col style="text-align: right;">
+      <strong>RM {{value}}</strong>
+    </ion-col>
+  </ion-row>
+    <ion-row>
+      <ion-col no-padding>
+         <ion-range min="0" max="2000" [(ngModel)]="value" snaps="true" no-padding></ion-range>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
-		
-		<ion-row>
-			<ion-col>
-				 <ion-range min="0" max="2000" [(ngModel)]="value" snaps="true"></ion-range>
-			</ion-col>
-		</ion-row>
+  <ion-grid no-padding>
+    <ion-row>
+      <ion-col col-3 style="text-align: left;">
+        <p>RM 500</p>
+      </ion-col>
+      <ion-col col-3 style="text-align: center;">
+        <p>RM 1000</p>
+      </ion-col>
+      <ion-col col-3 style="text-align: center;">
+        <p>RM 1500</p>
+      </ion-col>
+      <ion-col col-3 style="text-align: right;">
+        <p>RM 2000</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>
 
-<form [formGroup]="donationForm" (submit)="donate()" novalidate>
-
-  	<ion-item>
-      <ion-label stacked>Tetapkan Nilai</ion-label>
-      <ion-input formControlName="amount" type="text"
-        [class.invalid]="!donationForm.controls.amount.valid && donationForm.controls.amount.dirty" value="RM {{value}}"></ion-input>
-    </ion-item>
-
-    <ion-item class="error-message" 
-      *ngIf="!donationForm.controls.amount.valid && donationForm.controls.amount.dirty">
-      <p>
-        Amount is required.
-      </p>amount
-    </ion-item>
-
-    <button ion-button block type="submit" [disabled]="!donationForm.valid">
-      Donate
-    </button>
-
-  </form>
-		
-
-	
+    <button ion-button full color="yayasan" (click)="donate()">Derma</button>
+			
 </ion-content>
