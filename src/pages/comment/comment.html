@@ -7,7 +7,7 @@
 <ion-header>
 
 <ion-navbar color="yayasan">
-  <ion-title>Comments</ion-title>
+  <ion-title>KOMEN</ion-title>
     <ion-buttons right>
       <button ion-button icon-only (click)="closeModal()"><ion-icon name="ios-close-circle-outline"></ion-icon></button>
     </ion-buttons>
@@ -21,10 +21,10 @@
 <ion-list>
   <ion-item *ngFor="let comment of comments">
     <ion-avatar item-start>
-      <img src="{{comment.user.image}}">
+      <img src="{{comment.image}}">
     </ion-avatar>
-    <strong>{{comment.user.name}}</strong>
-    <p text-wrap>{{comment.desc}}</p>
+    <strong>{{comment.user}}</strong>
+    <p text-wrap>{{comment.comment}}</p>
   </ion-item>
 </ion-list>
 
@@ -34,5 +34,5 @@
   <ion-item>
     <ion-input type="text" placeholder="Comment" [(ngModel)]="userComment"></ion-input>
   </ion-item>
-  <button ion-button full round color="yayasan" (click)="sendComment()">Submit</button>
+  <button ion-button full color="yayasan" (click)="sendComment()">Submit</button>
 </ion-footer>

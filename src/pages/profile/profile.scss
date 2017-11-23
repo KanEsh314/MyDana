@@ -41,7 +41,9 @@
   border: transparent;
   position: absolute;
   top: 110px;
-  left: 110px;
+  left: 0;
+  right: 0;
+  margin: auto;
   border-radius: 50%;
 
   object-fit: cover;

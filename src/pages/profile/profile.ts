@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ModalController, LoadingController
 import { AboutUsPage } from '../about-us/about-us';
 import { UserDetailsPage} from '../user-details/user-details';
 import { HttpProvider } from '../../providers/http/http';
+import * as moment from 'moment';
 
 /**
  * Generated class for the ProfilePage page.

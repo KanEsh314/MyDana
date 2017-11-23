@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar color="yayasan">
-  <ion-title>Register</ion-title>
+  <ion-title>REGISTER</ion-title>
     <ion-buttons right>
       <button ion-button icon-only (click)="closeModal()"><ion-icon name="ios-close-circle-outline"></ion-icon></button>
     </ion-buttons>
@@ -25,7 +25,7 @@
     <ion-label floating>Name</ion-label>
     <ion-input formControlName="name" type="text" [class.invalid]="!registerForm.controls.name.valid && blur"></ion-input>
   </ion-item>
-
+<!-- 
   <ion-item>
     <ion-label floating>First Name</ion-label>
     <ion-input formControlName="first_name" type="text" [class.invalid]="!registerForm.controls.first_name.valid && blur"></ion-input>
@@ -34,17 +34,17 @@
   <ion-item>
     <ion-label floating>Last Name</ion-label>
     <ion-input formControlName="last_name" type="text" [class.invalid]="!registerForm.controls.last_name.valid && blur"></ion-input>
-  </ion-item>
+  </ion-item> -->
 
  <!--  <ion-item>
     <ion-label floating>Address</ion-label>
     <ion-input formControlName="address" type="text" [class.invalid]="!registerForm.controls.address.valid && blur"></ion-input>
   </ion-item> -->
 
-  <ion-item>
+  <!-- <ion-item>
     <ion-label floating>Nationality</ion-label>
     <ion-input formControlName="locale" type="text" [class.invalid]="!registerForm.controls.locale.valid && blur"></ion-input>
-  </ion-item>
+  </ion-item> -->
 
   <ion-item>
     <ion-label floating>Email</ion-label>
@@ -66,6 +66,11 @@
     <ion-input formControlName="password" type="password" [class.invalid]="!registerForm.controls.password.valid && blur"></ion-input>
   </ion-item>
 
+  <ion-item>
+    <ion-label floating>Password</ion-label>
+    <ion-input formControlName="password" type="password" [class.invalid]="!registerForm.controls.password.valid && blur"></ion-input>
+  </ion-item>
+
 <!--   <ion-item>
     <ion-label floating>Race</ion-label>
     <ion-input formControlName="race" type="text" [class.invalid]="!registerForm.controls.race.valid && blur"></ion-input>
@@ -76,7 +81,7 @@
     <ion-input formControlName="gender" type="text" [class.invalid]="!registerForm.controls.gender.valid && blur"></ion-input>
   </ion-item> -->
 
-  <button ion-button block type="submit" [disabled]="!registerForm.valid">Submit</button>
+  <button ion-button block type="submit" [disabled]="!registerForm.valid" style="margin-top: 5px">Submit</button>
 
 </form>
 
@@ -85,7 +90,9 @@
 <button color="facebook" ion-button block (click)="facebookConnect()">Sign Up with Facebook</button>
 <button color="google-plus" ion-button block >Sign Up with Google</button> -->
 
-<p class="legal-stuff" padding>
+<!-- <p class="legal-stuff" padding>
     By creating an account you agree to our <a class="legal-action" (click)="showPrivacyModal()">Privacy Policy</a> and <a class="legal-action" (click)="showTermsModal()">Terms of use</a>
-  </p>
+  </p> -->
+
+  <p text-wrap text-center>By clicking Register me, you indicate that you have read and understand our Privacy Policy and Terms of Use and represent that you are at least 13 years of age</p>
 </ion-content>

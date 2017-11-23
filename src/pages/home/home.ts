@@ -20,6 +20,7 @@ export class HomePage {
   remainingDays : any;
   percentage : any;
 	slideLength : boolean = false;
+  comments : any;
 
   constructor(public toast:ToastController, public loading:LoadingController, public actionSheetCtrl: ActionSheetController, public navCtrl: NavController, public modalCtrl:ModalController, public httpprovider:HttpProvider, public navParams:NavParams, public socialSharing:SocialSharing) {
      
@@ -37,16 +38,16 @@ export class HomePage {
         data => {
           console.log(data)
           this.latestcampaign = data.data;
-          console.log(this.latestcampaign)
-          this.remainingDays = moment(data.data.campaign_end_date, "YYYYMMDD").fromNow();
+          this.remainingDays = moment(data.data.campaign_end_date, "YYYYMMDD").lang("ms").fromNow();
           this.percentage = (data.data.fund_amount/data.data.total_amount)*100;
+          this.comments = this.latestcampaign[0].number_of_like.length;
         },
         err => {
           load.dismiss();
           console.log(err);
         },
         ()=>{
-          // load.dismiss();
+          load.dismiss();
         console.log('Latest is ok!')
       }
       );
@@ -62,7 +63,6 @@ export class HomePage {
           console.log(err);
         },
         ()=>{
-          load.dismiss();
         console.log('Slider is ok!')
       }
       );
@@ -158,12 +158,41 @@ export class HomePage {
     });
     actionSheet.present();
 }
+
+getRemainingDays(id){
+  for (let campaign of this.latestcampaign){
+              if (id === campaign["campaign_id"]){
+             return (moment(campaign.campaign_end_date, "YYYYMMDD").lang("ms").fromNow());
+           }
+        }
+  return null;
+}
+
+
+getComment(id){
+  for (let campaign of this.latestcampaign){
+              if (id === campaign["campaign_id"]){
+             return (campaign.comments.length);
+           }
+        }
+  return null;
+}
+
+getLike(id){
+  for (let campaign of this.latestcampaign){
+              if (id === campaign["campaign_id"]){
+             return (campaign.number_of_like.length);
+           }
+        }
+  return null;
+}
+
 getWidth(id){
 
 
-  for (let campagin of this.latestcampaign){
-              if (id === campagin["campaign_id"]){
-             return (campagin["fund_amount"]/campagin["total_amount"]*300)+"px";
+  for (let campaign of this.latestcampaign){
+              if (id === campaign["campaign_id"]){
+             return (campaign["fund_amount"]/campaign["total_amount"]*300)+"px";
            }
         }
   return "0px";

@@ -5,27 +5,32 @@
 </ion-header>
 
 <ion-content class="home">
+  <div *ngIf="latestcampaign">
    <ion-slides pager autoplay="5000" loop="true" speed="3000" *ngIf="sliderImage && sliderImage.length" class="slideSize">
   <!-- <ion-slides pager autoplay="5000" loop="true" speed="3000"> -->
     <ion-slide *ngFor="let slide of sliderImage">
 
-      <img src="{{slide.banner_image}}">
+      
+        <img src="{{slide.banner_image}}"/>
+        <h1 class="card-titles" text-wrap>Bersama Membantu Mereka Yang Memerlukan</h1>
+        <p class="card-subtitle" text-wrap>Pasangan kembar antara 425 yang berjaya di bantu</p>
   
     </ion-slide>
   </ion-slides>
 
-  <ion-item-divider><div><h1>
+  <h1 text-center style="margin-bottom: 25px">
     Kempen Terkini
-  </h1></div></ion-item-divider>
+  </h1>
 
 <ion-card *ngFor="let campaign of latestcampaign" >
   <div (click)="moreDetail(campaign)">
     <img src="{{campaign.campaign_image}}">
     <!-- <img src="assets/img/health.jpg" /> -->
     <ion-card-content >
-      <h6>{{campaign.category_id}}</h6>
+      <!-- <h6>{{campaign.category_id}}</h6> -->
+      <h6>{{campaign.category}}</h6>
       <ion-card-title> 
-        <h2 text-wrap>{{campaign.campaign_name}}</h2>
+        <h1 text-wrap>{{campaign.campaign_name}}</h1>
       </ion-card-title>
      <!--  <ion-card-title>
       <div padding-bottom=10px>
@@ -43,9 +48,9 @@
         </div>
       
       
-      <p><strong>RM {{campaign.fund_amount}}</strong> terkumpul setakat ini</p>
+      <p style="margin-top: 40px"><strong>RM {{campaign.fund_amount}}</strong> terkumpul setakat ini</p>
       <p><strong>{{(campaign.fund_amount/campaign.total_amount)*100}}%</strong> tepati sasaran</p>
-      <p><strong>{{remainingDays}}</strong> lagi</p>
+      <p><strong>{{getRemainingDays(campaign.campaign_id)}}</strong> lagi</p>
       
   </ion-card-content>
   </div>
@@ -56,16 +61,16 @@
       <ion-col text-left>
         <button ion-button clear small color="danger" icon-start (click)=commentPress(campaign)>
         <ion-icon name='chatbubbles'></ion-icon>
-        123
+        {{getComment(campaign.campaign_id)}}
         </button>
       </ion-col>
       <ion-col text-left>
         <button ion-button clear small color="danger" icon-start>
         <ion-icon name="thumbs-up"></ion-icon>
-        1234
+        {{getLike(campaign.campaign_id)}}
         </button>
       </ion-col>
-      <ion-col text-left>
+      <ion-col text-right>
         <button ion-button clear small color="danger" (click)="shareButton()">
         <ion-icon name='share-alt'></ion-icon>
           
@@ -80,5 +85,5 @@
 <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
    <ion-infinite-scroll-content *ngIf="pagingEnabled"></ion-infinite-scroll-content>
 </ion-infinite-scroll>
-
+</div>
 </ion-content>

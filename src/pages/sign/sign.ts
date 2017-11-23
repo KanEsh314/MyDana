@@ -27,7 +27,7 @@ export class SignPage {
 
   constructor(public toast:ToastController, public authprovider:AuthProvider, public loading:LoadingController, public google:GooglePlus, public viewCtrl:ViewController, public modalCtrl:ModalController, public navCtrl: NavController, public navParams: NavParams, private fb:Facebook, public formBuilder:FormBuilder) {
     this.loginForm = formBuilder.group({
-      name : ['', Validators.compose([Validators.maxLength(30), Validators.required])],
+      email : ['', Validators.compose([Validators.maxLength(30), Validators.required])],
       password : ['', Validators.compose([Validators.minLength(8), Validators.required])]
     });
   }

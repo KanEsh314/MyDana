@@ -33,9 +33,11 @@ export class CommentPage {
       });
 
         load.present();
-        this.kempen = navParams.get('kempen');
-        this.comments = this.kempen.campaign_comments;
+        this.comments = navParams.get('comments');
+        // this.comments = this.kempen.campaign_comments;
         load.dismiss();
+
+        console.log(this.comments);
 
   }
 

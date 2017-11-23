@@ -26,7 +26,7 @@ export class PaymentPage {
   
   constructor(public iab:InAppBrowser, public formBuilder:FormBuilder, public modalCtrl:ModalController, public toast:ToastController, public httpProvider:HttpProvider, public navCtrl: NavController, public navParams: NavParams, private payPal: PayPal, public viewCtrl : ViewController) {
       
-      this.campaign = navParams.get('kempen');
+      this.campaign = navParams.get('campaign');
       console.log(this.campaign);
 
       // this.donationForm = formBuilder.group({

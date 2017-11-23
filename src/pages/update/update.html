@@ -6,7 +6,7 @@
 -->
 <ion-header>
   <ion-navbar color="yayasan">
-  <ion-title>News</ion-title>
+  <ion-title>TERKINI</ion-title>
     <ion-buttons right>
       <button ion-button icon-only (click)="closeModal()"><ion-icon name="ios-close-circle-outline"></ion-icon></button>
     </ion-buttons>
@@ -17,14 +17,14 @@
 
 <ion-content padding>
 	
-<ion-card *ngFor="let news of news" (click)="newsDetails(news)">
-  <img src="{{news.image}}"/>
+<ion-card *ngFor="let new of news" (click)="newsDetails(news)">
+  <!-- <img src="{{new.image}}"/> -->
   <ion-card-content>
     <ion-card-title>
-      {{news.title}}
+      {{new.title}}
       </ion-card-title>
     <p>
-     {{news.desc}}
+     {{new.desc}}
     </p>
   </ion-card-content>
 </ion-card>

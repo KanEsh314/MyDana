@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams , ViewController, ModalController, LoadingController} from 'ionic-angular';
+import { IonicPage, NavController, NavParams , ViewController, ModalController, LoadingController, ToastController} from 'ionic-angular';
 import { CommentPage } from '../comment/comment';
 import { UpdatePage } from '../update/update';
 import { DetailsPage } from '../details/details';
 import { PaymentPage } from '../payment/payment';
 import { HttpProvider } from '../../providers/http/http';
 import { ImageViewerController } from 'ionic-img-viewer';
+import { SocialSharing } from '@ionic-native/social-sharing';
+import { ActionSheetController } from 'ionic-angular';
 import * as moment from 'moment'; 
 
 /**
@@ -35,40 +37,47 @@ export class AboutPage {
 
   image:any;
 
-  constructor(public imgViewer:ImageViewerController, public loading:LoadingController, public modalCtrl:ModalController, public navParams:NavParams, public navCtrl: NavController , public viewCtrl: ViewController, public httpprovider:HttpProvider) {
+  constructor(public toast:ToastController, public actionSheetCtrl: ActionSheetController, public imgViewer:ImageViewerController, public loading:LoadingController, public modalCtrl:ModalController, public navParams:NavParams, public navCtrl: NavController , public viewCtrl: ViewController, public httpprovider:HttpProvider, public socialSharing:SocialSharing) {
 
     this.campaign = navParams.get('campaign');
     console.log(this.campaign);
+
+    this.remainingDays = moment(this.campaign.campaign_end_date, "YYYYMMDD").lang("ms").fromNow();
+    this.percentage = (this.campaign.fund_amount/this.campaign.total_amount)*100;
+    this.progressbar = ((this.campaign.fund_amount/this.campaign.total_amount)*300)+"px";
+    console.log(this.remainingDays);
+    this.commentBadge = this.campaign.comments.length;
+    this.newsBadge = this.campaign.news.length;
   }
 
   ionViewDidLoad(){
 
-     let load = this.loading.create({
-      content: 'Please wait...'
-      });
+    //  let load = this.loading.create({
+    //   content: 'Please wait...'
+    //   });
 
-        load.present();
-        this.httpprovider.getCampaign(this.campaign.campaign_id).subscribe(
-            response => {
-              // console.log(response)
-              this.kempen = response.data;
-              console.log(this.kempen)
-              this.commentBadge = response.data.campaign_comments.length;
-              this.newsBadge = response.data.campaign_news.length;
-              this.image = response.data.campaign_image;
-              this.remainingDays = moment(response.data.campaign_end_date, "YYYYMMDD").fromNow();
-              this.percentage = (response.data.fund_amount/response.data.total_amount)*100;
-              this.progressbar = ((response.data.fund_amount/response.data.total_amount)*300)+"px";
-            },
-            err => {
-              console.log(err);
-              load.dismiss();
-            },
-            ()=>{
-              load.dismiss();
-            console.log('Latest is ok!')
-          }
-    );
+    //     load.present();
+    //     this.httpprovider.getCampaign(this.campaign.campaign_id).subscribe(
+    //         response => {
+    //           // console.log(response)
+    //           this.kempen = response.data;
+    //           // console.log(this.kempen)
+    //           this.commentBadge = response.data.campaign_comments.length;
+    //           this.newsBadge = response.data.campaign_news.length;
+    //           this.image = response.data.campaign_image;
+              // this.remainingDays = moment(campaign.campaign_end_date, "YYYYMMDD").lang("ms").fromNow();
+              // this.percentage = (campaign.fund_amount/campaign.total_amount)*100;
+              // this.progressbar = ((campaign.fund_amount/campaign.total_amount)*300)+"px";
+    //         },
+    //         err => {
+    //           console.log(err);
+    //           load.dismiss();
+    //         },
+    //         ()=>{
+    //           load.dismiss();
+    //         console.log('Latest is ok!')
+    //       }
+    // );
 }
 
 imageTapped(image){
@@ -77,8 +86,8 @@ imageTapped(image){
 }
 
 
-   commentsTapped(kempen){
-    let myModal = this.modalCtrl.create(CommentPage, {kempen:kempen});
+  commentsTapped(campaign){
+    let myModal = this.modalCtrl.create(CommentPage, this.campaign);
 
     myModal.onDidDismiss(data => {
        console.log(data);
@@ -90,13 +99,13 @@ imageTapped(image){
     myModal.present();
   }
 
-   newsTapped(kempen){
-    let myModal = this.modalCtrl.create(UpdatePage, kempen);
+  newsTapped(campaign){
+    let myModal = this.modalCtrl.create(UpdatePage, this.campaign);
     myModal.present();
   }
 
-  details(kempen){
-    let myModal = this.modalCtrl.create(DetailsPage, kempen);
+  details(campaign){
+    let myModal = this.modalCtrl.create(DetailsPage, this.campaign);
     myModal.present();
   }
 
@@ -104,8 +113,83 @@ imageTapped(image){
     this.viewCtrl.dismiss();
   }
 
-  donate(kempen){
-    let myModal = this.modalCtrl.create(PaymentPage, {kempen:kempen});
+  donate(campaign){
+    let myModal = this.modalCtrl.create(PaymentPage, {campaign:this.campaign});
     myModal.present();
   }
+
+  sebar() {
+   
+    let actionSheet = this.actionSheetCtrl.create({
+      title: 'Select Social Sharing',
+      buttons: [
+        {
+          text: 'Facebook',
+          role: 'button',
+          handler: () => {
+             
+                    let load = this.loading.create({
+                      content: 'Please wait...'
+                      });
+                    load.present();
+                   this.socialSharing.shareViaFacebook(this.campaign)
+                   .then((data) =>
+                   {
+                      console.log('Shared via Facebook');
+                      load.dismiss();
+
+                   })
+                   .catch((err) =>
+                   {
+                     load.dismiss();
+                     const toast = this.toast.create({
+                        message: 'Not Shared via Fb',
+                        duration: 3000,
+                        position: 'middle'
+                      });
+                       toast.present();
+                      console.log('Was not shared via Facebook');
+                   });
+
+            console.log('Destructive clicked');
+          }
+        },{
+          text: 'Twitter',
+          role: 'button',
+          handler: () => {
+                   let load = this.loading.create({
+                     content: 'please wait...'
+                   });
+
+                   load.present();
+
+                  this.socialSharing.shareViaTwitter(this.campaign)
+                  .then((data) =>
+                  {
+                    load.dismiss();
+                     console.log('Shared via Twitter');
+                  })
+                  .catch((err) =>
+                  {  
+                    load.dismiss();
+                    const toast = this.toast.create({
+                        message: 'cannot shared via twitter',
+                        duration: 3000,
+                        position: 'middle'
+                      });
+                       toast.present();
+                     console.log('Was not shared via Twitter');
+                  });
+          }
+        },{
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+    actionSheet.present();
+}
 }

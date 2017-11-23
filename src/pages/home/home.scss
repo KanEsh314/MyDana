@@ -1,3 +1,19 @@
+  .card-titles {
+    position: absolute;
+    top: 6%;
+    width: 100%;
+    padding: 10px;
+    // font-weight: bold;
+    color: #fff;
+  }
+
+  .card-subtitle {
+    position: absolute;
+    top: 60%;
+    width: 100%;
+    color: #fff;
+    // padding: 40px;
+  }
 
 .slideSize{
 	height : 60%;
@@ -14,7 +30,7 @@ ion-item-divider{
 }
 
 .botBorder{
-	border-top : 0.5px solid;
+	border-top : 0.5px groove;
 }
 
 .cardTitle{

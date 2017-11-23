@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar color="yayasan">
- 	<ion-title>Derma</ion-title>
+ 	<ion-title>DERMA</ion-title>
     <ion-buttons right>
     	<button ion-button icon-only (click)="closeModal()"><ion-icon name="ios-close-circle-outline"></ion-icon></button>
     </ion-buttons>
@@ -17,23 +17,41 @@
 </ion-header>
 
 <ion-content padding>
-  <h1 style="padding-bottom: 10px">Derma</h1>
+
+<div>
+   <h1>Ahli MyPrihatin?</h1>
+    <p style="margin-top: 20px; margin-bottom: 20px; line-height: 150%" text-wrap>
+      Dengan menjad ahli berdaftar MyPrihatin, anda akan dapat melihat dan memuat turun transaksi anda untuk tujuan cukai dan sepertinya.
+    </p>
+
+    <ion-list no-padding>
+      <ion-item no-padding>
+        <ion-avatar item-start>
+          <img src="assets/user.png">
+        </ion-avatar>
+        <strong>Daftar Masuk</strong>
+      </ion-item>
+    </ion-list>
+</div>
+ 
+
+  <h1 style="padding-bottom: 10px; margin-top: 50px">Derma</h1>
   <h4 style="padding-bottom: 10px">{{campaign.campaign_name}}</h4>
 
 <div style="padding-bottom: 20px">
-  <ion-item no-padding no-lines>
-  <p text-wrap>By clicking Register me, you indicate that you have read and understand our Privacy Policy and Terms of Use and represent that you are at least 13 years of age</p>
-</ion-item>
+  
+  <p text-wrap style="line-height: 150%">By clicking Register me, you indicate that you have read and understand our Privacy Policy and Terms of Use and represent that you are at least 13 years of age</p>
+
 </div>
   
 <div style="padding-bottom: 20px">
   <ion-grid no-padding>
   <ion-row>
-    <ion-col col-sm-6>
+    <ion-col col-sm-6 style="bottom: 0">
       <strong >Tetapkan nilai</strong>
     </ion-col>
     <ion-col style="text-align: right;">
-      <strong>RM {{value}}</strong>
+      <h3 style="margin: 0">RM {{value}}</h3>
     </ion-col>
   </ion-row>
     <ion-row>
@@ -61,6 +79,6 @@
   </ion-grid>
 </div>
 
-    <button ion-button full color="yayasan" (click)="donate()">Derma</button>
+    <button ion-button color="yayasan" (click)="donate()">Derma</button>
 			
 </ion-content>
